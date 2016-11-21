@@ -754,12 +754,14 @@ namespace WinImage {
 			this->toolBarOpen->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
 			resources->ApplyResources(this->toolBarOpen, L"toolBarOpen");
 			this->toolBarOpen->Name = L"toolBarOpen";
+			this->toolBarOpen->Click += gcnew System::EventHandler(this, &MyForm::toolBarOpen_Click);
 			// 
 			// toolBarPasteFromBuffer
 			// 
 			this->toolBarPasteFromBuffer->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
 			resources->ApplyResources(this->toolBarPasteFromBuffer, L"toolBarPasteFromBuffer");
 			this->toolBarPasteFromBuffer->Name = L"toolBarPasteFromBuffer";
+			this->toolBarPasteFromBuffer->Click += gcnew System::EventHandler(this, &MyForm::toolBarPasteFromBuffer_Click);
 			// 
 			// toolBarSplitButtonSave
 			// 
@@ -780,6 +782,7 @@ namespace WinImage {
 			// 
 			this->saveLayerToolbarToolStripMenuItem->Name = L"saveLayerToolbarToolStripMenuItem";
 			resources->ApplyResources(this->saveLayerToolbarToolStripMenuItem, L"saveLayerToolbarToolStripMenuItem");
+			this->saveLayerToolbarToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::saveLayerToolbarToolStripMenuItem_Click);
 			// 
 			// saveGroupToolStripMenuItem
 			// 
@@ -791,18 +794,21 @@ namespace WinImage {
 			this->toolBarZoomIn->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
 			resources->ApplyResources(this->toolBarZoomIn, L"toolBarZoomIn");
 			this->toolBarZoomIn->Name = L"toolBarZoomIn";
+			this->toolBarZoomIn->Click += gcnew System::EventHandler(this, &MyForm::toolBarZoomIn_Click);
 			// 
 			// toolBarZoomOut
 			// 
 			this->toolBarZoomOut->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
 			resources->ApplyResources(this->toolBarZoomOut, L"toolBarZoomOut");
 			this->toolBarZoomOut->Name = L"toolBarZoomOut";
+			this->toolBarZoomOut->Click += gcnew System::EventHandler(this, &MyForm::toolBarZoomOut_Click);
 			// 
 			// toolBarZoom100
 			// 
 			this->toolBarZoom100->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
 			resources->ApplyResources(this->toolBarZoom100, L"toolBarZoom100");
 			this->toolBarZoom100->Name = L"toolBarZoom100";
+			this->toolBarZoom100->Click += gcnew System::EventHandler(this, &MyForm::toolBarZoom100_Click);
 			// 
 			// toolBarZoomEdit
 			// 
@@ -820,12 +826,14 @@ namespace WinImage {
 			this->toolBarRotateLeft->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
 			resources->ApplyResources(this->toolBarRotateLeft, L"toolBarRotateLeft");
 			this->toolBarRotateLeft->Name = L"toolBarRotateLeft";
+			this->toolBarRotateLeft->Click += gcnew System::EventHandler(this, &MyForm::toolBarRotateLeft_Click);
 			// 
 			// toolBarRotateRight
 			// 
 			this->toolBarRotateRight->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
 			resources->ApplyResources(this->toolBarRotateRight, L"toolBarRotateRight");
 			this->toolBarRotateRight->Name = L"toolBarRotateRight";
+			this->toolBarRotateRight->Click += gcnew System::EventHandler(this, &MyForm::toolBarRotateRight_Click);
 			// 
 			// toolBarSetContour
 			// 
@@ -999,6 +1007,32 @@ namespace WinImage {
 		rotateRight();
 	}
 
+	//Toolbar events
+	private: System::Void toolBarOpen_Click(System::Object^  sender, System::EventArgs^  e) {
+		openImage();
+	}
+	private: System::Void toolBarPasteFromBuffer_Click(System::Object^  sender, System::EventArgs^  e) {
+		pasteFromBuffer();
+	}
+	private: System::Void saveLayerToolbarToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		saveLayer();
+	}
+	private: System::Void toolBarZoomIn_Click(System::Object^  sender, System::EventArgs^  e) {
+		zoomIn();
+	}
+	private: System::Void toolBarZoomOut_Click(System::Object^  sender, System::EventArgs^  e) {
+		zoomOut();
+	}
+	private: System::Void toolBarZoom100_Click(System::Object^  sender, System::EventArgs^  e) {
+		setDefaultSize();
+	}
+	private: System::Void toolBarRotateLeft_Click(System::Object^  sender, System::EventArgs^  e) {
+		rotateLeft();
+	}
+	private: System::Void toolBarRotateRight_Click(System::Object^  sender, System::EventArgs^  e) {
+		rotateRight();
+	}
+
 	private:
 		void openImage();
 		void pasteFromBuffer();
@@ -1008,5 +1042,6 @@ namespace WinImage {
 		void zoomIn();
 		void zoomOut();
 		void setDefaultSize();
+
 	};
 	}
