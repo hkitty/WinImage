@@ -42,10 +42,10 @@ namespace WinImage {
 
 	protected:
 
-	private: System::Windows::Forms::Panel^  panel1;
 
-	private: System::Windows::Forms::Panel^  panel2;
-	private: System::Windows::Forms::Panel^  panel3;
+
+
+
 	private: System::Windows::Forms::ToolStripMenuItem^  fileToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  openToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  pasteFromBufferToolStripMenuItem;
@@ -168,6 +168,8 @@ namespace WinImage {
 	private: System::Windows::Forms::ToolStripButton^  toolBarRenameLayer;
 	private: System::Windows::Forms::ToolStripButton^  toolBarDeleteLayer;
 	private: System::Windows::Forms::ToolStripButton^  toolBarHelp;
+private: System::Windows::Forms::SplitContainer^  splitContainer1;
+private: System::Windows::Forms::SplitContainer^  splitContainer2;
 
 	protected:
 
@@ -258,10 +260,7 @@ namespace WinImage {
 			this->licenseAgreementToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->toolStripSeparator12 = (gcnew System::Windows::Forms::ToolStripSeparator());
 			this->aboutToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			this->panel2 = (gcnew System::Windows::Forms::Panel());
-			this->panel3 = (gcnew System::Windows::Forms::Panel());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->toolStrip1 = (gcnew System::Windows::Forms::ToolStrip());
@@ -296,10 +295,17 @@ namespace WinImage {
 			this->toolBarRenameLayer = (gcnew System::Windows::Forms::ToolStripButton());
 			this->toolBarDeleteLayer = (gcnew System::Windows::Forms::ToolStripButton());
 			this->toolBarHelp = (gcnew System::Windows::Forms::ToolStripButton());
+			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
+			this->splitContainer2 = (gcnew System::Windows::Forms::SplitContainer());
 			this->menuStrip1->SuspendLayout();
-			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->toolStrip1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->BeginInit();
+			this->splitContainer1->Panel1->SuspendLayout();
+			this->splitContainer1->Panel2->SuspendLayout();
+			this->splitContainer1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer2))->BeginInit();
+			this->splitContainer2->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
@@ -714,30 +720,12 @@ namespace WinImage {
 			this->aboutToolStripMenuItem->Name = L"aboutToolStripMenuItem";
 			resources->ApplyResources(this->aboutToolStripMenuItem, L"aboutToolStripMenuItem");
 			// 
-			// panel1
-			// 
-			resources->ApplyResources(this->panel1, L"panel1");
-			this->panel1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->panel1->Controls->Add(this->pictureBox1);
-			this->panel1->Name = L"panel1";
-			// 
 			// pictureBox1
 			// 
+			this->pictureBox1->BackColor = System::Drawing::SystemColors::Control;
 			resources->ApplyResources(this->pictureBox1, L"pictureBox1");
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->TabStop = false;
-			// 
-			// panel2
-			// 
-			resources->ApplyResources(this->panel2, L"panel2");
-			this->panel2->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->panel2->Name = L"panel2";
-			// 
-			// panel3
-			// 
-			resources->ApplyResources(this->panel3, L"panel3");
-			this->panel3->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->panel3->Name = L"panel3";
 			// 
 			// toolStrip1
 			// 
@@ -948,23 +936,58 @@ namespace WinImage {
 			resources->ApplyResources(this->toolBarHelp, L"toolBarHelp");
 			this->toolBarHelp->Name = L"toolBarHelp";
 			// 
+			// splitContainer1
+			// 
+			resources->ApplyResources(this->splitContainer1, L"splitContainer1");
+			this->splitContainer1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->splitContainer1->Name = L"splitContainer1";
+			// 
+			// splitContainer1.Panel1
+			// 
+			resources->ApplyResources(this->splitContainer1->Panel1, L"splitContainer1.Panel1");
+			this->splitContainer1->Panel1->Controls->Add(this->pictureBox1);
+			// 
+			// splitContainer1.Panel2
+			// 
+			resources->ApplyResources(this->splitContainer1->Panel2, L"splitContainer1.Panel2");
+			this->splitContainer1->Panel2->Controls->Add(this->splitContainer2);
+			// 
+			// splitContainer2
+			// 
+			this->splitContainer2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			resources->ApplyResources(this->splitContainer2, L"splitContainer2");
+			this->splitContainer2->Name = L"splitContainer2";
+			// 
+			// splitContainer2.Panel1
+			// 
+			resources->ApplyResources(this->splitContainer2->Panel1, L"splitContainer2.Panel1");
+			this->splitContainer2->Panel1->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			// 
+			// splitContainer2.Panel2
+			// 
+			resources->ApplyResources(this->splitContainer2->Panel2, L"splitContainer2.Panel2");
+			this->splitContainer2->Panel2->BackColor = System::Drawing::SystemColors::GrayText;
+			// 
 			// MyForm
 			// 
 			resources->ApplyResources(this, L"$this");
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->Controls->Add(this->splitContainer1);
 			this->Controls->Add(this->toolStrip1);
-			this->Controls->Add(this->panel3);
-			this->Controls->Add(this->panel2);
-			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->menuStrip1);
 			this->Name = L"MyForm";
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
-			this->panel1->ResumeLayout(false);
-			this->panel1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->toolStrip1->ResumeLayout(false);
 			this->toolStrip1->PerformLayout();
+			this->splitContainer1->Panel1->ResumeLayout(false);
+			this->splitContainer1->Panel1->PerformLayout();
+			this->splitContainer1->Panel2->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->EndInit();
+			this->splitContainer1->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer2))->EndInit();
+			this->splitContainer2->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
