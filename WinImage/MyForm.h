@@ -401,11 +401,13 @@ private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
 			// 
 			this->rotateLeftToolStripMenuItem->Name = L"rotateLeftToolStripMenuItem";
 			resources->ApplyResources(this->rotateLeftToolStripMenuItem, L"rotateLeftToolStripMenuItem");
+			this->rotateLeftToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::rotateLeftToolStripMenuItem_Click);
 			// 
 			// rotateRightToolStripMenuItem
 			// 
 			this->rotateRightToolStripMenuItem->Name = L"rotateRightToolStripMenuItem";
 			resources->ApplyResources(this->rotateRightToolStripMenuItem, L"rotateRightToolStripMenuItem");
+			this->rotateRightToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::rotateRightToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator4
 			// 
@@ -795,6 +797,14 @@ private: System::Void saveLayerToFileToolStripMenuItem_Click(System::Object^  se
 	{
 		pictureBox1->Image->Save(saveFileDialog1->FileName);
 	}
+}
+private: System::Void rotateLeftToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	pictureBox1->Image->RotateFlip(RotateFlipType::Rotate270FlipNone);
+	pictureBox1->Refresh();
+}
+private: System::Void rotateRightToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	pictureBox1->Image->RotateFlip(RotateFlipType::Rotate90FlipNone);
+	pictureBox1->Refresh();
 }
 };
 }
