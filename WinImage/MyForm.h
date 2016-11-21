@@ -717,6 +717,7 @@ namespace WinImage {
 			// panel1
 			// 
 			resources->ApplyResources(this->panel1, L"panel1");
+			this->panel1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->panel1->Controls->Add(this->pictureBox1);
 			this->panel1->Name = L"panel1";
 			// 
@@ -729,11 +730,13 @@ namespace WinImage {
 			// panel2
 			// 
 			resources->ApplyResources(this->panel2, L"panel2");
+			this->panel2->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->panel2->Name = L"panel2";
 			// 
 			// panel3
 			// 
 			resources->ApplyResources(this->panel3, L"panel3");
+			this->panel3->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->panel3->Name = L"panel3";
 			// 
 			// toolStrip1
@@ -958,6 +961,7 @@ namespace WinImage {
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			this->panel1->ResumeLayout(false);
+			this->panel1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->toolStrip1->ResumeLayout(false);
 			this->toolStrip1->PerformLayout();
@@ -1042,6 +1046,5 @@ namespace WinImage {
 		void zoomIn();
 		void zoomOut();
 		void setDefaultSize();
-
 	};
 	}
