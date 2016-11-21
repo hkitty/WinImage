@@ -174,6 +174,38 @@ private: System::Windows::Forms::ToolStripMenuItem^  aboutToolStripMenuItem;
 private: System::Windows::Forms::PictureBox^  pictureBox1;
 private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
 private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
+private: System::Windows::Forms::ToolStrip^  toolStrip1;
+private: System::Windows::Forms::ToolStripButton^  toolBarOpen;
+private: System::Windows::Forms::ToolStripButton^  toolBarPasteFromBuffer;
+private: System::Windows::Forms::ToolStripSplitButton^  toolBarSplitButtonSave;
+private: System::Windows::Forms::ToolStripMenuItem^  saveVectorToolbarToolStripMenuItem;
+private: System::Windows::Forms::ToolStripMenuItem^  saveLayerToolbarToolStripMenuItem;
+private: System::Windows::Forms::ToolStripMenuItem^  saveGroupToolStripMenuItem;
+private: System::Windows::Forms::ToolStripButton^  toolBarZoomIn;
+private: System::Windows::Forms::ToolStripButton^  toolBarZoomOut;
+private: System::Windows::Forms::ToolStripButton^  toolBarZoom100;
+private: System::Windows::Forms::ToolStripTextBox^  toolBarZoomEdit;
+private: System::Windows::Forms::ToolStripButton^  toolBarMove;
+private: System::Windows::Forms::ToolStripButton^  toolBarRotateLeft;
+private: System::Windows::Forms::ToolStripButton^  toolBarRotateRight;
+private: System::Windows::Forms::ToolStripSplitButton^  toolBarSetContour;
+private: System::Windows::Forms::ToolStripMenuItem^  RectangleBarToolStripMenuItem;
+private: System::Windows::Forms::ToolStripMenuItem^  CustomBarToolStripMenuItem;
+private: System::Windows::Forms::ToolStripButton^  toolBarDeleteContours;
+private: System::Windows::Forms::ToolStripButton^  toolBarUniteContours;
+private: System::Windows::Forms::ToolStripButton^  toolBarSelectAllContours;
+private: System::Windows::Forms::ToolStripButton^  toolBarCancelSelect;
+private: System::Windows::Forms::ToolStripButton^  toolBarProposeSketch;
+private: System::Windows::Forms::ToolStripButton^  toolBarAddFragment;
+private: System::Windows::Forms::ToolStripButton^  toolBarDeleteFragment;
+private: System::Windows::Forms::ToolStripButton^  toolBarSelectAllFragments;
+private: System::Windows::Forms::ToolStripButton^  toolBarCancelSelectFragments;
+private: System::Windows::Forms::ToolStripButton^  toolBarCreateVector;
+private: System::Windows::Forms::ToolStripButton^  toolBarDeleteVector;
+private: System::Windows::Forms::ToolStripButton^  toolBarCreateLayer;
+private: System::Windows::Forms::ToolStripButton^  toolBarRenameLayer;
+private: System::Windows::Forms::ToolStripButton^  toolBarDeleteLayer;
+private: System::Windows::Forms::ToolStripButton^  toolBarHelp;
 
 
 
@@ -291,9 +323,42 @@ private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
+			this->toolStrip1 = (gcnew System::Windows::Forms::ToolStrip());
+			this->toolBarOpen = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolBarPasteFromBuffer = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolBarSplitButtonSave = (gcnew System::Windows::Forms::ToolStripSplitButton());
+			this->saveVectorToolbarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->saveLayerToolbarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->saveGroupToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolBarZoomIn = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolBarZoomOut = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolBarZoom100 = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolBarZoomEdit = (gcnew System::Windows::Forms::ToolStripTextBox());
+			this->toolBarMove = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolBarRotateLeft = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolBarRotateRight = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolBarSetContour = (gcnew System::Windows::Forms::ToolStripSplitButton());
+			this->RectangleBarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->CustomBarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolBarDeleteContours = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolBarUniteContours = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolBarSelectAllContours = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolBarCancelSelect = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolBarProposeSketch = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolBarAddFragment = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolBarDeleteFragment = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolBarSelectAllFragments = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolBarCancelSelectFragments = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolBarCreateVector = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolBarDeleteVector = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolBarCreateLayer = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolBarRenameLayer = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolBarDeleteLayer = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolBarHelp = (gcnew System::Windows::Forms::ToolStripButton());
 			this->menuStrip1->SuspendLayout();
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			this->toolStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
@@ -730,10 +795,212 @@ private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
 			resources->ApplyResources(this->panel3, L"panel3");
 			this->panel3->Name = L"panel3";
 			// 
+			// toolStrip1
+			// 
+			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(26) {
+				this->toolBarOpen, this->toolBarPasteFromBuffer,
+					this->toolBarSplitButtonSave, this->toolBarZoomIn, this->toolBarZoomOut, this->toolBarZoom100, this->toolBarZoomEdit, this->toolBarMove,
+					this->toolBarRotateLeft, this->toolBarRotateRight, this->toolBarSetContour, this->toolBarDeleteContours, this->toolBarUniteContours,
+					this->toolBarSelectAllContours, this->toolBarCancelSelect, this->toolBarProposeSketch, this->toolBarAddFragment, this->toolBarDeleteFragment,
+					this->toolBarSelectAllFragments, this->toolBarCancelSelectFragments, this->toolBarCreateVector, this->toolBarDeleteVector, this->toolBarCreateLayer,
+					this->toolBarRenameLayer, this->toolBarDeleteLayer, this->toolBarHelp
+			});
+			resources->ApplyResources(this->toolStrip1, L"toolStrip1");
+			this->toolStrip1->Name = L"toolStrip1";
+			// 
+			// toolBarOpen
+			// 
+			this->toolBarOpen->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			resources->ApplyResources(this->toolBarOpen, L"toolBarOpen");
+			this->toolBarOpen->Name = L"toolBarOpen";
+			// 
+			// toolBarPasteFromBuffer
+			// 
+			this->toolBarPasteFromBuffer->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			resources->ApplyResources(this->toolBarPasteFromBuffer, L"toolBarPasteFromBuffer");
+			this->toolBarPasteFromBuffer->Name = L"toolBarPasteFromBuffer";
+			// 
+			// toolBarSplitButtonSave
+			// 
+			this->toolBarSplitButtonSave->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			this->toolBarSplitButtonSave->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+				this->saveVectorToolbarToolStripMenuItem,
+					this->saveLayerToolbarToolStripMenuItem, this->saveGroupToolStripMenuItem
+			});
+			resources->ApplyResources(this->toolBarSplitButtonSave, L"toolBarSplitButtonSave");
+			this->toolBarSplitButtonSave->Name = L"toolBarSplitButtonSave";
+			// 
+			// saveVectorToolbarToolStripMenuItem
+			// 
+			this->saveVectorToolbarToolStripMenuItem->Name = L"saveVectorToolbarToolStripMenuItem";
+			resources->ApplyResources(this->saveVectorToolbarToolStripMenuItem, L"saveVectorToolbarToolStripMenuItem");
+			// 
+			// saveLayerToolbarToolStripMenuItem
+			// 
+			this->saveLayerToolbarToolStripMenuItem->Name = L"saveLayerToolbarToolStripMenuItem";
+			resources->ApplyResources(this->saveLayerToolbarToolStripMenuItem, L"saveLayerToolbarToolStripMenuItem");
+			// 
+			// saveGroupToolStripMenuItem
+			// 
+			this->saveGroupToolStripMenuItem->Name = L"saveGroupToolStripMenuItem";
+			resources->ApplyResources(this->saveGroupToolStripMenuItem, L"saveGroupToolStripMenuItem");
+			// 
+			// toolBarZoomIn
+			// 
+			this->toolBarZoomIn->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			resources->ApplyResources(this->toolBarZoomIn, L"toolBarZoomIn");
+			this->toolBarZoomIn->Name = L"toolBarZoomIn";
+			// 
+			// toolBarZoomOut
+			// 
+			this->toolBarZoomOut->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			resources->ApplyResources(this->toolBarZoomOut, L"toolBarZoomOut");
+			this->toolBarZoomOut->Name = L"toolBarZoomOut";
+			// 
+			// toolBarZoom100
+			// 
+			this->toolBarZoom100->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			resources->ApplyResources(this->toolBarZoom100, L"toolBarZoom100");
+			this->toolBarZoom100->Name = L"toolBarZoom100";
+			// 
+			// toolBarZoomEdit
+			// 
+			this->toolBarZoomEdit->Name = L"toolBarZoomEdit";
+			resources->ApplyResources(this->toolBarZoomEdit, L"toolBarZoomEdit");
+			// 
+			// toolBarMove
+			// 
+			this->toolBarMove->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			resources->ApplyResources(this->toolBarMove, L"toolBarMove");
+			this->toolBarMove->Name = L"toolBarMove";
+			// 
+			// toolBarRotateLeft
+			// 
+			this->toolBarRotateLeft->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			resources->ApplyResources(this->toolBarRotateLeft, L"toolBarRotateLeft");
+			this->toolBarRotateLeft->Name = L"toolBarRotateLeft";
+			// 
+			// toolBarRotateRight
+			// 
+			this->toolBarRotateRight->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			resources->ApplyResources(this->toolBarRotateRight, L"toolBarRotateRight");
+			this->toolBarRotateRight->Name = L"toolBarRotateRight";
+			// 
+			// toolBarSetContour
+			// 
+			this->toolBarSetContour->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			this->toolBarSetContour->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->RectangleBarToolStripMenuItem,
+					this->CustomBarToolStripMenuItem
+			});
+			resources->ApplyResources(this->toolBarSetContour, L"toolBarSetContour");
+			this->toolBarSetContour->Name = L"toolBarSetContour";
+			// 
+			// RectangleBarToolStripMenuItem
+			// 
+			this->RectangleBarToolStripMenuItem->Name = L"RectangleBarToolStripMenuItem";
+			resources->ApplyResources(this->RectangleBarToolStripMenuItem, L"RectangleBarToolStripMenuItem");
+			// 
+			// CustomBarToolStripMenuItem
+			// 
+			this->CustomBarToolStripMenuItem->Name = L"CustomBarToolStripMenuItem";
+			resources->ApplyResources(this->CustomBarToolStripMenuItem, L"CustomBarToolStripMenuItem");
+			// 
+			// toolBarDeleteContours
+			// 
+			this->toolBarDeleteContours->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			resources->ApplyResources(this->toolBarDeleteContours, L"toolBarDeleteContours");
+			this->toolBarDeleteContours->Name = L"toolBarDeleteContours";
+			// 
+			// toolBarUniteContours
+			// 
+			this->toolBarUniteContours->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			resources->ApplyResources(this->toolBarUniteContours, L"toolBarUniteContours");
+			this->toolBarUniteContours->Name = L"toolBarUniteContours";
+			// 
+			// toolBarSelectAllContours
+			// 
+			this->toolBarSelectAllContours->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			resources->ApplyResources(this->toolBarSelectAllContours, L"toolBarSelectAllContours");
+			this->toolBarSelectAllContours->Name = L"toolBarSelectAllContours";
+			// 
+			// toolBarCancelSelect
+			// 
+			this->toolBarCancelSelect->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			resources->ApplyResources(this->toolBarCancelSelect, L"toolBarCancelSelect");
+			this->toolBarCancelSelect->Name = L"toolBarCancelSelect";
+			// 
+			// toolBarProposeSketch
+			// 
+			this->toolBarProposeSketch->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			resources->ApplyResources(this->toolBarProposeSketch, L"toolBarProposeSketch");
+			this->toolBarProposeSketch->Name = L"toolBarProposeSketch";
+			// 
+			// toolBarAddFragment
+			// 
+			this->toolBarAddFragment->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			resources->ApplyResources(this->toolBarAddFragment, L"toolBarAddFragment");
+			this->toolBarAddFragment->Name = L"toolBarAddFragment";
+			// 
+			// toolBarDeleteFragment
+			// 
+			this->toolBarDeleteFragment->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			resources->ApplyResources(this->toolBarDeleteFragment, L"toolBarDeleteFragment");
+			this->toolBarDeleteFragment->Name = L"toolBarDeleteFragment";
+			// 
+			// toolBarSelectAllFragments
+			// 
+			this->toolBarSelectAllFragments->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			resources->ApplyResources(this->toolBarSelectAllFragments, L"toolBarSelectAllFragments");
+			this->toolBarSelectAllFragments->Name = L"toolBarSelectAllFragments";
+			// 
+			// toolBarCancelSelectFragments
+			// 
+			this->toolBarCancelSelectFragments->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			resources->ApplyResources(this->toolBarCancelSelectFragments, L"toolBarCancelSelectFragments");
+			this->toolBarCancelSelectFragments->Name = L"toolBarCancelSelectFragments";
+			// 
+			// toolBarCreateVector
+			// 
+			this->toolBarCreateVector->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			resources->ApplyResources(this->toolBarCreateVector, L"toolBarCreateVector");
+			this->toolBarCreateVector->Name = L"toolBarCreateVector";
+			// 
+			// toolBarDeleteVector
+			// 
+			this->toolBarDeleteVector->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			resources->ApplyResources(this->toolBarDeleteVector, L"toolBarDeleteVector");
+			this->toolBarDeleteVector->Name = L"toolBarDeleteVector";
+			// 
+			// toolBarCreateLayer
+			// 
+			this->toolBarCreateLayer->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			resources->ApplyResources(this->toolBarCreateLayer, L"toolBarCreateLayer");
+			this->toolBarCreateLayer->Name = L"toolBarCreateLayer";
+			// 
+			// toolBarRenameLayer
+			// 
+			this->toolBarRenameLayer->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			resources->ApplyResources(this->toolBarRenameLayer, L"toolBarRenameLayer");
+			this->toolBarRenameLayer->Name = L"toolBarRenameLayer";
+			// 
+			// toolBarDeleteLayer
+			// 
+			this->toolBarDeleteLayer->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			resources->ApplyResources(this->toolBarDeleteLayer, L"toolBarDeleteLayer");
+			this->toolBarDeleteLayer->Name = L"toolBarDeleteLayer";
+			// 
+			// toolBarHelp
+			// 
+			this->toolBarHelp->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			resources->ApplyResources(this->toolBarHelp, L"toolBarHelp");
+			this->toolBarHelp->Name = L"toolBarHelp";
+			// 
 			// MyForm
 			// 
 			resources->ApplyResources(this, L"$this");
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->Controls->Add(this->toolStrip1);
 			this->Controls->Add(this->panel3);
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->panel1);
@@ -743,6 +1010,8 @@ private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
 			this->menuStrip1->PerformLayout();
 			this->panel1->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			this->toolStrip1->ResumeLayout(false);
+			this->toolStrip1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
