@@ -781,8 +781,7 @@ private: System::Void zoomInToolStripMenuItem_Click(System::Object^  sender, Sys
 	pictureBox1->Refresh();
 }
 private: System::Void defaultSizeToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	pictureBox1->Width = panel1->Width - 10;
-	pictureBox1->Height = panel1->Height - 10;
+	pictureBox1->Size = pictureBox1->Image->Size;
 	pictureBox1->Refresh();
 	//pictureBox1->Update();
 }
