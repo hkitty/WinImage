@@ -16,6 +16,7 @@ namespace WinImage {
 	/// </summary>
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
+
 	public:
 		MyForm(void)
 		{
@@ -36,12 +37,10 @@ namespace WinImage {
 				delete components;
 			}
 		}
+
 	private: System::Windows::Forms::MenuStrip^  menuStrip1;
+
 	protected:
-
-
-
-
 
 	private: System::Windows::Forms::Panel^  panel1;
 
@@ -56,25 +55,18 @@ namespace WinImage {
 	private: System::Windows::Forms::ToolStripMenuItem^  saveLayerToFileToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  saveLayersToolStripMenuItem;
 
-
-
 	private: System::Windows::Forms::ToolStripSeparator^  toolStripSeparator2;
 	private: System::Windows::Forms::ToolStripMenuItem^  exitToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  viewToolStripMenuItem;
-
 
 	private: System::Windows::Forms::ToolStripMenuItem^  zoomInToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  zoomOutToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  defaultSizeToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  moveToolStripMenuItem;
 
-
-
-
 	private: System::Windows::Forms::ToolStripSeparator^  toolStripSeparator3;
 	private: System::Windows::Forms::ToolStripMenuItem^  rotateLeftToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  rotateRightToolStripMenuItem;
-
 
 	private: System::Windows::Forms::ToolStripSeparator^  toolStripSeparator4;
 	private: System::Windows::Forms::ToolStripMenuItem^  showVectorToolStripMenuItem;
@@ -84,15 +76,9 @@ namespace WinImage {
 	private: System::Windows::Forms::ToolStripMenuItem^  statusbarToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  languagesToolStripMenuItem;
 
-
-
-
-
-
 	private: System::Windows::Forms::ToolStripMenuItem^  englishToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  ukrainianToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  russianToolStripMenuItem;
-
 
 	private: System::Windows::Forms::ToolStripMenuItem^  polskiToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  toolsToolStripMenuItem;
@@ -103,14 +89,9 @@ namespace WinImage {
 	private: System::Windows::Forms::ToolStripMenuItem^  deleteContourToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  uniteContourToolStripMenuItem;
 
-
-
-
-
 	private: System::Windows::Forms::ToolStripSeparator^  toolStripSeparator5;
 	private: System::Windows::Forms::ToolStripMenuItem^  selectAllContoursToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  deselectToolStripMenuItem;
-
 
 	private: System::Windows::Forms::ToolStripSeparator^  toolStripSeparator6;
 	private: System::Windows::Forms::ToolStripMenuItem^  suggestSketchToolStripMenuItem;
@@ -118,115 +99,75 @@ namespace WinImage {
 	private: System::Windows::Forms::ToolStripMenuItem^  variant1ToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  variant2ToolStripMenuItem;
 
-
-
-
 	private: System::Windows::Forms::ToolStripSeparator^  toolStripSeparator7;
-private: System::Windows::Forms::ToolStripMenuItem^  cutMenuToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  cutMenuToolStripMenuItem;
 
-private: System::Windows::Forms::ToolStripMenuItem^  setAreaToolStripMenuItem;
-private: System::Windows::Forms::ToolStripMenuItem^  undoSelectToolStripMenuItem1;
-private: System::Windows::Forms::ToolStripMenuItem^  cutToolStripMenuItem1;
-private: System::Windows::Forms::ToolStripMenuItem^  sketchToolStripMenuItem;
-private: System::Windows::Forms::ToolStripMenuItem^  addFragmentToolStripMenuItem;
-private: System::Windows::Forms::ToolStripMenuItem^  removeFragmentToolStripMenuItem;
-
-
-
-
-
-
+	private: System::Windows::Forms::ToolStripMenuItem^  setAreaToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  undoSelectToolStripMenuItem1;
+	private: System::Windows::Forms::ToolStripMenuItem^  cutToolStripMenuItem1;
+	private: System::Windows::Forms::ToolStripMenuItem^  sketchToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  addFragmentToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  removeFragmentToolStripMenuItem;
 
 	private: System::Windows::Forms::ToolStripSeparator^  toolStripSeparator8;
-private: System::Windows::Forms::ToolStripMenuItem^  selectAllFragmentsToolStripMenuItem;
-private: System::Windows::Forms::ToolStripMenuItem^  deselectFragmentsToolStripMenuItem2;
-private: System::Windows::Forms::ToolStripMenuItem^  moveSketchToolStripMenuItem1;
-
-
+	private: System::Windows::Forms::ToolStripMenuItem^  selectAllFragmentsToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  deselectFragmentsToolStripMenuItem2;
+	private: System::Windows::Forms::ToolStripMenuItem^  moveSketchToolStripMenuItem1;
 
 	private: System::Windows::Forms::ToolStripSeparator^  toolStripSeparator9;
-private: System::Windows::Forms::ToolStripMenuItem^  createVectorToolStripMenuItem;
-private: System::Windows::Forms::ToolStripMenuItem^  deleteVectorToolStripMenuItem;
-
+	private: System::Windows::Forms::ToolStripMenuItem^  createVectorToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  deleteVectorToolStripMenuItem;
 
 	private: System::Windows::Forms::ToolStripSeparator^  toolStripSeparator10;
-private: System::Windows::Forms::ToolStripMenuItem^  createNewLayerToolStripMenuItem;
-private: System::Windows::Forms::ToolStripMenuItem^  renameLayerToolStripMenuItem;
-private: System::Windows::Forms::ToolStripMenuItem^  removeLayerToolStripMenuItem;
-
-
+	private: System::Windows::Forms::ToolStripMenuItem^  createNewLayerToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  renameLayerToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  removeLayerToolStripMenuItem;
 
 	private: System::Windows::Forms::ToolStripSeparator^  toolStripSeparator11;
-private: System::Windows::Forms::ToolStripMenuItem^  setBackgroundColorToolStripMenuItem;
-private: System::Windows::Forms::ToolStripMenuItem^  helpToolStripMenuItem;
-private: System::Windows::Forms::ToolStripMenuItem^  infoToolStripMenuItem;
-private: System::Windows::Forms::ToolStripMenuItem^  infoOnlineOnlineToolStripMenuItem;
-private: System::Windows::Forms::ToolStripMenuItem^  regKeyToolStripMenuItem;
-private: System::Windows::Forms::ToolStripMenuItem^  licenseAgreementToolStripMenuItem;
-
-
-
-
-
+	private: System::Windows::Forms::ToolStripMenuItem^  setBackgroundColorToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  helpToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  infoToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  infoOnlineOnlineToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  regKeyToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  licenseAgreementToolStripMenuItem;
 
 	private: System::Windows::Forms::ToolStripSeparator^  toolStripSeparator12;
-private: System::Windows::Forms::ToolStripMenuItem^  aboutToolStripMenuItem;
-private: System::Windows::Forms::PictureBox^  pictureBox1;
-private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
-private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
-private: System::Windows::Forms::ToolStrip^  toolStrip1;
-private: System::Windows::Forms::ToolStripButton^  toolBarOpen;
-private: System::Windows::Forms::ToolStripButton^  toolBarPasteFromBuffer;
-private: System::Windows::Forms::ToolStripSplitButton^  toolBarSplitButtonSave;
-private: System::Windows::Forms::ToolStripMenuItem^  saveVectorToolbarToolStripMenuItem;
-private: System::Windows::Forms::ToolStripMenuItem^  saveLayerToolbarToolStripMenuItem;
-private: System::Windows::Forms::ToolStripMenuItem^  saveGroupToolStripMenuItem;
-private: System::Windows::Forms::ToolStripButton^  toolBarZoomIn;
-private: System::Windows::Forms::ToolStripButton^  toolBarZoomOut;
-private: System::Windows::Forms::ToolStripButton^  toolBarZoom100;
-private: System::Windows::Forms::ToolStripTextBox^  toolBarZoomEdit;
-private: System::Windows::Forms::ToolStripButton^  toolBarMove;
-private: System::Windows::Forms::ToolStripButton^  toolBarRotateLeft;
-private: System::Windows::Forms::ToolStripButton^  toolBarRotateRight;
-private: System::Windows::Forms::ToolStripSplitButton^  toolBarSetContour;
-private: System::Windows::Forms::ToolStripMenuItem^  RectangleBarToolStripMenuItem;
-private: System::Windows::Forms::ToolStripMenuItem^  CustomBarToolStripMenuItem;
-private: System::Windows::Forms::ToolStripButton^  toolBarDeleteContours;
-private: System::Windows::Forms::ToolStripButton^  toolBarUniteContours;
-private: System::Windows::Forms::ToolStripButton^  toolBarSelectAllContours;
-private: System::Windows::Forms::ToolStripButton^  toolBarCancelSelect;
-private: System::Windows::Forms::ToolStripButton^  toolBarProposeSketch;
-private: System::Windows::Forms::ToolStripButton^  toolBarAddFragment;
-private: System::Windows::Forms::ToolStripButton^  toolBarDeleteFragment;
-private: System::Windows::Forms::ToolStripButton^  toolBarSelectAllFragments;
-private: System::Windows::Forms::ToolStripButton^  toolBarCancelSelectFragments;
-private: System::Windows::Forms::ToolStripButton^  toolBarCreateVector;
-private: System::Windows::Forms::ToolStripButton^  toolBarDeleteVector;
-private: System::Windows::Forms::ToolStripButton^  toolBarCreateLayer;
-private: System::Windows::Forms::ToolStripButton^  toolBarRenameLayer;
-private: System::Windows::Forms::ToolStripButton^  toolBarDeleteLayer;
-private: System::Windows::Forms::ToolStripButton^  toolBarHelp;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	private: System::Windows::Forms::ToolStripMenuItem^  aboutToolStripMenuItem;
+	private: System::Windows::Forms::PictureBox^  pictureBox1;
+	private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
+	private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
+	private: System::Windows::Forms::ToolStrip^  toolStrip1;
+	private: System::Windows::Forms::ToolStripButton^  toolBarOpen;
+	private: System::Windows::Forms::ToolStripButton^  toolBarPasteFromBuffer;
+	private: System::Windows::Forms::ToolStripSplitButton^  toolBarSplitButtonSave;
+	private: System::Windows::Forms::ToolStripMenuItem^  saveVectorToolbarToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  saveLayerToolbarToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  saveGroupToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripButton^  toolBarZoomIn;
+	private: System::Windows::Forms::ToolStripButton^  toolBarZoomOut;
+	private: System::Windows::Forms::ToolStripButton^  toolBarZoom100;
+	private: System::Windows::Forms::ToolStripTextBox^  toolBarZoomEdit;
+	private: System::Windows::Forms::ToolStripButton^  toolBarMove;
+	private: System::Windows::Forms::ToolStripButton^  toolBarRotateLeft;
+	private: System::Windows::Forms::ToolStripButton^  toolBarRotateRight;
+	private: System::Windows::Forms::ToolStripSplitButton^  toolBarSetContour;
+	private: System::Windows::Forms::ToolStripMenuItem^  RectangleBarToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  CustomBarToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripButton^  toolBarDeleteContours;
+	private: System::Windows::Forms::ToolStripButton^  toolBarUniteContours;
+	private: System::Windows::Forms::ToolStripButton^  toolBarSelectAllContours;
+	private: System::Windows::Forms::ToolStripButton^  toolBarCancelSelect;
+	private: System::Windows::Forms::ToolStripButton^  toolBarProposeSketch;
+	private: System::Windows::Forms::ToolStripButton^  toolBarAddFragment;
+	private: System::Windows::Forms::ToolStripButton^  toolBarDeleteFragment;
+	private: System::Windows::Forms::ToolStripButton^  toolBarSelectAllFragments;
+	private: System::Windows::Forms::ToolStripButton^  toolBarCancelSelectFragments;
+	private: System::Windows::Forms::ToolStripButton^  toolBarCreateVector;
+	private: System::Windows::Forms::ToolStripButton^  toolBarDeleteVector;
+	private: System::Windows::Forms::ToolStripButton^  toolBarCreateLayer;
+	private: System::Windows::Forms::ToolStripButton^  toolBarRenameLayer;
+	private: System::Windows::Forms::ToolStripButton^  toolBarDeleteLayer;
+	private: System::Windows::Forms::ToolStripButton^  toolBarHelp;
 
 	protected:
 
@@ -1016,63 +957,56 @@ private: System::Windows::Forms::ToolStripButton^  toolBarHelp;
 			this->PerformLayout();
 
 		}
+
 #pragma endregion
-	private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs^  e) {
-		Thread::CurrentThread->CurrentCulture = gcnew CultureInfo("en-US");
-		Thread::CurrentThread->CurrentUICulture = gcnew CultureInfo("en-US");
-		
-		this->Controls->Clear();
-		this->InitializeComponent();
-	}
-	private: System::Void âèõîäToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	}
-private: System::Void pasteFromBufferToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	Drawing::Image^ img;
-	img = Clipboard::GetImage();
+	//private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs^  e) {
+	//	Thread::CurrentThread->CurrentCulture = gcnew CultureInfo("en-US");
+	//	Thread::CurrentThread->CurrentUICulture = gcnew CultureInfo("en-US");
+	//	
+	//	this->Controls->Clear();
+	//	this->InitializeComponent();
+	//}
 
-	this->pictureBox1->Image = img;
-
-	this->pictureBox1->Update();
-}
-private: System::Void openToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	openFileDialog1->InitialDirectory = "d:\\";
-	openFileDialog1->Filter = "BMP(*.bmp)|*.bmp|JPEG(*.jpg)|*.jpg|All files (*.*)|*.*";
-	if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-	{
-		this->pictureBox1->Image = Image::FromFile(openFileDialog1->FileName);
+	private: System::Void pasteFromBufferToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		pasteFromBuffer();
 	}
 
-
-}
-private: System::Void zoomInToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {	
-	pictureBox1->Width *= 1.2;
-	pictureBox1->Height *= 1.2;
-	pictureBox1->Refresh();
-}
-private: System::Void defaultSizeToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	pictureBox1->Size = pictureBox1->Image->Size;
-	pictureBox1->Refresh();
-	//pictureBox1->Update();
-}
-private: System::Void zoomOutToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	pictureBox1->Width *= 0.8;
-	pictureBox1->Height *= 0.8;
-	pictureBox1->Refresh();
-}
-private: System::Void saveLayerToFileToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	saveFileDialog1->Filter = "BMP(*.bmp)|*.bmp|JPEG(*.jpg)|*.jpg|All files (*.*)|*.*";
-	if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-	{
-		pictureBox1->Image->Save(saveFileDialog1->FileName);
+	private: System::Void openToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		openImage();
 	}
-}
-private: System::Void rotateLeftToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	pictureBox1->Image->RotateFlip(RotateFlipType::Rotate270FlipNone);
-	pictureBox1->Refresh();
-}
-private: System::Void rotateRightToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	pictureBox1->Image->RotateFlip(RotateFlipType::Rotate90FlipNone);
-	pictureBox1->Refresh();
-}
-};
-}
+
+	private: System::Void zoomInToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {	
+		zoomIn();
+	}
+
+	private: System::Void defaultSizeToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		setDefaultSize();
+	}
+
+	private: System::Void zoomOutToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		zoomOut();
+	}
+
+	private: System::Void saveLayerToFileToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		saveLayer();
+	}
+
+	private: System::Void rotateLeftToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		rotateLeft();
+	}
+
+	private: System::Void rotateRightToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		rotateRight();
+	}
+
+	private:
+		void openImage();
+		void pasteFromBuffer();
+		void rotateLeft();
+		void rotateRight();
+		void saveLayer();
+		void zoomIn();
+		void zoomOut();
+		void setDefaultSize();
+	};
+	}
