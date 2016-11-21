@@ -329,8 +329,8 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			// 
 			// openToolStripMenuItem
 			// 
-			this->openToolStripMenuItem->Name = L"openToolStripMenuItem";
 			resources->ApplyResources(this->openToolStripMenuItem, L"openToolStripMenuItem");
+			this->openToolStripMenuItem->Name = L"openToolStripMenuItem";
 			this->openToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::openToolStripMenuItem_Click);
 			// 
 			// pasteFromBufferToolStripMenuItem
@@ -351,8 +351,8 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			// 
 			// saveLayerToFileToolStripMenuItem
 			// 
-			this->saveLayerToFileToolStripMenuItem->Name = L"saveLayerToFileToolStripMenuItem";
 			resources->ApplyResources(this->saveLayerToFileToolStripMenuItem, L"saveLayerToFileToolStripMenuItem");
+			this->saveLayerToFileToolStripMenuItem->Name = L"saveLayerToFileToolStripMenuItem";
 			this->saveLayerToFileToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::saveLayerToFileToolStripMenuItem_Click);
 			// 
 			// saveLayersToolStripMenuItem
@@ -383,20 +383,20 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			// 
 			// zoomInToolStripMenuItem
 			// 
-			this->zoomInToolStripMenuItem->Name = L"zoomInToolStripMenuItem";
 			resources->ApplyResources(this->zoomInToolStripMenuItem, L"zoomInToolStripMenuItem");
+			this->zoomInToolStripMenuItem->Name = L"zoomInToolStripMenuItem";
 			this->zoomInToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::zoomInToolStripMenuItem_Click);
 			// 
 			// zoomOutToolStripMenuItem
 			// 
-			this->zoomOutToolStripMenuItem->Name = L"zoomOutToolStripMenuItem";
 			resources->ApplyResources(this->zoomOutToolStripMenuItem, L"zoomOutToolStripMenuItem");
+			this->zoomOutToolStripMenuItem->Name = L"zoomOutToolStripMenuItem";
 			this->zoomOutToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::zoomOutToolStripMenuItem_Click);
 			// 
 			// defaultSizeToolStripMenuItem
 			// 
-			this->defaultSizeToolStripMenuItem->Name = L"defaultSizeToolStripMenuItem";
 			resources->ApplyResources(this->defaultSizeToolStripMenuItem, L"defaultSizeToolStripMenuItem");
+			this->defaultSizeToolStripMenuItem->Name = L"defaultSizeToolStripMenuItem";
 			this->defaultSizeToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::defaultSizeToolStripMenuItem_Click);
 			// 
 			// moveToolStripMenuItem
@@ -411,14 +411,14 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			// 
 			// rotateLeftToolStripMenuItem
 			// 
-			this->rotateLeftToolStripMenuItem->Name = L"rotateLeftToolStripMenuItem";
 			resources->ApplyResources(this->rotateLeftToolStripMenuItem, L"rotateLeftToolStripMenuItem");
+			this->rotateLeftToolStripMenuItem->Name = L"rotateLeftToolStripMenuItem";
 			this->rotateLeftToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::rotateLeftToolStripMenuItem_Click);
 			// 
 			// rotateRightToolStripMenuItem
 			// 
-			this->rotateRightToolStripMenuItem->Name = L"rotateRightToolStripMenuItem";
 			resources->ApplyResources(this->rotateRightToolStripMenuItem, L"rotateRightToolStripMenuItem");
+			this->rotateRightToolStripMenuItem->Name = L"rotateRightToolStripMenuItem";
 			this->rotateRightToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::rotateRightToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator4
@@ -771,8 +771,8 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			// 
 			// saveLayerToolbarToolStripMenuItem
 			// 
-			this->saveLayerToolbarToolStripMenuItem->Name = L"saveLayerToolbarToolStripMenuItem";
 			resources->ApplyResources(this->saveLayerToolbarToolStripMenuItem, L"saveLayerToolbarToolStripMenuItem");
+			this->saveLayerToolbarToolStripMenuItem->Name = L"saveLayerToolbarToolStripMenuItem";
 			this->saveLayerToolbarToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::saveLayerToolbarToolStripMenuItem_Click);
 			// 
 			// saveGroupToolStripMenuItem
@@ -982,7 +982,6 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			this->toolStrip1->ResumeLayout(false);
 			this->toolStrip1->PerformLayout();
 			this->splitContainer1->Panel1->ResumeLayout(false);
-			this->splitContainer1->Panel1->PerformLayout();
 			this->splitContainer1->Panel2->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->EndInit();
 			this->splitContainer1->ResumeLayout(false);
