@@ -44,7 +44,7 @@ namespace WinImage {
 
 
 	private: System::Windows::Forms::Panel^  panel1;
-	private: System::Windows::Forms::PictureBox^  pictureBox1;
+
 	private: System::Windows::Forms::Panel^  panel2;
 	private: System::Windows::Forms::Panel^  panel3;
 	private: System::Windows::Forms::ToolStripMenuItem^  fileToolStripMenuItem;
@@ -171,41 +171,9 @@ private: System::Windows::Forms::ToolStripMenuItem^  licenseAgreementToolStripMe
 
 	private: System::Windows::Forms::ToolStripSeparator^  toolStripSeparator12;
 private: System::Windows::Forms::ToolStripMenuItem^  aboutToolStripMenuItem;
-private: System::Windows::Forms::ToolStrip^  toolStrip1;
-private: System::Windows::Forms::ToolStripButton^  openToolStripButton;
-private: System::Windows::Forms::ToolStripButton^  pasteFromBufferToolStripButton;
-
-private: System::Windows::Forms::ToolStripSplitButton^  setContourStripSplitButton;
-
-
-
-private: System::Windows::Forms::ToolStripMenuItem^  saveVectorBarToolStripMenuItem;
-private: System::Windows::Forms::ToolStripMenuItem^  saveLayerToFileBarToolStripMenuItem;
-private: System::Windows::Forms::ToolStripButton^  zoomInBarToolStripButton;
-
-private: System::Windows::Forms::ToolStripButton^  zoomOutBarToolStripButton;
-
-private: System::Windows::Forms::ToolStripButton^  defaultZoomBarToolStripButton;
-
-private: System::Windows::Forms::ToolStripTextBox^  customZoomToolStripTextBox;
-
-private: System::Windows::Forms::ToolStripButton^  moveBarToolStripButton;
-private: System::Windows::Forms::ToolStripButton^  rotateLeftBarToolStripButton;
-private: System::Windows::Forms::ToolStripButton^  rotateRightBarToolStripButton;
-private: System::Windows::Forms::ToolStripSplitButton^  setContourBarToolStripSplitButton;
-private: System::Windows::Forms::ToolStripMenuItem^  rectangleContourBarToolStripMenuItem;
-private: System::Windows::Forms::ToolStripMenuItem^  customContourBarToolStripMenuItem;
-private: System::Windows::Forms::ToolStripButton^  deleteContourBarToolStripButton;
-private: System::Windows::Forms::ToolStripButton^  uniteContourBarToolStripButton;
-private: System::Windows::Forms::ToolStripButton^  selectAllFragmentsBarToolStripButton;
-private: System::Windows::Forms::ToolStripButton^  deselectContoursBarToolStripButton;
-private: System::Windows::Forms::ToolStripButton^  createVectorBarToolStripButton;
-private: System::Windows::Forms::ToolStripButton^  deleteVectorBarToolStripButton;
-private: System::Windows::Forms::ToolStripButton^  createNewLayerBarToolStripButton;
-private: System::Windows::Forms::ToolStripButton^  renameLayerBarToolStripButton;
-private: System::Windows::Forms::ToolStripButton^  deleteLayerBarToolStripButton;
-private: System::Windows::Forms::ToolStripButton^  helpBarToolStripButton;
-
+private: System::Windows::Forms::PictureBox^  pictureBox1;
+private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
+private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
 
 
 
@@ -321,36 +289,11 @@ private: System::Windows::Forms::ToolStripButton^  helpBarToolStripButton;
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
-			this->toolStrip1 = (gcnew System::Windows::Forms::ToolStrip());
-			this->openToolStripButton = (gcnew System::Windows::Forms::ToolStripButton());
-			this->pasteFromBufferToolStripButton = (gcnew System::Windows::Forms::ToolStripButton());
-			this->setContourStripSplitButton = (gcnew System::Windows::Forms::ToolStripSplitButton());
-			this->saveVectorBarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->saveLayerToFileBarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->zoomInBarToolStripButton = (gcnew System::Windows::Forms::ToolStripButton());
-			this->zoomOutBarToolStripButton = (gcnew System::Windows::Forms::ToolStripButton());
-			this->defaultZoomBarToolStripButton = (gcnew System::Windows::Forms::ToolStripButton());
-			this->customZoomToolStripTextBox = (gcnew System::Windows::Forms::ToolStripTextBox());
-			this->moveBarToolStripButton = (gcnew System::Windows::Forms::ToolStripButton());
-			this->rotateLeftBarToolStripButton = (gcnew System::Windows::Forms::ToolStripButton());
-			this->rotateRightBarToolStripButton = (gcnew System::Windows::Forms::ToolStripButton());
-			this->setContourBarToolStripSplitButton = (gcnew System::Windows::Forms::ToolStripSplitButton());
-			this->rectangleContourBarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->customContourBarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->deleteContourBarToolStripButton = (gcnew System::Windows::Forms::ToolStripButton());
-			this->uniteContourBarToolStripButton = (gcnew System::Windows::Forms::ToolStripButton());
-			this->selectAllFragmentsBarToolStripButton = (gcnew System::Windows::Forms::ToolStripButton());
-			this->deselectContoursBarToolStripButton = (gcnew System::Windows::Forms::ToolStripButton());
-			this->createVectorBarToolStripButton = (gcnew System::Windows::Forms::ToolStripButton());
-			this->deleteVectorBarToolStripButton = (gcnew System::Windows::Forms::ToolStripButton());
-			this->createNewLayerBarToolStripButton = (gcnew System::Windows::Forms::ToolStripButton());
-			this->renameLayerBarToolStripButton = (gcnew System::Windows::Forms::ToolStripButton());
-			this->deleteLayerBarToolStripButton = (gcnew System::Windows::Forms::ToolStripButton());
-			this->helpBarToolStripButton = (gcnew System::Windows::Forms::ToolStripButton());
+			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
+			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->menuStrip1->SuspendLayout();
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
-			this->toolStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
@@ -376,11 +319,13 @@ private: System::Windows::Forms::ToolStripButton^  helpBarToolStripButton;
 			// 
 			this->openToolStripMenuItem->Name = L"openToolStripMenuItem";
 			resources->ApplyResources(this->openToolStripMenuItem, L"openToolStripMenuItem");
+			this->openToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::openToolStripMenuItem_Click);
 			// 
 			// pasteFromBufferToolStripMenuItem
 			// 
 			this->pasteFromBufferToolStripMenuItem->Name = L"pasteFromBufferToolStripMenuItem";
 			resources->ApplyResources(this->pasteFromBufferToolStripMenuItem, L"pasteFromBufferToolStripMenuItem");
+			this->pasteFromBufferToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::pasteFromBufferToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator1
 			// 
@@ -396,6 +341,7 @@ private: System::Windows::Forms::ToolStripButton^  helpBarToolStripButton;
 			// 
 			this->saveLayerToFileToolStripMenuItem->Name = L"saveLayerToFileToolStripMenuItem";
 			resources->ApplyResources(this->saveLayerToFileToolStripMenuItem, L"saveLayerToFileToolStripMenuItem");
+			this->saveLayerToFileToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::saveLayerToFileToolStripMenuItem_Click);
 			// 
 			// saveLayersToolStripMenuItem
 			// 
@@ -427,16 +373,19 @@ private: System::Windows::Forms::ToolStripButton^  helpBarToolStripButton;
 			// 
 			this->zoomInToolStripMenuItem->Name = L"zoomInToolStripMenuItem";
 			resources->ApplyResources(this->zoomInToolStripMenuItem, L"zoomInToolStripMenuItem");
+			this->zoomInToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::zoomInToolStripMenuItem_Click);
 			// 
 			// zoomOutToolStripMenuItem
 			// 
 			this->zoomOutToolStripMenuItem->Name = L"zoomOutToolStripMenuItem";
 			resources->ApplyResources(this->zoomOutToolStripMenuItem, L"zoomOutToolStripMenuItem");
+			this->zoomOutToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::zoomOutToolStripMenuItem_Click);
 			// 
 			// defaultSizeToolStripMenuItem
 			// 
 			this->defaultSizeToolStripMenuItem->Name = L"defaultSizeToolStripMenuItem";
 			resources->ApplyResources(this->defaultSizeToolStripMenuItem, L"defaultSizeToolStripMenuItem");
+			this->defaultSizeToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::defaultSizeToolStripMenuItem_Click);
 			// 
 			// moveToolStripMenuItem
 			// 
@@ -779,177 +728,10 @@ private: System::Windows::Forms::ToolStripButton^  helpBarToolStripButton;
 			resources->ApplyResources(this->panel3, L"panel3");
 			this->panel3->Name = L"panel3";
 			// 
-			// toolStrip1
-			// 
-			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(21) {
-				this->openToolStripButton,
-					this->pasteFromBufferToolStripButton, this->setContourStripSplitButton, this->zoomInBarToolStripButton, this->zoomOutBarToolStripButton,
-					this->defaultZoomBarToolStripButton, this->customZoomToolStripTextBox, this->moveBarToolStripButton, this->rotateLeftBarToolStripButton,
-					this->rotateRightBarToolStripButton, this->setContourBarToolStripSplitButton, this->deleteContourBarToolStripButton, this->uniteContourBarToolStripButton,
-					this->selectAllFragmentsBarToolStripButton, this->deselectContoursBarToolStripButton, this->createVectorBarToolStripButton, this->deleteVectorBarToolStripButton,
-					this->createNewLayerBarToolStripButton, this->renameLayerBarToolStripButton, this->deleteLayerBarToolStripButton, this->helpBarToolStripButton
-			});
-			resources->ApplyResources(this->toolStrip1, L"toolStrip1");
-			this->toolStrip1->Name = L"toolStrip1";
-			// 
-			// openToolStripButton
-			// 
-			this->openToolStripButton->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			resources->ApplyResources(this->openToolStripButton, L"openToolStripButton");
-			this->openToolStripButton->Name = L"openToolStripButton";
-			// 
-			// pasteFromBufferToolStripButton
-			// 
-			this->pasteFromBufferToolStripButton->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			resources->ApplyResources(this->pasteFromBufferToolStripButton, L"pasteFromBufferToolStripButton");
-			this->pasteFromBufferToolStripButton->Name = L"pasteFromBufferToolStripButton";
-			// 
-			// setContourStripSplitButton
-			// 
-			this->setContourStripSplitButton->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			this->setContourStripSplitButton->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-				this->saveVectorBarToolStripMenuItem,
-					this->saveLayerToFileBarToolStripMenuItem
-			});
-			resources->ApplyResources(this->setContourStripSplitButton, L"setContourStripSplitButton");
-			this->setContourStripSplitButton->Name = L"setContourStripSplitButton";
-			// 
-			// saveVectorBarToolStripMenuItem
-			// 
-			this->saveVectorBarToolStripMenuItem->Name = L"saveVectorBarToolStripMenuItem";
-			resources->ApplyResources(this->saveVectorBarToolStripMenuItem, L"saveVectorBarToolStripMenuItem");
-			// 
-			// saveLayerToFileBarToolStripMenuItem
-			// 
-			this->saveLayerToFileBarToolStripMenuItem->Name = L"saveLayerToFileBarToolStripMenuItem";
-			resources->ApplyResources(this->saveLayerToFileBarToolStripMenuItem, L"saveLayerToFileBarToolStripMenuItem");
-			// 
-			// zoomInBarToolStripButton
-			// 
-			this->zoomInBarToolStripButton->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			resources->ApplyResources(this->zoomInBarToolStripButton, L"zoomInBarToolStripButton");
-			this->zoomInBarToolStripButton->Name = L"zoomInBarToolStripButton";
-			// 
-			// zoomOutBarToolStripButton
-			// 
-			this->zoomOutBarToolStripButton->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			resources->ApplyResources(this->zoomOutBarToolStripButton, L"zoomOutBarToolStripButton");
-			this->zoomOutBarToolStripButton->Name = L"zoomOutBarToolStripButton";
-			// 
-			// defaultZoomBarToolStripButton
-			// 
-			this->defaultZoomBarToolStripButton->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			resources->ApplyResources(this->defaultZoomBarToolStripButton, L"defaultZoomBarToolStripButton");
-			this->defaultZoomBarToolStripButton->Name = L"defaultZoomBarToolStripButton";
-			// 
-			// customZoomToolStripTextBox
-			// 
-			this->customZoomToolStripTextBox->Name = L"customZoomToolStripTextBox";
-			resources->ApplyResources(this->customZoomToolStripTextBox, L"customZoomToolStripTextBox");
-			// 
-			// moveBarToolStripButton
-			// 
-			this->moveBarToolStripButton->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			resources->ApplyResources(this->moveBarToolStripButton, L"moveBarToolStripButton");
-			this->moveBarToolStripButton->Name = L"moveBarToolStripButton";
-			// 
-			// rotateLeftBarToolStripButton
-			// 
-			this->rotateLeftBarToolStripButton->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			resources->ApplyResources(this->rotateLeftBarToolStripButton, L"rotateLeftBarToolStripButton");
-			this->rotateLeftBarToolStripButton->Name = L"rotateLeftBarToolStripButton";
-			// 
-			// rotateRightBarToolStripButton
-			// 
-			this->rotateRightBarToolStripButton->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			resources->ApplyResources(this->rotateRightBarToolStripButton, L"rotateRightBarToolStripButton");
-			this->rotateRightBarToolStripButton->Name = L"rotateRightBarToolStripButton";
-			// 
-			// setContourBarToolStripSplitButton
-			// 
-			this->setContourBarToolStripSplitButton->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			this->setContourBarToolStripSplitButton->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-				this->rectangleContourBarToolStripMenuItem,
-					this->customContourBarToolStripMenuItem
-			});
-			resources->ApplyResources(this->setContourBarToolStripSplitButton, L"setContourBarToolStripSplitButton");
-			this->setContourBarToolStripSplitButton->Name = L"setContourBarToolStripSplitButton";
-			// 
-			// rectangleContourBarToolStripMenuItem
-			// 
-			this->rectangleContourBarToolStripMenuItem->Name = L"rectangleContourBarToolStripMenuItem";
-			resources->ApplyResources(this->rectangleContourBarToolStripMenuItem, L"rectangleContourBarToolStripMenuItem");
-			// 
-			// customContourBarToolStripMenuItem
-			// 
-			this->customContourBarToolStripMenuItem->Name = L"customContourBarToolStripMenuItem";
-			resources->ApplyResources(this->customContourBarToolStripMenuItem, L"customContourBarToolStripMenuItem");
-			// 
-			// deleteContourBarToolStripButton
-			// 
-			this->deleteContourBarToolStripButton->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			resources->ApplyResources(this->deleteContourBarToolStripButton, L"deleteContourBarToolStripButton");
-			this->deleteContourBarToolStripButton->Name = L"deleteContourBarToolStripButton";
-			// 
-			// uniteContourBarToolStripButton
-			// 
-			this->uniteContourBarToolStripButton->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			resources->ApplyResources(this->uniteContourBarToolStripButton, L"uniteContourBarToolStripButton");
-			this->uniteContourBarToolStripButton->Name = L"uniteContourBarToolStripButton";
-			// 
-			// selectAllFragmentsBarToolStripButton
-			// 
-			this->selectAllFragmentsBarToolStripButton->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			resources->ApplyResources(this->selectAllFragmentsBarToolStripButton, L"selectAllFragmentsBarToolStripButton");
-			this->selectAllFragmentsBarToolStripButton->Name = L"selectAllFragmentsBarToolStripButton";
-			// 
-			// deselectContoursBarToolStripButton
-			// 
-			this->deselectContoursBarToolStripButton->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			resources->ApplyResources(this->deselectContoursBarToolStripButton, L"deselectContoursBarToolStripButton");
-			this->deselectContoursBarToolStripButton->Name = L"deselectContoursBarToolStripButton";
-			// 
-			// createVectorBarToolStripButton
-			// 
-			this->createVectorBarToolStripButton->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			resources->ApplyResources(this->createVectorBarToolStripButton, L"createVectorBarToolStripButton");
-			this->createVectorBarToolStripButton->Name = L"createVectorBarToolStripButton";
-			// 
-			// deleteVectorBarToolStripButton
-			// 
-			this->deleteVectorBarToolStripButton->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			resources->ApplyResources(this->deleteVectorBarToolStripButton, L"deleteVectorBarToolStripButton");
-			this->deleteVectorBarToolStripButton->Name = L"deleteVectorBarToolStripButton";
-			// 
-			// createNewLayerBarToolStripButton
-			// 
-			this->createNewLayerBarToolStripButton->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			resources->ApplyResources(this->createNewLayerBarToolStripButton, L"createNewLayerBarToolStripButton");
-			this->createNewLayerBarToolStripButton->Name = L"createNewLayerBarToolStripButton";
-			// 
-			// renameLayerBarToolStripButton
-			// 
-			this->renameLayerBarToolStripButton->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			resources->ApplyResources(this->renameLayerBarToolStripButton, L"renameLayerBarToolStripButton");
-			this->renameLayerBarToolStripButton->Name = L"renameLayerBarToolStripButton";
-			// 
-			// deleteLayerBarToolStripButton
-			// 
-			this->deleteLayerBarToolStripButton->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			resources->ApplyResources(this->deleteLayerBarToolStripButton, L"deleteLayerBarToolStripButton");
-			this->deleteLayerBarToolStripButton->Name = L"deleteLayerBarToolStripButton";
-			// 
-			// helpBarToolStripButton
-			// 
-			this->helpBarToolStripButton->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			resources->ApplyResources(this->helpBarToolStripButton, L"helpBarToolStripButton");
-			this->helpBarToolStripButton->Name = L"helpBarToolStripButton";
-			// 
 			// MyForm
 			// 
 			resources->ApplyResources(this, L"$this");
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->Controls->Add(this->toolStrip1);
 			this->Controls->Add(this->panel3);
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->panel1);
@@ -958,10 +740,7 @@ private: System::Windows::Forms::ToolStripButton^  helpBarToolStripButton;
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			this->panel1->ResumeLayout(false);
-			this->panel1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
-			this->toolStrip1->ResumeLayout(false);
-			this->toolStrip1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -976,5 +755,46 @@ private: System::Windows::Forms::ToolStripButton^  helpBarToolStripButton;
 	}
 	private: System::Void âèõîäToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
+private: System::Void pasteFromBufferToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	Drawing::Image^ img;
+	img = Clipboard::GetImage();
+
+	this->pictureBox1->Image = img;
+
+	this->pictureBox1->Update();
+}
+private: System::Void openToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	openFileDialog1->InitialDirectory = "d:\\";
+	openFileDialog1->Filter = "BMP(*.bmp)|*.bmp|JPEG(*.jpg)|*.jpg|All files (*.*)|*.*";
+	if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	{
+		this->pictureBox1->Image = Image::FromFile(openFileDialog1->FileName);
+	}
+
+
+}
+private: System::Void zoomInToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {	
+	pictureBox1->Width *= 1.2;
+	pictureBox1->Height *= 1.2;
+	pictureBox1->Refresh();
+}
+private: System::Void defaultSizeToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	pictureBox1->Width = panel1->Width - 10;
+	pictureBox1->Height = panel1->Height - 10;
+	pictureBox1->Refresh();
+	//pictureBox1->Update();
+}
+private: System::Void zoomOutToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	pictureBox1->Width *= 0.8;
+	pictureBox1->Height *= 0.8;
+	pictureBox1->Refresh();
+}
+private: System::Void saveLayerToFileToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	saveFileDialog1->Filter = "BMP(*.bmp)|*.bmp|JPEG(*.jpg)|*.jpg|All files (*.*)|*.*";
+	if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	{
+		pictureBox1->Image->Save(saveFileDialog1->FileName);
+	}
+}
 };
 }
