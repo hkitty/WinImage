@@ -24,6 +24,8 @@ namespace WinImage
 		{
 			this->pictureBox1->Image = Image::FromFile(openFileDialog1->FileName);
 		}
+
+		splitContainer1->Panel1->Text = openFileDialog1->FileName;
 	}
 	void MyForm::pasteFromBuffer()
 	{
@@ -70,5 +72,8 @@ namespace WinImage
 		pictureBox1->Size = pictureBox1->Image->Size;
 		pictureBox1->Refresh();
 		//pictureBox1->Update();
+	}
+	void MyForm::move() {
+		
 	}
 }

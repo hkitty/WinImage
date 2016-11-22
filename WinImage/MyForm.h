@@ -39,7 +39,8 @@ namespace WinImage {
 		}
 
 	private: System::Windows::Forms::MenuStrip^  menuStrip1;
-
+			 double mousePosX;
+			 double mousePosY;
 	protected:
 
 
@@ -442,6 +443,7 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			// 
 			this->moveToolStripMenuItem->Name = L"moveToolStripMenuItem";
 			resources->ApplyResources(this->moveToolStripMenuItem, L"moveToolStripMenuItem");
+			this->moveToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::moveToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator3
 			// 
@@ -1060,7 +1062,9 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 	private: System::Void toolBarRotateRight_Click(System::Object^  sender, System::EventArgs^  e) {
 		rotateRight();
 	}
-
+	private: System::Void moveToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		move();
+	}
 	private:
 		void openImage();
 		void pasteFromBuffer();
@@ -1070,5 +1074,6 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 		void zoomIn();
 		void zoomOut();
 		void setDefaultSize();
-	};
+		void move();
+};
 	}
