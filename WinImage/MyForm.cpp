@@ -25,27 +25,32 @@ namespace WinImage
 			this->pictureBox1->Image = Image::FromFile(openFileDialog1->FileName);
 		}
 
-		splitContainer1->Panel1->Text = openFileDialog1->FileName;
+		toolStripStatusLabel1->Text = openFileDialog1->FileName;
 	}
 	void MyForm::pasteFromBuffer()
 	{
-		Drawing::Image^ img;
-		img = Clipboard::GetImage();
+//		if (Clipboard::ContainsImage()) {
+			Drawing::Image^ img;
+			
+			img = Clipboard::GetImage();
+			
+			pictureBox1->Image = img;
 
-		this->pictureBox1->Image = img;
-
-		this->pictureBox1->Update();
+			pictureBox1->Update();
+//		}
 	}
 	void MyForm::rotateLeft()
 	{
 		pictureBox1->Image->RotateFlip(RotateFlipType::Rotate270FlipNone);
 		pictureBox1->Refresh();
+		setDefaultSize();
 	}
 
 	void MyForm::rotateRight()
 	{
 		pictureBox1->Image->RotateFlip(RotateFlipType::Rotate90FlipNone);
 		pictureBox1->Refresh();
+		setDefaultSize();
 	}
 	void MyForm::saveLayer()
 	{
@@ -87,6 +92,14 @@ namespace WinImage
 		}
 
 		menuStrip->Update();
+	}
+	void MyForm::setLocale(String^ language)
+	{
+		Thread::CurrentThread->CurrentCulture = gcnew CultureInfo(language);
+		Thread::CurrentThread->CurrentUICulture = gcnew CultureInfo(language);
+			
+		this->Controls->Clear();
+		this->InitializeComponent();
 	}
 }
 
