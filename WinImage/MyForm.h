@@ -21,9 +21,6 @@ namespace WinImage {
 		MyForm(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
 		}
 
 	protected:
@@ -37,14 +34,12 @@ namespace WinImage {
 				delete components;
 			}
 		}
-
-	private: System::Windows::Forms::MenuStrip^  menuStrip1;
-
+	private: System::Windows::Forms::MenuStrip^  menuStrip;
 	protected:
 
 
 
-
+	protected:
 
 	private: System::Windows::Forms::ToolStripMenuItem^  fileToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  openToolStripMenuItem;
@@ -168,8 +163,10 @@ namespace WinImage {
 	private: System::Windows::Forms::ToolStripButton^  toolBarRenameLayer;
 	private: System::Windows::Forms::ToolStripButton^  toolBarDeleteLayer;
 	private: System::Windows::Forms::ToolStripButton^  toolBarHelp;
-private: System::Windows::Forms::SplitContainer^  splitContainer1;
-private: System::Windows::Forms::SplitContainer^  splitContainer2;
+	private: System::Windows::Forms::SplitContainer^  splitContainer1;
+	private: System::Windows::Forms::SplitContainer^  splitContainer2;
+	private: System::Windows::Forms::StatusStrip^  statusStrip1;
+	private: System::Windows::Forms::ToolStripStatusLabel^  toolStripStatusLabel1;
 
 	protected:
 
@@ -192,7 +189,7 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->splitContainer2 = (gcnew System::Windows::Forms::SplitContainer());
-			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
+			this->menuStrip = (gcnew System::Windows::Forms::MenuStrip());
 			this->fileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->openToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->pasteFromBufferToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -297,6 +294,8 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			this->toolBarRenameLayer = (gcnew System::Windows::Forms::ToolStripButton());
 			this->toolBarDeleteLayer = (gcnew System::Windows::Forms::ToolStripButton());
 			this->toolBarHelp = (gcnew System::Windows::Forms::ToolStripButton());
+			this->statusStrip1 = (gcnew System::Windows::Forms::StatusStrip());
+			this->toolStripStatusLabel1 = (gcnew System::Windows::Forms::ToolStripStatusLabel());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->BeginInit();
 			this->splitContainer1->Panel1->SuspendLayout();
 			this->splitContainer1->Panel2->SuspendLayout();
@@ -304,8 +303,9 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer2))->BeginInit();
 			this->splitContainer2->SuspendLayout();
-			this->menuStrip1->SuspendLayout();
+			this->menuStrip->SuspendLayout();
 			this->toolStrip1->SuspendLayout();
+			this->statusStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// splitContainer1
@@ -347,14 +347,14 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			resources->ApplyResources(this->splitContainer2->Panel2, L"splitContainer2.Panel2");
 			this->splitContainer2->Panel2->BackColor = System::Drawing::SystemColors::GrayText;
 			// 
-			// menuStrip1
+			// menuStrip
 			// 
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {
+			this->menuStrip->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {
 				this->fileToolStripMenuItem,
 					this->viewToolStripMenuItem, this->toolsToolStripMenuItem, this->sketchToolStripMenuItem, this->helpToolStripMenuItem
 			});
-			resources->ApplyResources(this->menuStrip1, L"menuStrip1");
-			this->menuStrip1->Name = L"menuStrip1";
+			resources->ApplyResources(this->menuStrip, L"menuStrip");
+			this->menuStrip->Name = L"menuStrip";
 			// 
 			// fileToolStripMenuItem
 			// 
@@ -385,8 +385,8 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			// 
 			// saveVectorToolStripMenuItem
 			// 
-			this->saveVectorToolStripMenuItem->Name = L"saveVectorToolStripMenuItem";
 			resources->ApplyResources(this->saveVectorToolStripMenuItem, L"saveVectorToolStripMenuItem");
+			this->saveVectorToolStripMenuItem->Name = L"saveVectorToolStripMenuItem";
 			// 
 			// saveLayerToFileToolStripMenuItem
 			// 
@@ -396,8 +396,8 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			// 
 			// saveLayersToolStripMenuItem
 			// 
-			this->saveLayersToolStripMenuItem->Name = L"saveLayersToolStripMenuItem";
 			resources->ApplyResources(this->saveLayersToolStripMenuItem, L"saveLayersToolStripMenuItem");
+			this->saveLayersToolStripMenuItem->Name = L"saveLayersToolStripMenuItem";
 			// 
 			// toolStripSeparator2
 			// 
@@ -440,8 +440,8 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			// 
 			// moveToolStripMenuItem
 			// 
-			this->moveToolStripMenuItem->Name = L"moveToolStripMenuItem";
 			resources->ApplyResources(this->moveToolStripMenuItem, L"moveToolStripMenuItem");
+			this->moveToolStripMenuItem->Name = L"moveToolStripMenuItem";
 			// 
 			// toolStripSeparator3
 			// 
@@ -467,26 +467,41 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			// 
 			// showVectorToolStripMenuItem
 			// 
-			this->showVectorToolStripMenuItem->Name = L"showVectorToolStripMenuItem";
+			this->showVectorToolStripMenuItem->Checked = true;
+			this->showVectorToolStripMenuItem->CheckOnClick = true;
+			this->showVectorToolStripMenuItem->CheckState = System::Windows::Forms::CheckState::Checked;
 			resources->ApplyResources(this->showVectorToolStripMenuItem, L"showVectorToolStripMenuItem");
+			this->showVectorToolStripMenuItem->Name = L"showVectorToolStripMenuItem";
 			// 
 			// showLayersToolStripMenuItem
 			// 
-			this->showLayersToolStripMenuItem->Name = L"showLayersToolStripMenuItem";
+			this->showLayersToolStripMenuItem->Checked = true;
+			this->showLayersToolStripMenuItem->CheckOnClick = true;
+			this->showLayersToolStripMenuItem->CheckState = System::Windows::Forms::CheckState::Checked;
 			resources->ApplyResources(this->showLayersToolStripMenuItem, L"showLayersToolStripMenuItem");
+			this->showLayersToolStripMenuItem->Name = L"showLayersToolStripMenuItem";
 			// 
 			// syncToolStripMenuItem
 			// 
-			this->syncToolStripMenuItem->Name = L"syncToolStripMenuItem";
+			this->syncToolStripMenuItem->Checked = true;
+			this->syncToolStripMenuItem->CheckOnClick = true;
+			this->syncToolStripMenuItem->CheckState = System::Windows::Forms::CheckState::Checked;
 			resources->ApplyResources(this->syncToolStripMenuItem, L"syncToolStripMenuItem");
+			this->syncToolStripMenuItem->Name = L"syncToolStripMenuItem";
 			// 
 			// toolbarToolStripMenuItem
 			// 
+			this->toolbarToolStripMenuItem->Checked = true;
+			this->toolbarToolStripMenuItem->CheckOnClick = true;
+			this->toolbarToolStripMenuItem->CheckState = System::Windows::Forms::CheckState::Checked;
 			this->toolbarToolStripMenuItem->Name = L"toolbarToolStripMenuItem";
 			resources->ApplyResources(this->toolbarToolStripMenuItem, L"toolbarToolStripMenuItem");
 			// 
 			// statusbarToolStripMenuItem
 			// 
+			this->statusbarToolStripMenuItem->Checked = true;
+			this->statusbarToolStripMenuItem->CheckOnClick = true;
+			this->statusbarToolStripMenuItem->CheckState = System::Windows::Forms::CheckState::Checked;
 			this->statusbarToolStripMenuItem->Name = L"statusbarToolStripMenuItem";
 			resources->ApplyResources(this->statusbarToolStripMenuItem, L"statusbarToolStripMenuItem");
 			// 
@@ -536,8 +551,8 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 				this->rectangleToolStripMenuItem,
 					this->customToolStripMenuItem
 			});
-			this->setContourToolStripMenuItem->Name = L"setContourToolStripMenuItem";
 			resources->ApplyResources(this->setContourToolStripMenuItem, L"setContourToolStripMenuItem");
+			this->setContourToolStripMenuItem->Name = L"setContourToolStripMenuItem";
 			// 
 			// rectangleToolStripMenuItem
 			// 
@@ -551,13 +566,13 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			// 
 			// deleteContourToolStripMenuItem
 			// 
-			this->deleteContourToolStripMenuItem->Name = L"deleteContourToolStripMenuItem";
 			resources->ApplyResources(this->deleteContourToolStripMenuItem, L"deleteContourToolStripMenuItem");
+			this->deleteContourToolStripMenuItem->Name = L"deleteContourToolStripMenuItem";
 			// 
 			// uniteContourToolStripMenuItem
 			// 
-			this->uniteContourToolStripMenuItem->Name = L"uniteContourToolStripMenuItem";
 			resources->ApplyResources(this->uniteContourToolStripMenuItem, L"uniteContourToolStripMenuItem");
+			this->uniteContourToolStripMenuItem->Name = L"uniteContourToolStripMenuItem";
 			// 
 			// toolStripSeparator5
 			// 
@@ -566,13 +581,13 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			// 
 			// selectAllContoursToolStripMenuItem
 			// 
-			this->selectAllContoursToolStripMenuItem->Name = L"selectAllContoursToolStripMenuItem";
 			resources->ApplyResources(this->selectAllContoursToolStripMenuItem, L"selectAllContoursToolStripMenuItem");
+			this->selectAllContoursToolStripMenuItem->Name = L"selectAllContoursToolStripMenuItem";
 			// 
 			// deselectToolStripMenuItem
 			// 
-			this->deselectToolStripMenuItem->Name = L"deselectToolStripMenuItem";
 			resources->ApplyResources(this->deselectToolStripMenuItem, L"deselectToolStripMenuItem");
+			this->deselectToolStripMenuItem->Name = L"deselectToolStripMenuItem";
 			// 
 			// toolStripSeparator6
 			// 
@@ -581,8 +596,8 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			// 
 			// suggestSketchToolStripMenuItem
 			// 
-			this->suggestSketchToolStripMenuItem->Name = L"suggestSketchToolStripMenuItem";
 			resources->ApplyResources(this->suggestSketchToolStripMenuItem, L"suggestSketchToolStripMenuItem");
+			this->suggestSketchToolStripMenuItem->Name = L"suggestSketchToolStripMenuItem";
 			// 
 			// variantSketchToolStripMenuItem
 			// 
@@ -614,8 +629,8 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 				this->setAreaToolStripMenuItem,
 					this->undoSelectToolStripMenuItem1, this->cutToolStripMenuItem1
 			});
-			this->cutMenuToolStripMenuItem->Name = L"cutMenuToolStripMenuItem";
 			resources->ApplyResources(this->cutMenuToolStripMenuItem, L"cutMenuToolStripMenuItem");
+			this->cutMenuToolStripMenuItem->Name = L"cutMenuToolStripMenuItem";
 			// 
 			// setAreaToolStripMenuItem
 			// 
@@ -646,13 +661,13 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			// 
 			// addFragmentToolStripMenuItem
 			// 
-			this->addFragmentToolStripMenuItem->Name = L"addFragmentToolStripMenuItem";
 			resources->ApplyResources(this->addFragmentToolStripMenuItem, L"addFragmentToolStripMenuItem");
+			this->addFragmentToolStripMenuItem->Name = L"addFragmentToolStripMenuItem";
 			// 
 			// removeFragmentToolStripMenuItem
 			// 
-			this->removeFragmentToolStripMenuItem->Name = L"removeFragmentToolStripMenuItem";
 			resources->ApplyResources(this->removeFragmentToolStripMenuItem, L"removeFragmentToolStripMenuItem");
+			this->removeFragmentToolStripMenuItem->Name = L"removeFragmentToolStripMenuItem";
 			// 
 			// toolStripSeparator8
 			// 
@@ -661,18 +676,18 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			// 
 			// selectAllFragmentsToolStripMenuItem
 			// 
-			this->selectAllFragmentsToolStripMenuItem->Name = L"selectAllFragmentsToolStripMenuItem";
 			resources->ApplyResources(this->selectAllFragmentsToolStripMenuItem, L"selectAllFragmentsToolStripMenuItem");
+			this->selectAllFragmentsToolStripMenuItem->Name = L"selectAllFragmentsToolStripMenuItem";
 			// 
 			// deselectFragmentsToolStripMenuItem2
 			// 
-			this->deselectFragmentsToolStripMenuItem2->Name = L"deselectFragmentsToolStripMenuItem2";
 			resources->ApplyResources(this->deselectFragmentsToolStripMenuItem2, L"deselectFragmentsToolStripMenuItem2");
+			this->deselectFragmentsToolStripMenuItem2->Name = L"deselectFragmentsToolStripMenuItem2";
 			// 
 			// moveSketchToolStripMenuItem1
 			// 
-			this->moveSketchToolStripMenuItem1->Name = L"moveSketchToolStripMenuItem1";
 			resources->ApplyResources(this->moveSketchToolStripMenuItem1, L"moveSketchToolStripMenuItem1");
+			this->moveSketchToolStripMenuItem1->Name = L"moveSketchToolStripMenuItem1";
 			// 
 			// toolStripSeparator9
 			// 
@@ -681,13 +696,13 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			// 
 			// createVectorToolStripMenuItem
 			// 
-			this->createVectorToolStripMenuItem->Name = L"createVectorToolStripMenuItem";
 			resources->ApplyResources(this->createVectorToolStripMenuItem, L"createVectorToolStripMenuItem");
+			this->createVectorToolStripMenuItem->Name = L"createVectorToolStripMenuItem";
 			// 
 			// deleteVectorToolStripMenuItem
 			// 
-			this->deleteVectorToolStripMenuItem->Name = L"deleteVectorToolStripMenuItem";
 			resources->ApplyResources(this->deleteVectorToolStripMenuItem, L"deleteVectorToolStripMenuItem");
+			this->deleteVectorToolStripMenuItem->Name = L"deleteVectorToolStripMenuItem";
 			// 
 			// toolStripSeparator10
 			// 
@@ -696,18 +711,18 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			// 
 			// createNewLayerToolStripMenuItem
 			// 
-			this->createNewLayerToolStripMenuItem->Name = L"createNewLayerToolStripMenuItem";
 			resources->ApplyResources(this->createNewLayerToolStripMenuItem, L"createNewLayerToolStripMenuItem");
+			this->createNewLayerToolStripMenuItem->Name = L"createNewLayerToolStripMenuItem";
 			// 
 			// renameLayerToolStripMenuItem
 			// 
-			this->renameLayerToolStripMenuItem->Name = L"renameLayerToolStripMenuItem";
 			resources->ApplyResources(this->renameLayerToolStripMenuItem, L"renameLayerToolStripMenuItem");
+			this->renameLayerToolStripMenuItem->Name = L"renameLayerToolStripMenuItem";
 			// 
 			// removeLayerToolStripMenuItem
 			// 
-			this->removeLayerToolStripMenuItem->Name = L"removeLayerToolStripMenuItem";
 			resources->ApplyResources(this->removeLayerToolStripMenuItem, L"removeLayerToolStripMenuItem");
+			this->removeLayerToolStripMenuItem->Name = L"removeLayerToolStripMenuItem";
 			// 
 			// toolStripSeparator11
 			// 
@@ -716,8 +731,8 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			// 
 			// setBackgroundColorToolStripMenuItem
 			// 
-			this->setBackgroundColorToolStripMenuItem->Name = L"setBackgroundColorToolStripMenuItem";
 			resources->ApplyResources(this->setBackgroundColorToolStripMenuItem, L"setBackgroundColorToolStripMenuItem");
+			this->setBackgroundColorToolStripMenuItem->Name = L"setBackgroundColorToolStripMenuItem";
 			// 
 			// helpToolStripMenuItem
 			// 
@@ -968,13 +983,26 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			resources->ApplyResources(this->toolBarHelp, L"toolBarHelp");
 			this->toolBarHelp->Name = L"toolBarHelp";
 			// 
+			// statusStrip1
+			// 
+			this->statusStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->toolStripStatusLabel1 });
+			resources->ApplyResources(this->statusStrip1, L"statusStrip1");
+			this->statusStrip1->Name = L"statusStrip1";
+			this->statusStrip1->ShowItemToolTips = true;
+			// 
+			// toolStripStatusLabel1
+			// 
+			this->toolStripStatusLabel1->Name = L"toolStripStatusLabel1";
+			resources->ApplyResources(this->toolStripStatusLabel1, L"toolStripStatusLabel1");
+			// 
 			// MyForm
 			// 
 			resources->ApplyResources(this, L"$this");
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->Controls->Add(this->statusStrip1);
 			this->Controls->Add(this->splitContainer1);
 			this->Controls->Add(this->toolStrip1);
-			this->Controls->Add(this->menuStrip1);
+			this->Controls->Add(this->menuStrip);
 			this->Name = L"MyForm";
 			this->splitContainer1->Panel1->ResumeLayout(false);
 			this->splitContainer1->Panel2->ResumeLayout(false);
@@ -983,10 +1011,12 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer2))->EndInit();
 			this->splitContainer2->ResumeLayout(false);
-			this->menuStrip1->ResumeLayout(false);
-			this->menuStrip1->PerformLayout();
+			this->menuStrip->ResumeLayout(false);
+			this->menuStrip->PerformLayout();
 			this->toolStrip1->ResumeLayout(false);
 			this->toolStrip1->PerformLayout();
+			this->statusStrip1->ResumeLayout(false);
+			this->statusStrip1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -1008,6 +1038,7 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 	private: System::Void openToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 		openImage();
 		setDefaultSize();
+		updateMenu();
 	}
 
 	private: System::Void zoomInToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {	
@@ -1038,6 +1069,7 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 	private: System::Void toolBarOpen_Click(System::Object^  sender, System::EventArgs^  e) {
 		openImage();
 		setDefaultSize();
+		updateMenu();
 	}
 	private: System::Void toolBarPasteFromBuffer_Click(System::Object^  sender, System::EventArgs^  e) {
 		pasteFromBuffer();
@@ -1070,5 +1102,9 @@ private: System::Windows::Forms::SplitContainer^  splitContainer2;
 		void zoomIn();
 		void zoomOut();
 		void setDefaultSize();
+		void updateMenu();
+	//private: System::Void MyForm_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
+	//	toolStripStatusLabel1->Text = sender->ToString();
+	//}
 	};
 	}

@@ -71,4 +71,21 @@ namespace WinImage
 		pictureBox1->Refresh();
 		//pictureBox1->Update();
 	}
+
+	void MyForm::updateMenu()
+	{
+		for each(ToolStripMenuItem^ toolItem in menuStrip->Items) {
+			for (int i = 0; i < toolItem->DropDownItems->Count; i++)
+			{
+				if (toolItem->DropDownItems[i]->Enabled == false)
+				{
+					toolItem->DropDownItems[i]->Enabled = true;
+				}
+			}
+		}
+
+		menuStrip->Update();
+	}
 }
+
+
