@@ -25,7 +25,7 @@ namespace WinImage
 			this->pictureBox1->Image = Image::FromFile(openFileDialog1->FileName);
 		}
 
-		splitContainer1->Panel1->Text = openFileDialog1->FileName;
+		toolStripStatusLabel1->Text = openFileDialog1->FileName;
 	}
 	void MyForm::pasteFromBuffer()
 	{
@@ -87,6 +87,14 @@ namespace WinImage
 		}
 
 		menuStrip->Update();
+	}
+	void MyForm::setLocale(String^ language)
+	{
+		Thread::CurrentThread->CurrentCulture = gcnew CultureInfo(language);
+		Thread::CurrentThread->CurrentUICulture = gcnew CultureInfo(language);
+			
+		this->Controls->Clear();
+		this->InitializeComponent();
 	}
 }
 
