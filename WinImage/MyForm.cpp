@@ -16,41 +16,63 @@ void Main(array<String^>^ args)
 
 namespace WinImage
 {
-	void MyForm::openImage()
+	bool MyForm::openImage()
 	{
 		openFileDialog1->InitialDirectory = "d:\\";
 		openFileDialog1->Filter = "BMP(*.bmp)|*.bmp|JPEG(*.jpg)|*.jpg|All files (*.*)|*.*";
+
 		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
 			this->pictureBox1->Image = Image::FromFile(openFileDialog1->FileName);
+			toolStripStatusLabel1->Text = openFileDialog1->FileName;
+			
+			return true;
+		}
+		else {
+			return false;
 		}
 
-		toolStripStatusLabel1->Text = openFileDialog1->FileName;
+		
 	}
-	void MyForm::pasteFromBuffer()
+	bool MyForm::pasteFromBuffer()
 	{
-//		if (Clipboard::ContainsImage()) {
+		if (Clipboard::ContainsImage()) {
 			Drawing::Image^ img;
-			
 			img = Clipboard::GetImage();
-			
 			pictureBox1->Image = img;
-
 			pictureBox1->Update();
-//		}
+			return true;
+
+		} if ( Clipboard::ContainsFileDropList() ) {
+			IDataObject^ clipboardFiles = Clipboard::GetDataObject();
+			System::Collections::Specialized::StringCollection^ sCollection = Clipboard::GetFileDropList();
+
+			if (sCollection->Count == 1) {
+				try {
+					pictureBox1->Image = Image::FromFile(sCollection[0]->ToString());
+					pictureBox1->Update();
+					return true;
+				}
+				catch (Exception^ e) {
+					return false;
+				}
+			}
+		}
+		return false;
 	}
 	void MyForm::rotateLeft()
 	{
 		pictureBox1->Image->RotateFlip(RotateFlipType::Rotate270FlipNone);
 		pictureBox1->Refresh();
-		setDefaultSize();
+		//setDefaultSize();
 	}
 
 	void MyForm::rotateRight()
 	{
 		pictureBox1->Image->RotateFlip(RotateFlipType::Rotate90FlipNone);
+		
 		pictureBox1->Refresh();
-		setDefaultSize();
+		//setDefaultSize();
 	}
 	void MyForm::saveLayer()
 	{
@@ -98,8 +120,17 @@ namespace WinImage
 		Thread::CurrentThread->CurrentCulture = gcnew CultureInfo(language);
 		Thread::CurrentThread->CurrentUICulture = gcnew CultureInfo(language);
 			
+		int w = this->Size.Width;
+		int h = this->Size.Height;
+
+		
 		this->Controls->Clear();
 		this->InitializeComponent();
+
+		
+		/*for each(Control^ ctrl in this->Controls) {
+			ctrl->Update();
+		}*/
 	}
 }
 
