@@ -18,7 +18,7 @@ namespace WinImage
 {
 	bool MyForm::openImage()
 	{
-		openFileDialog1->InitialDirectory = "d:\\";
+		//openFileDialog1->InitialDirectory = "d:\\";
 		openFileDialog1->Filter = "BMP(*.bmp)|*.bmp|JPEG(*.jpg)|*.jpg|All files (*.*)|*.*";
 
 		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
@@ -56,6 +56,21 @@ namespace WinImage
 				catch (Exception^ e) {
 					return false;
 				}
+			}
+			else {
+				
+				openFileDialog1->InitialDirectory = getPath(sCollection);
+				openFileDialog1->Filter = "BMP(*.bmp)|*.bmp|JPEG(*.jpg)|*.jpg|All files (*.*)|*.*";
+				
+				if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+				{
+					this->pictureBox1->Image = Image::FromFile(openFileDialog1->FileName);
+					toolStripStatusLabel1->Text = openFileDialog1->FileName;
+
+					return true;
+				}
+				return false;
+
 			}
 		}
 		return false;
@@ -131,6 +146,23 @@ namespace WinImage
 		/*for each(Control^ ctrl in this->Controls) {
 			ctrl->Update();
 		}*/
+	}
+	String^ MyForm::getPath(System::Collections::Specialized::StringCollection ^ sCollection)
+	{
+		String^ tempStr;
+
+		tempStr = sCollection[0]->ToString();
+
+		for (int i = tempStr->Length - 1; i > 0; i--) {
+			if (tempStr[i] == '\\' ) {
+				i = 0;
+			}
+			else {
+				tempStr = tempStr->Remove(i);
+			}
+		}
+
+		return tempStr;
 	}
 }
 

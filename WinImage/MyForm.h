@@ -1115,6 +1115,8 @@ namespace WinImage {
 		void updateMenu();
 
 		void setLocale(String ^ language);
+
+		String^ getPath(System::Collections::Specialized::StringCollection^ sCollection);
 	//private: System::Void MyForm_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
 	//	toolStripStatusLabel1->Text = sender->ToString();
 	//}
