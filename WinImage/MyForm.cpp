@@ -19,7 +19,7 @@ namespace WinImage
 	bool MyForm::openImage()
 	{
 		//openFileDialog1->InitialDirectory = "d:\\";
-		openFileDialog1->Filter = "BMP(*.bmp)|*.bmp|JPEG(*.jpg)|*.jpg|All files (*.*)|*.*";
+		openFileDialog1->Filter = "JPEG(*.jpg)|*.jpg|BMP(*.bmp)|*.bmp|All files (*.*)|*.*";
 
 		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
@@ -60,7 +60,7 @@ namespace WinImage
 			else {
 				
 				openFileDialog1->InitialDirectory = getPath(sCollection);
-				openFileDialog1->Filter = "BMP(*.bmp)|*.bmp|JPEG(*.jpg)|*.jpg|All files (*.*)|*.*";
+				openFileDialog1->Filter = "JPEG(*.jpg)|*.jpg|BMP(*.bmp)|*.bmp|All files (*.*)|*.*";
 				
 				if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 				{
@@ -91,7 +91,7 @@ namespace WinImage
 	}
 	void MyForm::saveLayer()
 	{
-		saveFileDialog1->Filter = "BMP(*.bmp)|*.bmp|JPEG(*.jpg)|*.jpg|All files (*.*)|*.*";
+		saveFileDialog1->Filter = "JPEG(*.jpg)|*.jpg|BMP(*.bmp)|*.bmp|All files (*.*)|*.*";
 		if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
 			pictureBox1->Image->Save(saveFileDialog1->FileName);
