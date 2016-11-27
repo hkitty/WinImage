@@ -21,6 +21,7 @@ namespace WinImage {
 		MyForm(void)
 		{
 			InitializeComponent();
+			this->DoubleBuffered = true;
 		}
 
 	protected:
@@ -36,11 +37,8 @@ namespace WinImage {
 		}
 	private: System::Windows::Forms::MenuStrip^  menuStrip;
 	
-	protected:
-
-
-
-	protected:
+	protected: Image^ loadedImage;
+	
 
 	private: System::Windows::Forms::ToolStripMenuItem^  fileToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  openToolStripMenuItem;
@@ -331,6 +329,7 @@ namespace WinImage {
 			resources->ApplyResources(this->pictureBox1, L"pictureBox1");
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->TabStop = false;
+			this->pictureBox1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pictureBox1_Paint);
 			// 
 			// splitContainer2
 			// 
@@ -1106,6 +1105,8 @@ namespace WinImage {
 		bool pasteFromBuffer();
 		bool openImage();
 		
+		bool isImageLoaded();
+
 		void rotateLeft();
 		void rotateRight();
 		void saveLayer();
@@ -1139,6 +1140,11 @@ namespace WinImage {
 	private: System::Void polskiToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 		setLocale("pl-PL");
 	}
+	
+private: System::Void pictureBox1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
+		
+	}
+
 };
 };
 	
