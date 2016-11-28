@@ -23,6 +23,7 @@ namespace WinImage
 
 		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
+			//loadedImage = Image::FromFile(openFileDialog1->FileName);
 			this->pictureBox1->Image = Image::FromFile(openFileDialog1->FileName);
 			toolStripStatusLabel1->Text = openFileDialog1->FileName;
 			
@@ -121,8 +122,19 @@ namespace WinImage
 	{
 		if (isImageLoaded())
 		{
-			pictureBox1->Width *= 1.2;
-			pictureBox1->Height *= 1.2;
+			//pictureBox1->Width *= 1.2;
+			//pictureBox1->Height *= 1.2;
+			Graphics^ gr = Graphics::FromImage(pictureBox1->Image);
+			gr->SmoothingMode = Drawing2D::SmoothingMode::AntiAlias;
+			gr->InterpolationMode = Drawing2D::InterpolationMode::NearestNeighbor;
+			int new4W = pictureBox1->Image->Width / 4;
+			int new4H = pictureBox1->Image->Height / 4;
+			int new2W = pictureBox1->Image->Width / 2;
+			int new2H = pictureBox1->Image->Height / 2;
+			Rectangle srcRect(new4W, new4H, new2W, new2H);
+			Rectangle dstRect(0, 0, pictureBox1->Image->Width, pictureBox1->Image->Height);
+			gr->DrawImage(pictureBox1->Image, dstRect, srcRect, GraphicsUnit::Pixel);
+
 			pictureBox1->Refresh();
 		}
 	}

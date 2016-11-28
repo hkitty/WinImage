@@ -1142,8 +1142,20 @@ namespace WinImage {
 	}
 	
 private: System::Void pictureBox1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
+	if (isImageLoaded()) {
+		//Rectangle rect(0, 0, (int)(1.2 * pictureBox1->Width), (int)(1.2 * pictureBox1->Height));
+		//Graphics^ gr = e->Graphics;
+		//gr->InterpolationMode = Drawing2D::InterpolationMode::NearestNeighbor;
+		//gr->SmoothingMode = Drawing2D::SmoothingMode::None;
+		//gr->DrawLine(System::Drawing::Pens::Aqua, 0, 0, 255, 255);
+		//gr->DrawImageUnscaled(pictureBox1->Image, rect);
+		//gr->SmoothingMode = Drawing2D::SmoothingMode::Default;
+		
+		
+		//pictureBox1->Refresh();
 		
 	}
+}
 
 };
 };
