@@ -22,6 +22,7 @@ namespace WinImage {
 		{
 			InitializeComponent();
 			this->DoubleBuffered = true;
+			zoomRate = 1;
 		}
 
 	protected:
@@ -38,7 +39,9 @@ namespace WinImage {
 	private: System::Windows::Forms::MenuStrip^  menuStrip;
 	
 	protected: Image^ loadedImage;
-	
+	protected: int imageWidth;
+	protected: int imageHeight;	
+	protected: float zoomRate;
 
 	private: System::Windows::Forms::ToolStripMenuItem^  fileToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  openToolStripMenuItem;
@@ -1126,7 +1129,7 @@ namespace WinImage {
 	}
 
 	private: System::Void englishToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-		setLocale("en-US");
+		setLocale("en-US");													
 	}
 
 	private: System::Void ukrainianToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -1141,8 +1144,14 @@ namespace WinImage {
 		setLocale("pl-PL");
 	}
 	
-private: System::Void pictureBox1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
-		
+	private: System::Void pictureBox1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
+		if (isImageLoaded())
+		{
+			Bitmap^ result = gcnew Bitmap(imageWidth * zoomRate, imageHeight * zoomRate);
+			Graphics^ g = System::Drawing::Graphics::FromImage(loadedImage);
+			g->InterpolationMode = Drawing2D::InterpolationMode::NearestNeighbor;
+			pictureBox1->Image = (Image^)result;
+		}
 	}
 
 };

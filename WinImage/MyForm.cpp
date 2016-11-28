@@ -50,6 +50,8 @@ namespace WinImage
 			loadedImage = Clipboard::GetImage();
 			pictureBox1->Image = loadedImage;
 			pictureBox1->Update();
+			imageWidth = loadedImage->Width;
+			imageHeight = loadedImage->Height;
 			return true;
 
 		} if ( Clipboard::ContainsFileDropList() ) {
@@ -62,6 +64,8 @@ namespace WinImage
 					loadedImage = Image::FromFile(sCollection[0]->ToString());
 					pictureBox1->Image = loadedImage;
 					pictureBox1->Update();
+					imageWidth = loadedImage->Width;
+					imageHeight = loadedImage->Height;
 					return true;
 				}
 				catch (Exception^ e) {
@@ -78,6 +82,8 @@ namespace WinImage
 					loadedImage = Image::FromFile(openFileDialog1->FileName);
 					pictureBox1->Image = loadedImage;
 					pictureBox1->Update();
+					imageWidth = loadedImage->Width;
+					imageHeight = loadedImage->Height;
 					//this->pictureBox1->Image = Image::FromFile(openFileDialog1->FileName);
 					toolStripStatusLabel1->Text = openFileDialog1->FileName;
 
@@ -121,18 +127,22 @@ namespace WinImage
 	{
 		if (isImageLoaded())
 		{
-			pictureBox1->Width *= 1.2;
-			pictureBox1->Height *= 1.2;
-			pictureBox1->Refresh();
+			//pictureBox1->Width *= 1.2;
+			//pictureBox1->Height *= 1.2;
+			//pictureBox1->Refresh();
+			zoomRate += 0.5;
+			pictureBox1->Invalidate();
 		}
 	}
 	void MyForm::zoomOut()
 	{
 		if (isImageLoaded())
 		{
-			pictureBox1->Width *= 0.8;
-			pictureBox1->Height *= 0.8;
-			pictureBox1->Refresh();
+			//pictureBox1->Width *= 0.8;
+			//pictureBox1->Height *= 0.8;
+			//pictureBox1->Refresh();
+			zoomRate -= 0.5;
+			pictureBox1->Invalidate();
 		}
 	}
 	void MyForm::setDefaultSize()
