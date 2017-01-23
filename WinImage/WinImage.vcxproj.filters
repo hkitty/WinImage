@@ -37,6 +37,12 @@
     <EmbeddedResource Include="MyForm.ru-RU.resx">
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
+    <EmbeddedResource Include="MyForm.pl-PL.resx">
+      <Filter>Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm.uk-UA.resx">
+      <Filter>Resource Files</Filter>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WinImage.rc">
@@ -50,5 +56,16 @@
     <Image Include="..\..\ImageEditor\ImageEditor\res\open.ico">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="handClose.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="handOpen.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="cursor1.cur">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

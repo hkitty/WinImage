@@ -172,6 +172,11 @@
     <Image Include="..\..\ImageEditor\ImageEditor\res\open.ico" />
     <Image Include="icon1.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="cursor1.cur" />
+    <None Include="handClose.cur" />
+    <None Include="handOpen.cur" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

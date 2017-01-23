@@ -35,11 +35,22 @@ namespace WinImage {
 				delete components;
 			}
 		}
+
 	private: System::Windows::Forms::MenuStrip^  menuStrip;
+
+	private: float zoomMinimum = 0.05;
+	private: float zoomMaximum = 9;
+	private: float zoomDefaultScale = 1;
+	private: float zoomStep = 1.5;
 	
-	protected: Image^ loadedImage;
-	protected: Image^ workingImage;
-	protected: float zoomScale = 1;
+	private: Image^ loadedImage;
+	private: Image^ workImage;
+
+	private: float zoomScale = 1;
+	private: RotateFlipType currentRotation = RotateFlipType::RotateNoneFlipNone;
+
+	private: bool movingMode = false;
+	private: Point mouseDownLocation;
 
 	private: System::Windows::Forms::ToolStripMenuItem^  fileToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  openToolStripMenuItem;
@@ -317,6 +328,7 @@ namespace WinImage {
 			// splitContainer1.Panel1
 			// 
 			resources->ApplyResources(this->splitContainer1->Panel1, L"splitContainer1.Panel1");
+			this->splitContainer1->Panel1->BackColor = System::Drawing::Color::DimGray;
 			this->splitContainer1->Panel1->Controls->Add(this->pictureBox1);
 			// 
 			// splitContainer1.Panel2
@@ -326,10 +338,12 @@ namespace WinImage {
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->BackColor = System::Drawing::SystemColors::Control;
+			this->pictureBox1->BackColor = System::Drawing::Color::DimGray;
 			resources->ApplyResources(this->pictureBox1, L"pictureBox1");
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->TabStop = false;
+			this->pictureBox1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::pictureBox1_MouseDown);
+			this->pictureBox1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::pictureBox1_MouseMove);
 			// 
 			// splitContainer2
 			// 
@@ -861,9 +875,11 @@ namespace WinImage {
 			// 
 			// toolBarMove
 			// 
+			this->toolBarMove->CheckOnClick = true;
 			this->toolBarMove->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
 			resources->ApplyResources(this->toolBarMove, L"toolBarMove");
 			this->toolBarMove->Name = L"toolBarMove";
+			this->toolBarMove->CheckStateChanged += gcnew System::EventHandler(this, &MyForm::toolBarMove_CheckStateChanged);
 			// 
 			// toolBarRotateLeft
 			// 
@@ -1009,6 +1025,7 @@ namespace WinImage {
 			this->Controls->Add(this->splitContainer1);
 			this->Controls->Add(this->toolStrip1);
 			this->Controls->Add(this->menuStrip);
+			this->Cursor = System::Windows::Forms::Cursors::Default;
 			this->Name = L"MyForm";
 			this->splitContainer1->Panel1->ResumeLayout(false);
 			this->splitContainer1->Panel1->PerformLayout();
@@ -1145,6 +1162,35 @@ namespace WinImage {
 
 	private: System::Void polskiToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 		setLocale("pl-PL");
+	}
+
+	private: System::Void toolBarMove_CheckStateChanged(System::Object^  sender, System::EventArgs^  e) {
+		if (((ToolStripButton^)sender)->Checked)
+		{
+			movingMode = true;
+			this->Cursor = gcnew System::Windows::Forms::Cursor(GetType(), "handClose.cur");
+		}
+		else
+		{
+			movingMode = false;
+			//Cursor = Cursors::Default;
+		}
+	}
+
+	private: System::Void pictureBox1_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
+		if (e->Button == System::Windows::Forms::MouseButtons::Left && movingMode)
+		{
+			mouseDownLocation = e->Location;
+		}
+	}
+
+	private: System::Void pictureBox1_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
+		if (e->Button == System::Windows::Forms::MouseButtons::Left && movingMode)
+		{
+			splitContainer1->Panel1->AutoScrollPosition = Point(
+				-splitContainer1->Panel1->AutoScrollPosition.X - e->X + mouseDownLocation.X, 
+				-splitContainer1->Panel1->AutoScrollPosition.Y - e->Y + mouseDownLocation.Y);
+		}
 	}
 };
 };
