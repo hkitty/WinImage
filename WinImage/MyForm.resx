@@ -139,7 +139,7 @@
     <value>50, 25</value>
   </data>
   <data name="pictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>Zoom</value>
+    <value>AutoSize</value>
   </data>
   <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -264,74 +264,44 @@
   <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>975, 24</value>
-  </data>
-  <data name="menuStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="menuStrip.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip.Name" xml:space="preserve">
-    <value>menuStrip</value>
-  </data>
-  <data name="&gt;&gt;menuStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 20</value>
-  </data>
-  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>Файл</value>
-  </data>
   <data name="openToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk1CAwAAAAAAADYAAAAoAAAAEQAAAA8AAAABABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////////
-        ////////////////////////////////////////////////////////////cf//////////////////
-        /////////////////////////////////////////////////3H///8AAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAD///////////////////9x////AAAAAAAAAICAAICAAICAAICAAICAAICAAICA
-        AICAAICAAAAA////////////////cf///wAAAP///wAAAACAgACAgACAgACAgACAgACAgACAgACAgACA
-        gAAAAP///////////3H///8AAAAA//////8AAAAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAAAD/
-        //////9x////AAAA////AP//////AAAAAICAAICAAICAAICAAICAAICAAICAAICAAICAAAAA////cf//
-        /wAAAAD//////wD//////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///3H///8AAAD///8A
-        //////8A//////8A//////8A//////8AAAD///////////////////9x////AAAAAP//////AP//////
-        AP//////AP//////AP//AAAA////////////////////cf///wAAAP///wD//////wAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAP///////////////////3H///////8AAAAAAAAAAAD/////////////////////////
-        //////8AAAAAAAAAAAD///9x////////////////////////////////////////////////////////
-        AAAAAAAA////cf///////////////////////////////////wAAAP///////////wAAAP///wAAAP//
-        /3H///////////////////////////////////////8AAAAAAAAAAAD///////////////9x
+        ////////////////////////////////////////////////////////////AP//////////////////
+        /////////////////////////////////////////////////wD///8AAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAD///////////////////8A////AAAAAAAAAICAAICAAICAAICAAICAAICAAICA
+        AICAAICAAAAA////////////////AP///wAAAP///wAAAACAgACAgACAgACAgACAgACAgACAgACAgACA
+        gAAAAP///////////wD///8AAAAA//////8AAAAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAAAD/
+        //////8A////AAAA////AP//////AAAAAICAAICAAICAAICAAICAAICAAICAAICAAICAAAAA////AP//
+        /wAAAAD//////wD//////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8AAAD///8A
+        //////8A//////8A//////8A//////8AAAD///////////////////8A////AAAAAP//////AP//////
+        AP//////AP//////AP//AAAA////////////////////AP///wAAAP///wD//////wAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAP///////////////////wD///////8AAAAAAAAAAAD/////////////////////////
+        //////8AAAAAAAAAAAD///8A////////////////////////////////////////////////////////
+        AAAAAAAA////AP///////////////////////////////////wAAAP///////////wAAAP///wAAAP//
+        /wD///////////////////////////////////////8AAAAAAAAAAAD///////////////8A
 </value>
   </data>
   <data name="openToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
+    <value>248, 22</value>
   </data>
   <data name="openToolStripMenuItem.Text" xml:space="preserve">
     <value>Открыть файл</value>
   </data>
   <data name="pasteFromBufferToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
+    <value>248, 22</value>
   </data>
   <data name="pasteFromBufferToolStripMenuItem.Text" xml:space="preserve">
     <value>Вставить из буффера по обмену</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>249, 6</value>
+    <value>245, 6</value>
   </data>
   <data name="saveVectorToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="saveVectorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
+    <value>248, 22</value>
   </data>
   <data name="saveVectorToolStripMenuItem.Text" xml:space="preserve">
     <value>Сохранить вектор</value>
@@ -357,7 +327,7 @@
 </value>
   </data>
   <data name="saveLayerToFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
+    <value>248, 22</value>
   </data>
   <data name="saveLayerToFileToolStripMenuItem.Text" xml:space="preserve">
     <value>Сохранить слой в файл</value>
@@ -366,25 +336,25 @@
     <value>False</value>
   </data>
   <data name="saveLayersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
+    <value>248, 22</value>
   </data>
   <data name="saveLayersToolStripMenuItem.Text" xml:space="preserve">
     <value>Сохранить группу слоев</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>249, 6</value>
+    <value>245, 6</value>
   </data>
   <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
+    <value>248, 22</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>Выход</value>
   </data>
-  <data name="viewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 20</value>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 20</value>
   </data>
-  <data name="viewToolStripMenuItem.Text" xml:space="preserve">
-    <value>Вид</value>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Файл</value>
   </data>
   <data name="zoomInToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -407,7 +377,7 @@
 </value>
   </data>
   <data name="zoomInToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 22</value>
+    <value>205, 22</value>
   </data>
   <data name="zoomInToolStripMenuItem.Text" xml:space="preserve">
     <value>Увеличить</value>
@@ -433,7 +403,7 @@
 </value>
   </data>
   <data name="zoomOutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 22</value>
+    <value>205, 22</value>
   </data>
   <data name="zoomOutToolStripMenuItem.Text" xml:space="preserve">
     <value>Уменьшить</value>
@@ -459,7 +429,7 @@
 </value>
   </data>
   <data name="defaultSizeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 22</value>
+    <value>205, 22</value>
   </data>
   <data name="defaultSizeToolStripMenuItem.Text" xml:space="preserve">
     <value>Масштаб 100%</value>
@@ -468,13 +438,13 @@
     <value>False</value>
   </data>
   <data name="moveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 22</value>
+    <value>205, 22</value>
   </data>
   <data name="moveToolStripMenuItem.Text" xml:space="preserve">
     <value>Сдвинуть</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 6</value>
+    <value>202, 6</value>
   </data>
   <data name="rotateLeftToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -487,7 +457,7 @@
 </value>
   </data>
   <data name="rotateLeftToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 22</value>
+    <value>205, 22</value>
   </data>
   <data name="rotateLeftToolStripMenuItem.Text" xml:space="preserve">
     <value>Повернуть на 90 влево</value>
@@ -503,19 +473,19 @@
 </value>
   </data>
   <data name="rotateRightToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 22</value>
+    <value>205, 22</value>
   </data>
   <data name="rotateRightToolStripMenuItem.Text" xml:space="preserve">
     <value>Повернуть на 90 вправо</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 6</value>
+    <value>202, 6</value>
   </data>
   <data name="showVectorToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="showVectorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 22</value>
+    <value>205, 22</value>
   </data>
   <data name="showVectorToolStripMenuItem.Text" xml:space="preserve">
     <value>Отобразить вектор</value>
@@ -524,7 +494,7 @@
     <value>False</value>
   </data>
   <data name="showLayersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 22</value>
+    <value>205, 22</value>
   </data>
   <data name="showLayersToolStripMenuItem.Text" xml:space="preserve">
     <value>Отображать слои</value>
@@ -533,85 +503,85 @@
     <value>False</value>
   </data>
   <data name="syncToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 22</value>
+    <value>205, 22</value>
   </data>
   <data name="syncToolStripMenuItem.Text" xml:space="preserve">
     <value>Синхронизация</value>
   </data>
   <data name="toolbarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 22</value>
+    <value>205, 22</value>
   </data>
   <data name="toolbarToolStripMenuItem.Text" xml:space="preserve">
     <value>Панель инструментов</value>
   </data>
   <data name="statusbarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 22</value>
+    <value>205, 22</value>
   </data>
   <data name="statusbarToolStripMenuItem.Text" xml:space="preserve">
     <value>Строка состояния</value>
   </data>
-  <data name="languagesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 22</value>
-  </data>
-  <data name="languagesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Язык интерфейса</value>
-  </data>
   <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
+    <value>132, 22</value>
   </data>
   <data name="englishToolStripMenuItem.Text" xml:space="preserve">
     <value>English</value>
   </data>
   <data name="ukrainianToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
+    <value>132, 22</value>
   </data>
   <data name="ukrainianToolStripMenuItem.Text" xml:space="preserve">
     <value>Українська</value>
   </data>
   <data name="russianToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
+    <value>132, 22</value>
   </data>
   <data name="russianToolStripMenuItem.Text" xml:space="preserve">
     <value>Русский</value>
   </data>
   <data name="polskiToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
+    <value>132, 22</value>
   </data>
   <data name="polskiToolStripMenuItem.Text" xml:space="preserve">
     <value>Polski</value>
   </data>
-  <data name="toolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 20</value>
+  <data name="languagesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 22</value>
   </data>
-  <data name="toolsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Инструменты</value>
+  <data name="languagesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Язык интерфейса</value>
   </data>
-  <data name="setContourToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="viewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 20</value>
   </data>
-  <data name="setContourToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
-  </data>
-  <data name="setContourToolStripMenuItem.Text" xml:space="preserve">
-    <value>Задать контур</value>
+  <data name="viewToolStripMenuItem.Text" xml:space="preserve">
+    <value>Вид</value>
   </data>
   <data name="rectangleToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
+    <value>161, 22</value>
   </data>
   <data name="rectangleToolStripMenuItem.Text" xml:space="preserve">
     <value>Прямоугольный</value>
   </data>
   <data name="customToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
+    <value>161, 22</value>
   </data>
   <data name="customToolStripMenuItem.Text" xml:space="preserve">
     <value>Произвальный</value>
+  </data>
+  <data name="setContourToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="setContourToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 22</value>
+  </data>
+  <data name="setContourToolStripMenuItem.Text" xml:space="preserve">
+    <value>Задать контур</value>
   </data>
   <data name="deleteContourToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="deleteContourToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
+    <value>194, 22</value>
   </data>
   <data name="deleteContourToolStripMenuItem.Text" xml:space="preserve">
     <value>Удалить контур(ы)</value>
@@ -620,19 +590,19 @@
     <value>False</value>
   </data>
   <data name="uniteContourToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
+    <value>194, 22</value>
   </data>
   <data name="uniteContourToolStripMenuItem.Text" xml:space="preserve">
     <value>Объединить контур</value>
   </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 6</value>
+    <value>191, 6</value>
   </data>
   <data name="selectAllContoursToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="selectAllContoursToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
+    <value>194, 22</value>
   </data>
   <data name="selectAllContoursToolStripMenuItem.Text" xml:space="preserve">
     <value>Выделить все контуры</value>
@@ -641,28 +611,22 @@
     <value>False</value>
   </data>
   <data name="deselectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
+    <value>194, 22</value>
   </data>
   <data name="deselectToolStripMenuItem.Text" xml:space="preserve">
     <value>Отменить выделение</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 6</value>
+    <value>191, 6</value>
   </data>
   <data name="suggestSketchToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="suggestSketchToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
+    <value>194, 22</value>
   </data>
   <data name="suggestSketchToolStripMenuItem.Text" xml:space="preserve">
     <value>Предложение эскиза</value>
-  </data>
-  <data name="variantSketchToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
-  </data>
-  <data name="variantSketchToolStripMenuItem.Text" xml:space="preserve">
-    <value>Вариант эскиза</value>
   </data>
   <data name="variant1ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 22</value>
@@ -676,47 +640,53 @@
   <data name="variant2ToolStripMenuItem.Text" xml:space="preserve">
     <value>Вариант 2</value>
   </data>
+  <data name="variantSketchToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 22</value>
+  </data>
+  <data name="variantSketchToolStripMenuItem.Text" xml:space="preserve">
+    <value>Вариант эскиза</value>
+  </data>
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 6</value>
-  </data>
-  <data name="cutMenuToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="cutMenuToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
-  </data>
-  <data name="cutMenuToolStripMenuItem.Text" xml:space="preserve">
-    <value>Обрезать</value>
+    <value>191, 6</value>
   </data>
   <data name="setAreaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
+    <value>187, 22</value>
   </data>
   <data name="setAreaToolStripMenuItem.Text" xml:space="preserve">
     <value>Задать область</value>
   </data>
   <data name="undoSelectToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
+    <value>187, 22</value>
   </data>
   <data name="undoSelectToolStripMenuItem1.Text" xml:space="preserve">
     <value>Отменить выделение</value>
   </data>
   <data name="cutToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
+    <value>187, 22</value>
   </data>
   <data name="cutToolStripMenuItem1.Text" xml:space="preserve">
     <value>Обрезать</value>
   </data>
-  <data name="sketchToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
+  <data name="cutMenuToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="sketchToolStripMenuItem.Text" xml:space="preserve">
-    <value>Эскиз</value>
+  <data name="cutMenuToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 22</value>
+  </data>
+  <data name="cutMenuToolStripMenuItem.Text" xml:space="preserve">
+    <value>Обрезать</value>
+  </data>
+  <data name="toolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 20</value>
+  </data>
+  <data name="toolsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Инструменты</value>
   </data>
   <data name="addFragmentToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="addFragmentToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 22</value>
+    <value>207, 22</value>
   </data>
   <data name="addFragmentToolStripMenuItem.Text" xml:space="preserve">
     <value>Добавить фрагмент</value>
@@ -725,19 +695,19 @@
     <value>False</value>
   </data>
   <data name="removeFragmentToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 22</value>
+    <value>207, 22</value>
   </data>
   <data name="removeFragmentToolStripMenuItem.Text" xml:space="preserve">
     <value>Удалить фрагмент(ы)</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 6</value>
+    <value>204, 6</value>
   </data>
   <data name="selectAllFragmentsToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="selectAllFragmentsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 22</value>
+    <value>207, 22</value>
   </data>
   <data name="selectAllFragmentsToolStripMenuItem.Text" xml:space="preserve">
     <value>Выделить все фрагменты</value>
@@ -746,7 +716,7 @@
     <value>False</value>
   </data>
   <data name="deselectFragmentsToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 22</value>
+    <value>207, 22</value>
   </data>
   <data name="deselectFragmentsToolStripMenuItem2.Text" xml:space="preserve">
     <value>Отменить выделение</value>
@@ -755,19 +725,19 @@
     <value>False</value>
   </data>
   <data name="moveSketchToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 22</value>
+    <value>207, 22</value>
   </data>
   <data name="moveSketchToolStripMenuItem1.Text" xml:space="preserve">
     <value>Сдвинуть</value>
   </data>
   <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 6</value>
+    <value>204, 6</value>
   </data>
   <data name="createVectorToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="createVectorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 22</value>
+    <value>207, 22</value>
   </data>
   <data name="createVectorToolStripMenuItem.Text" xml:space="preserve">
     <value>Создать вектор</value>
@@ -776,19 +746,19 @@
     <value>False</value>
   </data>
   <data name="deleteVectorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 22</value>
+    <value>207, 22</value>
   </data>
   <data name="deleteVectorToolStripMenuItem.Text" xml:space="preserve">
     <value>Удалить вектор</value>
   </data>
   <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 6</value>
+    <value>204, 6</value>
   </data>
   <data name="createNewLayerToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="createNewLayerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 22</value>
+    <value>207, 22</value>
   </data>
   <data name="createNewLayerToolStripMenuItem.Text" xml:space="preserve">
     <value>Создать новый слой</value>
@@ -797,7 +767,7 @@
     <value>False</value>
   </data>
   <data name="renameLayerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 22</value>
+    <value>207, 22</value>
   </data>
   <data name="renameLayerToolStripMenuItem.Text" xml:space="preserve">
     <value>Переименовать слой</value>
@@ -806,61 +776,91 @@
     <value>False</value>
   </data>
   <data name="removeLayerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 22</value>
+    <value>207, 22</value>
   </data>
   <data name="removeLayerToolStripMenuItem.Text" xml:space="preserve">
     <value>Удалить слой</value>
   </data>
   <data name="toolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 6</value>
+    <value>204, 6</value>
   </data>
   <data name="setBackgroundColorToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="setBackgroundColorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 22</value>
+    <value>207, 22</value>
   </data>
   <data name="setBackgroundColorToolStripMenuItem.Text" xml:space="preserve">
     <value>Задать цвет фона</value>
   </data>
-  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 20</value>
+  <data name="sketchToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 20</value>
   </data>
-  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Помощь</value>
+  <data name="sketchToolStripMenuItem.Text" xml:space="preserve">
+    <value>Эскиз</value>
   </data>
   <data name="infoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 22</value>
+    <value>221, 22</value>
   </data>
   <data name="infoToolStripMenuItem.Text" xml:space="preserve">
     <value>Справка</value>
   </data>
   <data name="infoOnlineOnlineToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 22</value>
+    <value>221, 22</value>
   </data>
   <data name="infoOnlineOnlineToolStripMenuItem.Text" xml:space="preserve">
     <value>Справка on-line</value>
   </data>
   <data name="regKeyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 22</value>
+    <value>221, 22</value>
   </data>
   <data name="regKeyToolStripMenuItem.Text" xml:space="preserve">
     <value>Регистрационный ключ</value>
   </data>
   <data name="licenseAgreementToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 22</value>
+    <value>221, 22</value>
   </data>
   <data name="licenseAgreementToolStripMenuItem.Text" xml:space="preserve">
     <value>Лицензионное соглашение</value>
   </data>
   <data name="toolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 6</value>
+    <value>218, 6</value>
   </data>
   <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 22</value>
+    <value>221, 22</value>
   </data>
   <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
     <value>О программе</value>
+  </data>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 20</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>Помощь</value>
+  </data>
+  <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>975, 24</value>
+  </data>
+  <data name="menuStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="menuStrip.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.Name" xml:space="preserve">
+    <value>menuStrip</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
@@ -871,30 +871,6 @@
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>408, 17</value>
   </metadata>
-  <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
-  </data>
-  <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>975, 25</value>
-  </data>
-  <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="toolStrip1.Text" xml:space="preserve">
-    <value>toolStrip1</value>
-  </data>
-  <data name="&gt;&gt;toolStrip1.Name" xml:space="preserve">
-    <value>toolStrip1</value>
-  </data>
-  <data name="&gt;&gt;toolStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="toolBarOpen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABEAAAAPCAYAAAACsSQRAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -936,32 +912,8 @@
   <data name="toolBarPasteFromBuffer.Text" xml:space="preserve">
     <value>Вставить из буфера обмена</value>
   </data>
-  <data name="toolBarSplitButtonSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="toolBarSplitButtonSave.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="toolBarSplitButtonSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 22</value>
-  </data>
-  <data name="toolBarSplitButtonSave.Text" xml:space="preserve">
-    <value>Сохранить результат</value>
-  </data>
   <data name="saveVectorToolbarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 22</value>
+    <value>205, 22</value>
   </data>
   <data name="saveVectorToolbarToolStripMenuItem.Text" xml:space="preserve">
     <value>Сохранить вектор</value>
@@ -984,13 +936,13 @@
 </value>
   </data>
   <data name="saveLayerToolbarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 22</value>
+    <value>205, 22</value>
   </data>
   <data name="saveLayerToolbarToolStripMenuItem.Text" xml:space="preserve">
     <value>Сохранить слой в файл</value>
   </data>
   <data name="saveGroupToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 22</value>
+    <value>205, 22</value>
   </data>
   <data name="saveGroupToolStripMenuItem.Text" xml:space="preserve">
     <value>Сохранить группу слоев</value>
@@ -998,16 +950,16 @@
   <data name="toolBarSplitButtonSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIISURBVDhPpZP7S1NxGMbPPxKaXVUkMEq8IpKUCoY/hGgI
+        ymqkDYYXcCjDZOANURSjCNGFQUTsl4GXVMxKk62YU4fXQpaIlygHQxBRH8/zwvyaIAYe+HLgnPN8nue9
+        HA3nvDTq63oW/jm13XOwvPTB3DYFY5MH+bXfcN8ygfTSMSSXfESicQDxBqdYHwH29g9w2tnZ3UcguIvN
+        rR3417exuBJE5N1n/wfwLgXEOc38Bc6xNRHb+/y4nm49G0Bnit2zf9H6bkliE/jKuYxrd6oVgDWfjB+K
+        TWeKMyrGEVfowITvD9re/9ABVQrAhh0HHK+ZselMMaN/mvwtDb+aVqkA7HYIwIj3ysfluPTorJnP6Ezx
+        oHsD1s5ZXEktUwCOioB5f1CEPR9+wTG6iuiserTo8dkwng7HT/R+XUPF8xlcTjErAOdMcW6NW8STiwG8
+        7vej8oUPN/PsEv3t8Ao0TZP3T1u8uJRkUgAuSYHtO97oLxmXd5t9Ho8aPTK+GzntqNfrLm2fFoihwYOI
+        xGIF4KjoGBLzY1OrF9k6OOFxnwDC4wxIMX1G0pMhgVyMNyoA13PAtS7OrJk1PrC69LUdQWxuF6IybHrX
+        LRI7JrtZdoDAo1XmbjMyD+tjSXxGcXRmnYg5ttD9QuxDhN0uUgDOmbvNTpPOJaGAo2K36cyaGZvOFIfd
+        KlSA8/zRh9ABIDUG+1JpAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="toolBarSplitButtonSave.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -1127,6 +1079,18 @@
   <data name="toolBarRotateRight.Text" xml:space="preserve">
     <value>Повернуть на 90° вправо</value>
   </data>
+  <data name="RectangleBarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 22</value>
+  </data>
+  <data name="RectangleBarToolStripMenuItem.Text" xml:space="preserve">
+    <value>Прямоугольный</value>
+  </data>
+  <data name="CustomBarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 22</value>
+  </data>
+  <data name="CustomBarToolStripMenuItem.Text" xml:space="preserve">
+    <value>Произвольный</value>
+  </data>
   <data name="toolBarSetContour.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -1150,18 +1114,6 @@
   </data>
   <data name="toolBarSetContour.Text" xml:space="preserve">
     <value>Задать контур</value>
-  </data>
-  <data name="RectangleBarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
-  </data>
-  <data name="RectangleBarToolStripMenuItem.Text" xml:space="preserve">
-    <value>Прямоугольный</value>
-  </data>
-  <data name="CustomBarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
-  </data>
-  <data name="CustomBarToolStripMenuItem.Text" xml:space="preserve">
-    <value>Произвольный</value>
   </data>
   <data name="toolBarDeleteContours.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1523,9 +1475,39 @@
   <data name="toolBarHelp.Text" xml:space="preserve">
     <value>Справка</value>
   </data>
+  <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 24</value>
+  </data>
+  <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>975, 25</value>
+  </data>
+  <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="toolStrip1.Text" xml:space="preserve">
+    <value>toolStrip1</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Name" xml:space="preserve">
+    <value>toolStrip1</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>513, 17</value>
   </metadata>
+  <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 17</value>
+  </data>
+  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
+    <value>Ready</value>
+  </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 421</value>
   </data>
@@ -1550,17 +1532,14 @@
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 17</value>
-  </data>
-  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
-    <value>Ready</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
+  </data>
+  <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>975, 443</value>

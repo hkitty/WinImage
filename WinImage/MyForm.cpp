@@ -1,4 +1,5 @@
 #include "MyForm.h"
+#include <typeinfo>
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -18,13 +19,15 @@ namespace WinImage
 {
 	bool MyForm::openImage()
 	{
-		//openFileDialog1->InitialDirectory = "d:\\";
+		zoomScale = 1;
+
+		openFileDialog1->InitialDirectory = "d:\\";
 		openFileDialog1->Filter = "JPEG(*.jpg)|*.jpg|BMP(*.bmp)|*.bmp|All files (*.*)|*.*";
 
 		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
-			//loadedImage = Image::FromFile(openFileDialog1->FileName);
-			this->pictureBox1->Image = Image::FromFile(openFileDialog1->FileName);
+			loadedImage = Image::FromFile(openFileDialog1->FileName);
+			this->pictureBox1->Image = loadedImage;
 			toolStripStatusLabel1->Text = openFileDialog1->FileName;
 			
 			return true;
@@ -32,22 +35,20 @@ namespace WinImage
 		else {
 			return false;
 		}
-
-		
 	}
 
 	bool MyForm::isImageLoaded()
 	{
-		if(pictureBox1->Image == nullptr)
+		if(loadedImage == nullptr)
 			return false;
 		return true;
 	}
 
 	bool MyForm::pasteFromBuffer()
 	{
+		zoomScale = 1;
+
 		if (Clipboard::ContainsImage()) {
-			//Drawing::Image^ img;
-			//img = Clipboard::GetImage();
 			loadedImage = Clipboard::GetImage();
 			pictureBox1->Image = loadedImage;
 			pictureBox1->Update();
@@ -59,7 +60,6 @@ namespace WinImage
 
 			if (sCollection->Count == 1) {
 				try {
-					//pictureBox1->Image = Image::FromFile(sCollection[0]->ToString());
 					loadedImage = Image::FromFile(sCollection[0]->ToString());
 					pictureBox1->Image = loadedImage;
 					pictureBox1->Update();
@@ -79,7 +79,6 @@ namespace WinImage
 					loadedImage = Image::FromFile(openFileDialog1->FileName);
 					pictureBox1->Image = loadedImage;
 					pictureBox1->Update();
-					//this->pictureBox1->Image = Image::FromFile(openFileDialog1->FileName);
 					toolStripStatusLabel1->Text = openFileDialog1->FileName;
 
 					return true;
@@ -121,40 +120,50 @@ namespace WinImage
 	void MyForm::zoomIn()
 	{
 		if (isImageLoaded())
-		{
-			//pictureBox1->Width *= 1.2;
-			//pictureBox1->Height *= 1.2;
-			Graphics^ gr = Graphics::FromImage(pictureBox1->Image);
-			gr->SmoothingMode = Drawing2D::SmoothingMode::AntiAlias;
-			gr->InterpolationMode = Drawing2D::InterpolationMode::NearestNeighbor;
-			int new4W = pictureBox1->Image->Width / 4;
-			int new4H = pictureBox1->Image->Height / 4;
-			int new2W = pictureBox1->Image->Width / 2;
-			int new2H = pictureBox1->Image->Height / 2;
-			Rectangle srcRect(new4W, new4H, new2W, new2H);
-			Rectangle dstRect(0, 0, pictureBox1->Image->Width, pictureBox1->Image->Height);
-			gr->DrawImage(pictureBox1->Image, dstRect, srcRect, GraphicsUnit::Pixel);
+		{	
+			zoomScale *= 2;
 
-			pictureBox1->Refresh();
+			applyZoom();
 		}
 	}
 	void MyForm::zoomOut()
 	{
 		if (isImageLoaded())
 		{
-			pictureBox1->Width *= 0.8;
-			pictureBox1->Height *= 0.8;
-			pictureBox1->Refresh();
+			zoomScale /= 2;
+
+			if (zoomScale > 0)
+				applyZoom();
 		}
 	}
-	void MyForm::setDefaultSize()
+
+	void MyForm::applyZoom()
 	{
 		if (isImageLoaded())
 		{
-			pictureBox1->Size = pictureBox1->Image->Size;
-			pictureBox1->Refresh();
+			Bitmap^ result = gcnew Bitmap(zoomScale * loadedImage->Width, zoomScale * loadedImage->Height);
+
+			Graphics^ g = Graphics::FromImage(result);
+			g->InterpolationMode = System::Drawing::Drawing2D::InterpolationMode::NearestNeighbor;
+			g->SmoothingMode = System::Drawing::Drawing2D::SmoothingMode::None;
+
+			g->DrawImage(
+				loadedImage,
+				Rectangle(0, 0, result->Width, result->Height),
+				0, 0,
+				loadedImage->Width,
+				loadedImage->Height,
+				System::Drawing::GraphicsUnit::Pixel);
+
+			workingImage = result;
+			pictureBox1->Image = workingImage;
 		}
-		//pictureBox1->Update();
+	}
+
+	void MyForm::setDefaultSize()
+	{
+		zoomScale = 1;
+		applyZoom();
 	}
 
 	void MyForm::updateMenu()
@@ -176,18 +185,60 @@ namespace WinImage
 	{
 		Thread::CurrentThread->CurrentCulture = gcnew CultureInfo(language);
 		Thread::CurrentThread->CurrentUICulture = gcnew CultureInfo(language);
-			
-		int w = this->Size.Width;
-		int h = this->Size.Height;
 
-		
-		this->Controls->Clear();
-		this->InitializeComponent();
+		ComponentResourceManager^ resManager = gcnew ComponentResourceManager(this->GetType());
 
-		
-		/*for each(Control^ ctrl in this->Controls) {
-			ctrl->Update();
-		}*/
+		setControlsLocale(resManager, this->Controls);
+
+		String^ text = resManager->GetString("$this.Text");
+		if (!String::IsNullOrEmpty(text))
+			this->Text = text;
+	}
+
+	void MyForm::setControlsLocale(ComponentResourceManager^ resManager, Control::ControlCollection^ controls)
+	{
+		for each(Control^ control in controls)
+		{
+			if (control->GetType() == MenuStrip::typeid)
+			{
+				MenuStrip^ strip = (MenuStrip^)control;
+				applyResToToolStripCollection(resManager, strip->Items);
+
+			}
+			else
+			{
+				applyResource(resManager, control);
+				setControlsLocale(resManager, control->Controls);
+			}
+		}
+
+	}
+
+	void MyForm::applyResToToolStripCollection(ComponentResourceManager^ resManager, ToolStripItemCollection^ items)
+	{
+		for each (ToolStripItem^ item in items)
+		{
+			if (item->GetType() == ToolStripMenuItem::typeid)
+			{
+				applyResToToolStripCollection(resManager, ((ToolStripMenuItem^)item)->DropDownItems);
+			}
+
+			applyResource(resManager, item);
+		}
+	}
+
+	void MyForm::applyResource(ComponentResourceManager^ resManager, Control^ control)
+	{
+		String^ text = resManager->GetString(control->Name + ".Text");
+		if (!String::IsNullOrEmpty(text))
+			 control->Text = text;
+	}
+
+	void MyForm::applyResource(ComponentResourceManager^ resManager, ToolStripItem^ item)
+	{
+		String^ text = resManager->GetString(item->Name + ".Text");
+		if (!String::IsNullOrEmpty(text))
+			item->Text = text;
 	}
 
 	String^ MyForm::getPath(System::Collections::Specialized::StringCollection ^ sCollection)

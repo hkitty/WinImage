@@ -38,7 +38,8 @@ namespace WinImage {
 	private: System::Windows::Forms::MenuStrip^  menuStrip;
 	
 	protected: Image^ loadedImage;
-	
+	protected: Image^ workingImage;
+	protected: float zoomScale = 1;
 
 	private: System::Windows::Forms::ToolStripMenuItem^  fileToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  openToolStripMenuItem;
@@ -329,7 +330,6 @@ namespace WinImage {
 			resources->ApplyResources(this->pictureBox1, L"pictureBox1");
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->TabStop = false;
-			this->pictureBox1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pictureBox1_Paint);
 			// 
 			// splitContainer2
 			// 
@@ -1011,6 +1011,7 @@ namespace WinImage {
 			this->Controls->Add(this->menuStrip);
 			this->Name = L"MyForm";
 			this->splitContainer1->Panel1->ResumeLayout(false);
+			this->splitContainer1->Panel1->PerformLayout();
 			this->splitContainer1->Panel2->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->EndInit();
 			this->splitContainer1->ResumeLayout(false);
@@ -1099,8 +1100,10 @@ namespace WinImage {
 	private: System::Void toolBarRotateRight_Click(System::Object^  sender, System::EventArgs^  e) {
 		rotateRight();
 	}
+
 	private: System::Void moveToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
+
 	private:
 		bool pasteFromBuffer();
 		bool openImage();
@@ -1112,15 +1115,18 @@ namespace WinImage {
 		void saveLayer();
 		void zoomIn();
 		void zoomOut();
+		void applyZoom();
 		void setDefaultSize();
 		void updateMenu();
 
 		void setLocale(String ^ language);
+		void setControlsLocale(ComponentResourceManager ^ resManager, Control::ControlCollection^ parentCtrl);
+		void applyResToToolStripCollection(ComponentResourceManager ^ resManager, ToolStripItemCollection ^ items);
+		void applyResource(ComponentResourceManager ^ resManager, Control ^ control);
+		void applyResource(ComponentResourceManager ^ resManager, ToolStripItem ^ item);
 
 		String^ getPath(System::Collections::Specialized::StringCollection^ sCollection);
-	//private: System::Void MyForm_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-	//	toolStripStatusLabel1->Text = sender->ToString();
-	//}
+
 	private: System::Void exitToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 		this->Close();
 	}
@@ -1140,23 +1146,6 @@ namespace WinImage {
 	private: System::Void polskiToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 		setLocale("pl-PL");
 	}
-	
-private: System::Void pictureBox1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
-	if (isImageLoaded()) {
-		//Rectangle rect(0, 0, (int)(1.2 * pictureBox1->Width), (int)(1.2 * pictureBox1->Height));
-		//Graphics^ gr = e->Graphics;
-		//gr->InterpolationMode = Drawing2D::InterpolationMode::NearestNeighbor;
-		//gr->SmoothingMode = Drawing2D::SmoothingMode::None;
-		//gr->DrawLine(System::Drawing::Pens::Aqua, 0, 0, 255, 255);
-		//gr->DrawImageUnscaled(pictureBox1->Image, rect);
-		//gr->SmoothingMode = Drawing2D::SmoothingMode::Default;
-		
-		
-		//pictureBox1->Refresh();
-		
-	}
-}
-
 };
 };
 	
