@@ -21,7 +21,7 @@ namespace WinImage
 	{
 		zoomScale = 1;
 
-		openFileDialog1->InitialDirectory = "d:\\";
+		openFileDialog1->InitialDirectory = "c:\\";
 		openFileDialog1->Filter = "JPEG(*.jpg)|*.jpg|BMP(*.bmp)|*.bmp|All files (*.*)|*.*";
 
 		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
@@ -121,7 +121,7 @@ namespace WinImage
 	{
 		if (isImageLoaded())
 		{	
-			zoomScale *= 2;
+			zoomScale *= zoomStep;
 
 			applyZoom();
 		}
@@ -130,10 +130,11 @@ namespace WinImage
 	{
 		if (isImageLoaded())
 		{
-			zoomScale /= 2;
-
-			if (zoomScale > 0)
+			if (zoomScale / zoomStep > zoomMinimum)
+			{
+				zoomScale /= zoomStep;
 				applyZoom();
+			}
 		}
 	}
 
@@ -155,14 +156,13 @@ namespace WinImage
 				loadedImage->Height,
 				System::Drawing::GraphicsUnit::Pixel);
 
-			workingImage = result;
-			pictureBox1->Image = workingImage;
+			pictureBox1->Image = result;
 		}
 	}
 
 	void MyForm::setDefaultSize()
 	{
-		zoomScale = 1;
+		zoomScale = zoomDefaultScale;
 		applyZoom();
 	}
 
