@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>//debug
+#include <msclr\marshal_cppstd.h>//debug
 
 namespace WinImage {
 
@@ -22,6 +24,11 @@ namespace WinImage {
 		{
 			InitializeComponent();
 			this->DoubleBuffered = true;
+			pictureBoxGraphics = pictureBox1->CreateGraphics();
+			System::Reflection::PropertyInfo^ prop = System::Windows::Forms::Control::typeid->GetProperty("DoubleBuffered", System::Reflection::BindingFlags::NonPublic
+				| System::Reflection::BindingFlags::Instance);
+			prop->SetValue(pictureBox1, true, nullptr);
+//			pictureBox1->SetStyle(ControlStyles::OptimizedDoubleBuffer, true);
 		}
 
 	protected:
@@ -39,12 +46,12 @@ namespace WinImage {
 	private: System::Windows::Forms::MenuStrip^  menuStrip;
 
 	private: float zoomMinimum = 0.05;
-	private: float zoomMaximum = 9;
+	private: float zoomMaximum = 900;
 	private: float zoomDefaultScale = 1;
-	private: float zoomStep = 1.5;
+	private: float zoomStep = 2;
 	
 	private: Image^ loadedImage;
-	private: Image^ workImage;
+	private: Graphics^ pictureBoxGraphics;
 
 	private: float zoomScale = 1;
 	private: RotateFlipType currentRotation = RotateFlipType::RotateNoneFlipNone;
@@ -330,6 +337,7 @@ namespace WinImage {
 			resources->ApplyResources(this->splitContainer1->Panel1, L"splitContainer1.Panel1");
 			this->splitContainer1->Panel1->BackColor = System::Drawing::Color::DimGray;
 			this->splitContainer1->Panel1->Controls->Add(this->pictureBox1);
+			this->splitContainer1->Panel1->Scroll += gcnew System::Windows::Forms::ScrollEventHandler(this, &MyForm::splitContainer1_Panel1_Scroll);
 			// 
 			// splitContainer1.Panel2
 			// 
@@ -344,6 +352,7 @@ namespace WinImage {
 			this->pictureBox1->TabStop = false;
 			this->pictureBox1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::pictureBox1_MouseDown);
 			this->pictureBox1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::pictureBox1_MouseMove);
+			this->pictureBox1->Resize += gcnew System::EventHandler(this, &MyForm::pictureBox1_Resize);
 			// 
 			// splitContainer2
 			// 
@@ -1028,7 +1037,6 @@ namespace WinImage {
 			this->Cursor = System::Windows::Forms::Cursors::Default;
 			this->Name = L"MyForm";
 			this->splitContainer1->Panel1->ResumeLayout(false);
-			this->splitContainer1->Panel1->PerformLayout();
 			this->splitContainer1->Panel2->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->EndInit();
 			this->splitContainer1->ResumeLayout(false);
@@ -1130,10 +1138,13 @@ namespace WinImage {
 		void rotateLeft();
 		void rotateRight();
 		void saveLayer();
+
 		void zoomIn();
 		void zoomOut();
 		void applyZoom();
 		void setDefaultSize();
+		void changeViewport(int verticalScrollValue, int horizontalScrollValue);
+
 		void updateMenu();
 
 		void setLocale(String ^ language);
@@ -1168,7 +1179,7 @@ namespace WinImage {
 		if (((ToolStripButton^)sender)->Checked)
 		{
 			movingMode = true;
-			this->Cursor = gcnew System::Windows::Forms::Cursor(GetType(), "handClose.cur");
+			//this->Cursor = gcnew System::Windows::Forms::Cursor(GetType(), "handClose.cur");
 		}
 		else
 		{
@@ -1191,6 +1202,18 @@ namespace WinImage {
 				-splitContainer1->Panel1->AutoScrollPosition.X - e->X + mouseDownLocation.X, 
 				-splitContainer1->Panel1->AutoScrollPosition.Y - e->Y + mouseDownLocation.Y);
 		}
+	}
+
+	private: System::Void splitContainer1_Panel1_Scroll(System::Object^  sender, System::Windows::Forms::ScrollEventArgs^  e) {
+		if (e->OldValue != e->NewValue)
+			//std::cout << msclr::interop::marshal_as<std::string>(splitContainer1->Panel1->DisplayRectangle.X + " : " +
+			//	splitContainer1->Panel1->DisplayRectangle.Y + " -> " + splitContainer1->Panel1->DisplayRectangle.Left + " : " +
+			//	splitContainer1->Panel1->DisplayRectangle.Bottom) << std::endl;
+			changeViewport(splitContainer1->Panel1->VerticalScroll->Value, splitContainer1->Panel1->HorizontalScroll->Value);
+	}
+
+	private: System::Void pictureBox1_Resize(System::Object^  sender, System::EventArgs^  e) {
+		pictureBoxGraphics = pictureBox1->CreateGraphics();
 	}
 };
 };

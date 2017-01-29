@@ -27,8 +27,9 @@ namespace WinImage
 		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
 			loadedImage = Image::FromFile(openFileDialog1->FileName);
-			this->pictureBox1->Image = loadedImage;
+			//this->pictureBox1->Image = loadedImage;
 			toolStripStatusLabel1->Text = openFileDialog1->FileName;
+			applyZoom();
 			
 			return true;
 		}
@@ -50,19 +51,20 @@ namespace WinImage
 
 		if (Clipboard::ContainsImage()) {
 			loadedImage = Clipboard::GetImage();
-			pictureBox1->Image = loadedImage;
-			pictureBox1->Update();
+			//pictureBox1->Image = loadedImage;
+			//pictureBox1->Update();
 			return true;
 
 		} if ( Clipboard::ContainsFileDropList() ) {
-			IDataObject^ clipboardFiles = Clipboard::GetDataObject();
+			System::Windows::Forms::IDataObject^ clipboardFiles = Clipboard::GetDataObject();
 			System::Collections::Specialized::StringCollection^ sCollection = Clipboard::GetFileDropList();
 
 			if (sCollection->Count == 1) {
 				try {
 					loadedImage = Image::FromFile(sCollection[0]->ToString());
-					pictureBox1->Image = loadedImage;
-					pictureBox1->Update();
+					//pictureBox1->Image = loadedImage;
+					//pictureBox1->Update();
+					applyZoom();
 					return true;
 				}
 				catch (Exception^ e) {
@@ -77,10 +79,10 @@ namespace WinImage
 				if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 				{
 					loadedImage = Image::FromFile(openFileDialog1->FileName);
-					pictureBox1->Image = loadedImage;
-					pictureBox1->Update();
+					//pictureBox1->Image = loadedImage;
+					//pictureBox1->Update();
 					toolStripStatusLabel1->Text = openFileDialog1->FileName;
-
+					applyZoom();
 					return true;
 				}
 				return false;
@@ -93,9 +95,7 @@ namespace WinImage
 	{
 		if (isImageLoaded())
 		{
-			pictureBox1->Image->RotateFlip(RotateFlipType::Rotate270FlipNone);
-			
-			pictureBox1->Image = pictureBox1->Image;
+			loadedImage->RotateFlip(RotateFlipType::Rotate270FlipNone);
 
 			switch (currentRotation)
 			{
@@ -122,16 +122,17 @@ namespace WinImage
 			default:
 				break;
 			}
+
+			changeViewport(splitContainer1->Panel1->VerticalScroll->Value, splitContainer1->Panel1->HorizontalScroll->Value);
+			applyZoom();
 		}
-		pictureBox1->Refresh();
 	}
 
 	void MyForm::rotateRight()
 	{
 		if (isImageLoaded())
 		{
-			pictureBox1->Image->RotateFlip(RotateFlipType::Rotate90FlipNone);
-			pictureBox1->Image = pictureBox1->Image;
+			loadedImage->RotateFlip(RotateFlipType::Rotate90FlipNone);
 
 			switch (currentRotation)
 			{
@@ -158,8 +159,9 @@ namespace WinImage
 			default:
 				break;
 			}
+			changeViewport(splitContainer1->Panel1->VerticalScroll->Value, splitContainer1->Panel1->HorizontalScroll->Value);
+			applyZoom();
 		}
-		pictureBox1->Refresh();
 	}
 	void MyForm::saveLayer()
 	{
@@ -199,26 +201,20 @@ namespace WinImage
 	{
 		if (isImageLoaded())
 		{
-			Bitmap^ result = gcnew Bitmap(zoomScale * loadedImage->Width, zoomScale * loadedImage->Height);
+			float horizontalPercentage = splitContainer1->Panel1->HorizontalScroll->Value / (splitContainer1->Panel1->HorizontalScroll->Maximum / 100);
+			float verticalPercentage = splitContainer1->Panel1->VerticalScroll->Value / (splitContainer1->Panel1->VerticalScroll->Maximum / 100);
 
-			Graphics^ g = Graphics::FromImage(result);
-			g->InterpolationMode = System::Drawing::Drawing2D::InterpolationMode::NearestNeighbor;
-			g->SmoothingMode = System::Drawing::Drawing2D::SmoothingMode::None;
-			
+			int zoomedWidth = zoomScale * loadedImage->Width;
+			int zoomedHeight = zoomScale * loadedImage->Height;
 
-			g->DrawImage(
-				loadedImage,
-				Rectangle(0, 0, zoomScale * loadedImage->Width, zoomScale * loadedImage->Height),
-				0, 0,
-				loadedImage->Width,
-				loadedImage->Height,
-				System::Drawing::GraphicsUnit::Pixel);
-			
-			result->RotateFlip(currentRotation);
+			std::cout << msclr::interop::marshal_as<std::string>(horizontalPercentage + "% : " + verticalPercentage + " ") << std::endl;
 
-			pictureBox1->Image = result;
-			pictureBox1->Refresh();
+			pictureBox1->Size = System::Drawing::Size(zoomedWidth, zoomedHeight);
 
+			splitContainer1->Panel1->HorizontalScroll->Value = (splitContainer1->Panel1->HorizontalScroll->Maximum / 100) * horizontalPercentage;
+			splitContainer1->Panel1->VerticalScroll->Value = (splitContainer1->Panel1->VerticalScroll->Maximum / 100) * verticalPercentage;
+
+			changeViewport(splitContainer1->Panel1->VerticalScroll->Value, splitContainer1->Panel1->HorizontalScroll->Value);
 		}
 	}
 
@@ -227,6 +223,41 @@ namespace WinImage
 		zoomScale = zoomDefaultScale;
 		currentRotation = RotateFlipType::RotateNoneFlipNone;
 		applyZoom();
+	}
+
+	void MyForm::changeViewport(int vertivalScrollVal, int horizontalScrollVal)
+	{
+		int originalX, originalY;
+
+		originalX = splitContainer1->Panel1->HorizontalScroll->Value / zoomScale;
+		originalY = splitContainer1->Panel1->VerticalScroll->Value / zoomScale;
+
+		//pictureBoxGraphics->Clear(pictureBox1->BackColor);
+
+		//Bitmap^ result = gcnew Bitmap(zoomScale * loadedImage->Width, zoomScale * loadedImage->Height);
+
+		//Graphics^ g = Graphics::FromImage(result);
+		pictureBoxGraphics->InterpolationMode = System::Drawing::Drawing2D::InterpolationMode::NearestNeighbor;
+		pictureBoxGraphics->SmoothingMode = System::Drawing::Drawing2D::SmoothingMode::None;
+		
+
+		pictureBoxGraphics->DrawImage(
+			loadedImage,
+			System::Drawing::Rectangle(horizontalScrollVal, vertivalScrollVal, 
+				splitContainer1->Panel1->ClientSize.Width, splitContainer1->Panel1->ClientSize.Height),
+
+			originalX, originalY,
+			(int) (splitContainer1->Panel1->ClientSize.Width / zoomScale),
+			(int) (splitContainer1->Panel1->ClientSize.Height / zoomScale) ,
+
+
+			System::Drawing::GraphicsUnit::Pixel);
+		//std::cout << msclr::interop::marshal_as<std::string>(originalX + " : " + originalY + " | "
+		//	+ splitContainer1->Panel1->ClientSize.Width + " : " + splitContainer1->Panel1->ClientSize.Height) << std::endl;
+		//result->RotateFlip(currentRotation);
+
+		//pictureBox1->Image->RotateFlip(currentRotation);
+		pictureBox1->Update();
 	}
 
 	void MyForm::updateMenu()
