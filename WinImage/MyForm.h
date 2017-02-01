@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>//debug
 #include <msclr\marshal_cppstd.h>//debug
+#include "PixelBox.h"
 
 namespace WinImage {
 
@@ -25,10 +26,6 @@ namespace WinImage {
 			InitializeComponent();
 			this->DoubleBuffered = true;
 			pictureBoxGraphics = pictureBox1->CreateGraphics();
-			System::Reflection::PropertyInfo^ prop = System::Windows::Forms::Control::typeid->GetProperty("DoubleBuffered", System::Reflection::BindingFlags::NonPublic
-				| System::Reflection::BindingFlags::Instance);
-			prop->SetValue(pictureBox1, true, nullptr);
-//			pictureBox1->SetStyle(ControlStyles::OptimizedDoubleBuffer, true);
 		}
 
 	protected:
@@ -46,7 +43,7 @@ namespace WinImage {
 	private: System::Windows::Forms::MenuStrip^  menuStrip;
 
 	private: float zoomMinimum = 0.05;
-	private: float zoomMaximum = 900;
+	private: float zoomMaximum = 90000;
 	private: float zoomDefaultScale = 1;
 	private: float zoomStep = 2;
 	
@@ -146,7 +143,7 @@ namespace WinImage {
 
 	private: System::Windows::Forms::ToolStripSeparator^  toolStripSeparator12;
 	private: System::Windows::Forms::ToolStripMenuItem^  aboutToolStripMenuItem;
-	private: System::Windows::Forms::PictureBox^  pictureBox1;
+
 	private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
 	private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
 	private: System::Windows::Forms::ToolStrip^  toolStrip1;
@@ -185,6 +182,8 @@ namespace WinImage {
 	private: System::Windows::Forms::SplitContainer^  splitContainer2;
 	private: System::Windows::Forms::StatusStrip^  statusStrip1;
 	private: System::Windows::Forms::ToolStripStatusLabel^  toolStripStatusLabel1;
+	private: UserCtrl::PixelBox^ pictureBox1;
+//private: System::Windows::Forms::PictureBox^  pictureBox1;
 
 	protected:
 
@@ -205,7 +204,6 @@ namespace WinImage {
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->splitContainer2 = (gcnew System::Windows::Forms::SplitContainer());
 			this->menuStrip = (gcnew System::Windows::Forms::MenuStrip());
 			this->fileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -314,16 +312,18 @@ namespace WinImage {
 			this->toolBarHelp = (gcnew System::Windows::Forms::ToolStripButton());
 			this->statusStrip1 = (gcnew System::Windows::Forms::StatusStrip());
 			this->toolStripStatusLabel1 = (gcnew System::Windows::Forms::ToolStripStatusLabel());
+//			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox1 = (gcnew UserCtrl::PixelBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->BeginInit();
 			this->splitContainer1->Panel1->SuspendLayout();
 			this->splitContainer1->Panel2->SuspendLayout();
 			this->splitContainer1->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer2))->BeginInit();
 			this->splitContainer2->SuspendLayout();
 			this->menuStrip->SuspendLayout();
 			this->toolStrip1->SuspendLayout();
 			this->statusStrip1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// splitContainer1
@@ -343,16 +343,6 @@ namespace WinImage {
 			// 
 			resources->ApplyResources(this->splitContainer1->Panel2, L"splitContainer1.Panel2");
 			this->splitContainer1->Panel2->Controls->Add(this->splitContainer2);
-			// 
-			// pictureBox1
-			// 
-			this->pictureBox1->BackColor = System::Drawing::Color::DimGray;
-			resources->ApplyResources(this->pictureBox1, L"pictureBox1");
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->TabStop = false;
-			this->pictureBox1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::pictureBox1_MouseDown);
-			this->pictureBox1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::pictureBox1_MouseMove);
-			this->pictureBox1->Resize += gcnew System::EventHandler(this, &MyForm::pictureBox1_Resize);
 			// 
 			// splitContainer2
 			// 
@@ -1026,6 +1016,16 @@ namespace WinImage {
 			this->toolStripStatusLabel1->Name = L"toolStripStatusLabel1";
 			resources->ApplyResources(this->toolStripStatusLabel1, L"toolStripStatusLabel1");
 			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->BackColor = System::Drawing::Color::DimGray;
+			resources->ApplyResources(this->pictureBox1, L"pictureBox1");
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->TabStop = false;
+			this->pictureBox1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::pictureBox1_MouseDown);
+			this->pictureBox1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::pictureBox1_MouseMove);
+			this->pictureBox1->Resize += gcnew System::EventHandler(this, &MyForm::pictureBox1_Resize);
+			// 
 			// MyForm
 			// 
 			resources->ApplyResources(this, L"$this");
@@ -1040,7 +1040,6 @@ namespace WinImage {
 			this->splitContainer1->Panel2->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->EndInit();
 			this->splitContainer1->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer2))->EndInit();
 			this->splitContainer2->ResumeLayout(false);
 			this->menuStrip->ResumeLayout(false);
@@ -1049,6 +1048,7 @@ namespace WinImage {
 			this->toolStrip1->PerformLayout();
 			this->statusStrip1->ResumeLayout(false);
 			this->statusStrip1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -1143,7 +1143,6 @@ namespace WinImage {
 		void zoomOut();
 		void applyZoom();
 		void setDefaultSize();
-		void changeViewport(int verticalScrollValue, int horizontalScrollValue);
 
 		void updateMenu();
 
@@ -1202,14 +1201,11 @@ namespace WinImage {
 				-splitContainer1->Panel1->AutoScrollPosition.X - e->X + mouseDownLocation.X, 
 				-splitContainer1->Panel1->AutoScrollPosition.Y - e->Y + mouseDownLocation.Y);
 		}
+
+		pictureBox1->Update();
 	}
 
 	private: System::Void splitContainer1_Panel1_Scroll(System::Object^  sender, System::Windows::Forms::ScrollEventArgs^  e) {
-		if (e->OldValue != e->NewValue)
-			//std::cout << msclr::interop::marshal_as<std::string>(splitContainer1->Panel1->DisplayRectangle.X + " : " +
-			//	splitContainer1->Panel1->DisplayRectangle.Y + " -> " + splitContainer1->Panel1->DisplayRectangle.Left + " : " +
-			//	splitContainer1->Panel1->DisplayRectangle.Bottom) << std::endl;
-			changeViewport(splitContainer1->Panel1->VerticalScroll->Value, splitContainer1->Panel1->HorizontalScroll->Value);
 	}
 
 	private: System::Void pictureBox1_Resize(System::Object^  sender, System::EventArgs^  e) {

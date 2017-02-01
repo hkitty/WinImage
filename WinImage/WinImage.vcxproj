@@ -140,11 +140,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="MyComponent.cpp" />
     <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="PixelBox.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MyComponent.h">
+      <FileType>CppClass</FileType>
+    </ClInclude>
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="PixelBox.h">
+      <FileType>CppClass</FileType>
     </ClInclude>
     <ClInclude Include="resource.h" />
   </ItemGroup>
