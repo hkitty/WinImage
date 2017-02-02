@@ -211,7 +211,7 @@
     <value>30, 394</value>
   </data>
   <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
-    <value>32</value>
+    <value>25</value>
   </data>
   <data name="splitContainer2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -270,19 +270,19 @@
   <data name="openToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk1CAwAAAAAAADYAAAAoAAAAEQAAAA8AAAABABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////////
-        ////////////////////////////////////////////////////////////AP//////////////////
-        /////////////////////////////////////////////////wD///8AAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAD///////////////////8A////AAAAAAAAAICAAICAAICAAICAAICAAICAAICA
-        AICAAICAAAAA////////////////AP///wAAAP///wAAAACAgACAgACAgACAgACAgACAgACAgACAgACA
-        gAAAAP///////////wD///8AAAAA//////8AAAAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAAAD/
-        //////8A////AAAA////AP//////AAAAAICAAICAAICAAICAAICAAICAAICAAICAAICAAAAA////AP//
-        /wAAAAD//////wD//////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8AAAD///8A
-        //////8A//////8A//////8A//////8AAAD///////////////////8A////AAAAAP//////AP//////
-        AP//////AP//////AP//AAAA////////////////////AP///wAAAP///wD//////wAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAP///////////////////wD///////8AAAAAAAAAAAD/////////////////////////
-        //////8AAAAAAAAAAAD///8A////////////////////////////////////////////////////////
-        AAAAAAAA////AP///////////////////////////////////wAAAP///////////wAAAP///wAAAP//
-        /wD///////////////////////////////////////8AAAAAAAAAAAD///////////////8A
+        ////////////////////////////////////////////////////////////Bf//////////////////
+        /////////////////////////////////////////////////wX///8AAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAD///////////////////8F////AAAAAAAAAICAAICAAICAAICAAICAAICAAICA
+        AICAAICAAAAA////////////////Bf///wAAAP///wAAAACAgACAgACAgACAgACAgACAgACAgACAgACA
+        gAAAAP///////////wX///8AAAAA//////8AAAAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAAAD/
+        //////8F////AAAA////AP//////AAAAAICAAICAAICAAICAAICAAICAAICAAICAAICAAAAA////Bf//
+        /wAAAAD//////wD//////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wX///8AAAD///8A
+        //////8A//////8A//////8A//////8AAAD///////////////////8F////AAAAAP//////AP//////
+        AP//////AP//////AP//AAAA////////////////////Bf///wAAAP///wD//////wAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAP///////////////////wX///////8AAAAAAAAAAAD/////////////////////////
+        //////8AAAAAAAAAAAD///8F////////////////////////////////////////////////////////
+        AAAAAAAA////Bf///////////////////////////////////wAAAP///////////wAAAP///wAAAP//
+        /wX///////////////////////////////////////8AAAAAAAAAAAD///////////////8F
 </value>
   </data>
   <data name="openToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
