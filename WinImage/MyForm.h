@@ -319,6 +319,7 @@ namespace WinImage {
 			this->splitContainer1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			resources->ApplyResources(this->splitContainer1, L"splitContainer1");
 			this->splitContainer1->Name = L"splitContainer1";
+			
 			// 
 			// splitContainer1.Panel1
 			// 
