@@ -1,4 +1,5 @@
 #pragma once
+#include "PixelBox.h"
 
 namespace WinImage {
 
@@ -22,6 +23,7 @@ namespace WinImage {
 		{
 			InitializeComponent();
 			this->DoubleBuffered = true;
+			splitContainer1->Panel1->HorizontalScroll->Enabled = true;
 		}
 
 	protected:
@@ -39,11 +41,15 @@ namespace WinImage {
 	private: System::Windows::Forms::MenuStrip^  menuStrip;
 
 	private: float zoomMinimum = 0.05;
-	private: int zoomDefaultScale = 1;
-	private: int zoomStep = 2;
+	private: float zoomMaximum = 90000;
+	private: float zoomDefaultScale = 1;
+	private: float zoomStep = 2;
 	
 	private: Image^ loadedImage;
+	private: Image^ workImage;
+
 	private: float zoomScale = 1;
+	private: RotateFlipType currentRotation = RotateFlipType::RotateNoneFlipNone;
 	private: bool movingMode = false;
 	private: Point mouseDownLocation;
 
@@ -134,7 +140,7 @@ namespace WinImage {
 
 	private: System::Windows::Forms::ToolStripSeparator^  toolStripSeparator12;
 	private: System::Windows::Forms::ToolStripMenuItem^  aboutToolStripMenuItem;
-	private: System::Windows::Forms::PictureBox^  pictureBox1;
+
 	private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
 	private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
 	private: System::Windows::Forms::ToolStrip^  toolStrip1;
@@ -173,6 +179,8 @@ namespace WinImage {
 	private: System::Windows::Forms::SplitContainer^  splitContainer2;
 	private: System::Windows::Forms::StatusStrip^  statusStrip1;
 	private: System::Windows::Forms::ToolStripStatusLabel^  toolStripStatusLabel1;
+	private: UserCtrl::PixelBox^ pictureBox1;
+	//private: System::Windows::Forms::PictureBox^  pictureBox1; //Change this to enable designer !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 
 	protected:
 
@@ -193,7 +201,8 @@ namespace WinImage {
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			//this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox()); //Change this to enable designer !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+			this->pictureBox1 = (gcnew UserCtrl::PixelBox());
 			this->splitContainer2 = (gcnew System::Windows::Forms::SplitContainer());
 			this->menuStrip = (gcnew System::Windows::Forms::MenuStrip());
 			this->fileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -316,14 +325,15 @@ namespace WinImage {
 			// 
 			// splitContainer1
 			// 
-			this->splitContainer1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			resources->ApplyResources(this->splitContainer1, L"splitContainer1");
+			this->splitContainer1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->splitContainer1->Name = L"splitContainer1";
 			// 
 			// splitContainer1.Panel1
 			// 
 			resources->ApplyResources(this->splitContainer1->Panel1, L"splitContainer1.Panel1");
 			this->splitContainer1->Panel1->Controls->Add(this->pictureBox1);
+			this->splitContainer1->Panel1->Scroll += gcnew System::Windows::Forms::ScrollEventHandler(this, &MyForm::splitContainer1_Panel1_Scroll);
 			// 
 			// splitContainer1.Panel2
 			// 
@@ -338,6 +348,7 @@ namespace WinImage {
 			this->pictureBox1->TabStop = false;
 			this->pictureBox1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::pictureBox1_MouseDown);
 			this->pictureBox1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::pictureBox1_MouseMove);
+			this->pictureBox1->Resize += gcnew System::EventHandler(this, &MyForm::pictureBox1_Resize);
 			// 
 			// splitContainer2
 			// 
@@ -1021,7 +1032,6 @@ namespace WinImage {
 			this->Controls->Add(this->menuStrip);
 			this->Name = L"MyForm";
 			this->splitContainer1->Panel1->ResumeLayout(false);
-			this->splitContainer1->Panel1->PerformLayout();
 			this->splitContainer1->Panel2->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->EndInit();
 			this->splitContainer1->ResumeLayout(false);
@@ -1123,10 +1133,12 @@ namespace WinImage {
 		void rotateLeft();
 		void rotateRight();
 		void saveLayer();
+
 		void zoomIn();
 		void zoomOut();
 		void applyZoom();
 		void setDefaultSize();
+
 		void updateMenu();
 
 		void setLocale(String ^ language);
@@ -1158,15 +1170,18 @@ namespace WinImage {
 	}
 
 	private: System::Void toolBarMove_CheckStateChanged(System::Object^  sender, System::EventArgs^  e) {
-		if (((ToolStripButton^)sender)->Checked)
+		if (isImageLoaded())
 		{
-			movingMode = true;
-			pictureBox1->Cursor = Cursors::SizeAll;
-		}
-		else
-		{
-			movingMode = false;
-			pictureBox1->Cursor = Cursors::Default;
+			if (((ToolStripButton^)sender)->Checked)
+			{
+				movingMode = true;
+				this->Cursor = Cursors::SizeAll;
+			}
+			else
+			{
+				movingMode = false;
+				this->Cursor = Cursors::Default;
+			}
 		}
 	}
 
@@ -1184,6 +1199,15 @@ namespace WinImage {
 				-splitContainer1->Panel1->AutoScrollPosition.X - e->X + mouseDownLocation.X, 
 				-splitContainer1->Panel1->AutoScrollPosition.Y - e->Y + mouseDownLocation.Y);
 		}
+
+		pictureBox1->Update();
+	}
+
+	private: System::Void splitContainer1_Panel1_Scroll(System::Object^  sender, System::Windows::Forms::ScrollEventArgs^  e) {
+	}
+
+	private: System::Void pictureBox1_Resize(System::Object^  sender, System::EventArgs^  e) {
+
 	}
 };
 };

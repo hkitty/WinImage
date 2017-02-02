@@ -19,7 +19,7 @@ namespace WinImage
 {
 	bool MyForm::openImage()
 	{
-		zoomScale = 1;
+		zoomScale = zoomDefaultScale;
 
 		openFileDialog1->InitialDirectory = "c:\\";
 		openFileDialog1->Filter = "JPEG(*.jpg)|*.jpg|BMP(*.bmp)|*.bmp|All files (*.*)|*.*";
@@ -35,7 +35,7 @@ namespace WinImage
 			this->pictureBox1->Image = loadedImage;
 			this->Text = openFileDialog1->FileName + " - Image Editor";
 			//toolStripStatusLabel1->Text = openFileDialog1->FileName;
-			
+			applyZoom();
 			return true;
 		}
 		else {
@@ -52,7 +52,7 @@ namespace WinImage
 
 	bool MyForm::pasteFromBuffer()
 	{
-		zoomScale = 1;
+		zoomScale = zoomDefaultScale;
 
 		if (Clipboard::ContainsImage()) {
 			loadedImage = Clipboard::GetImage();
@@ -66,7 +66,7 @@ namespace WinImage
 			return true;
 
 		} if ( Clipboard::ContainsFileDropList() ) {
-			IDataObject^ clipboardFiles = Clipboard::GetDataObject();
+			System::Windows::Forms::IDataObject^ clipboardFiles = Clipboard::GetDataObject();
 			System::Collections::Specialized::StringCollection^ sCollection = Clipboard::GetFileDropList();
 
 			if (sCollection->Count == 1) {
@@ -80,6 +80,7 @@ namespace WinImage
 					pictureBox1->Image = loadedImage;
 					pictureBox1->Update();
 					this->Text = "untitled" + " - Image Editor";
+					applyZoom();
 					return true;
 				}
 				catch (Exception^ e) {
@@ -105,6 +106,7 @@ namespace WinImage
 					toolStripStatusLabel1->Text = openFileDialog1->FileName;
 					this->Text = openFileDialog1->FileName + " - Image Editor";;
 
+					applyZoom();
 					return true;
 				}
 				return false;
@@ -117,8 +119,35 @@ namespace WinImage
 	{
 		if (isImageLoaded())
 		{
-			pictureBox1->Image->RotateFlip(RotateFlipType::Rotate270FlipNone);
-			pictureBox1->Refresh();
+			loadedImage->RotateFlip(RotateFlipType::Rotate270FlipNone);
+
+			switch (currentRotation)
+			{
+			case System::Drawing::RotateFlipType::RotateNoneFlipNone:
+			{
+				currentRotation = RotateFlipType::Rotate270FlipNone;
+			}
+			break;
+			case System::Drawing::RotateFlipType::Rotate90FlipNone:
+			{
+				currentRotation = RotateFlipType::RotateNoneFlipNone;
+			}
+			break;
+			case System::Drawing::RotateFlipType::Rotate180FlipNone:
+			{
+				currentRotation = RotateFlipType::Rotate90FlipNone;
+			}
+			break;
+			case System::Drawing::RotateFlipType::Rotate270FlipNone:
+			{
+				currentRotation = RotateFlipType::Rotate180FlipNone;
+			}
+			break;
+			default:
+				break;
+			}
+
+			applyZoom();
 		}
 	}
 
@@ -126,8 +155,35 @@ namespace WinImage
 	{
 		if (isImageLoaded())
 		{
-			pictureBox1->Image->RotateFlip(RotateFlipType::Rotate90FlipNone);
-			pictureBox1->Refresh();
+			loadedImage->RotateFlip(RotateFlipType::Rotate90FlipNone);
+
+			switch (currentRotation)
+			{
+			case System::Drawing::RotateFlipType::RotateNoneFlipNone:
+			{
+				currentRotation = RotateFlipType::Rotate90FlipNone;
+			}
+			break;
+			case System::Drawing::RotateFlipType::Rotate90FlipNone:
+			{
+				currentRotation = RotateFlipType::Rotate180FlipNone;
+			}
+			break;
+			case System::Drawing::RotateFlipType::Rotate180FlipNone:
+			{
+				currentRotation = RotateFlipType::Rotate270FlipNone;
+			}
+			break;
+			case System::Drawing::RotateFlipType::Rotate270FlipNone:
+			{
+				currentRotation = RotateFlipType::RotateNoneFlipNone;
+			}
+			break;
+			default:
+				break;
+			}
+
+			applyZoom();
 		}
 	}
 	void MyForm::saveLayer()
@@ -138,7 +194,6 @@ namespace WinImage
 			if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 			{
 				loadedImage->Save(saveFileDialog1->FileName);
-				//pictureBox1->Image->Save(saveFileDialog1->FileName);
 			}
 		}
 	}
@@ -146,10 +201,14 @@ namespace WinImage
 	{
 		if (isImageLoaded())
 		{	
-			zoomScale *= zoomStep;
-
-			applyZoom();
+			if (zoomScale * zoomStep < zoomMaximum)
+			{
+				zoomScale *= zoomStep;
+				applyZoom();
+			}
 		}
+
+
 	}
 	void MyForm::zoomOut()
 	{
@@ -167,21 +226,11 @@ namespace WinImage
 	{
 		if (isImageLoaded())
 		{
-			Bitmap^ result = gcnew Bitmap(zoomScale * loadedImage->Width, zoomScale * loadedImage->Height);
 
-			Graphics^ g = Graphics::FromImage(result);
-			g->InterpolationMode = System::Drawing::Drawing2D::InterpolationMode::NearestNeighbor;
-			g->SmoothingMode = System::Drawing::Drawing2D::SmoothingMode::None;
+			int zoomedWidth = zoomScale * loadedImage->Width;
+			int zoomedHeight = zoomScale * loadedImage->Height;
 
-			g->DrawImage(
-				loadedImage,
-				Rectangle(0, 0, result->Width, result->Height),
-				0, 0,
-				loadedImage->Width,
-				loadedImage->Height,
-				System::Drawing::GraphicsUnit::Pixel);
-
-			pictureBox1->Image = result;
+			pictureBox1->Size = System::Drawing::Size(zoomedWidth, zoomedHeight);
 		}
 	}
 

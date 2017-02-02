@@ -93,7 +93,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies />
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EntryPointSymbol>Main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
@@ -106,7 +106,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies />
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EntryPointSymbol>Main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
@@ -141,10 +141,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="PixelBox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="PixelBox.h">
+      <FileType>CppClass</FileType>
     </ClInclude>
     <ClInclude Include="resource.h" />
   </ItemGroup>
@@ -173,7 +177,6 @@
     <Image Include="icon1.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="cursor1.cur" />
     <None Include="handClose.cur" />
     <None Include="handOpen.cur" />
   </ItemGroup>
