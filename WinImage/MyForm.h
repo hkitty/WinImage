@@ -39,16 +39,11 @@ namespace WinImage {
 	private: System::Windows::Forms::MenuStrip^  menuStrip;
 
 	private: float zoomMinimum = 0.05;
-	private: float zoomMaximum = 9;
-	private: float zoomDefaultScale = 1;
-	private: float zoomStep = 1.5;
+	private: int zoomDefaultScale = 1;
+	private: int zoomStep = 2;
 	
 	private: Image^ loadedImage;
-	private: Image^ workImage;
-
 	private: float zoomScale = 1;
-	private: RotateFlipType currentRotation = RotateFlipType::RotateNoneFlipNone;
-
 	private: bool movingMode = false;
 	private: Point mouseDownLocation;
 
@@ -321,14 +316,14 @@ namespace WinImage {
 			// 
 			// splitContainer1
 			// 
-			resources->ApplyResources(this->splitContainer1, L"splitContainer1");
 			this->splitContainer1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			resources->ApplyResources(this->splitContainer1, L"splitContainer1");
 			this->splitContainer1->Name = L"splitContainer1";
+			
 			// 
 			// splitContainer1.Panel1
 			// 
 			resources->ApplyResources(this->splitContainer1->Panel1, L"splitContainer1.Panel1");
-			this->splitContainer1->Panel1->BackColor = System::Drawing::Color::DimGray;
 			this->splitContainer1->Panel1->Controls->Add(this->pictureBox1);
 			// 
 			// splitContainer1.Panel2
@@ -338,7 +333,7 @@ namespace WinImage {
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->BackColor = System::Drawing::Color::DimGray;
+			this->pictureBox1->BackColor = System::Drawing::SystemColors::Control;
 			resources->ApplyResources(this->pictureBox1, L"pictureBox1");
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->TabStop = false;
@@ -1025,7 +1020,6 @@ namespace WinImage {
 			this->Controls->Add(this->splitContainer1);
 			this->Controls->Add(this->toolStrip1);
 			this->Controls->Add(this->menuStrip);
-			this->Cursor = System::Windows::Forms::Cursors::Default;
 			this->Name = L"MyForm";
 			this->splitContainer1->Panel1->ResumeLayout(false);
 			this->splitContainer1->Panel1->PerformLayout();
@@ -1168,12 +1162,12 @@ namespace WinImage {
 		if (((ToolStripButton^)sender)->Checked)
 		{
 			movingMode = true;
-			this->Cursor = gcnew System::Windows::Forms::Cursor(GetType(), "handClose.cur");
+			pictureBox1->Cursor = Cursors::SizeAll;
 		}
 		else
 		{
 			movingMode = false;
-			//Cursor = Cursors::Default;
+			pictureBox1->Cursor = Cursors::Default;
 		}
 	}
 
