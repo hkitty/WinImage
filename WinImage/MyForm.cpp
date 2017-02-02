@@ -19,7 +19,7 @@ namespace WinImage
 {
 	bool MyForm::openImage()
 	{
-		zoomScale = zoomDefaultScale;
+		zoomScale = 1;
 
 		openFileDialog1->InitialDirectory = "c:\\";
 		openFileDialog1->Filter = "JPEG(*.jpg)|*.jpg|BMP(*.bmp)|*.bmp|All files (*.*)|*.*";
@@ -27,8 +27,14 @@ namespace WinImage
 		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
 			loadedImage = Image::FromFile(openFileDialog1->FileName);
+			//this->splitContainer1->IsSplitterFixed = false;
+			//this->splitContainer2->IsSplitterFixed = false;
+			this->splitContainer2->IsSplitterFixed = false;
+			this->splitContainer2->Visible = true;
+			this->splitContainer1->SplitterDistance = splitContainer1->Size.Width * 0.6;
 			this->pictureBox1->Image = loadedImage;
-			toolStripStatusLabel1->Text = openFileDialog1->FileName;
+			this->Text = openFileDialog1->FileName + " - Image Editor";
+			//toolStripStatusLabel1->Text = openFileDialog1->FileName;
 			applyZoom();
 			
 			return true;
@@ -47,10 +53,15 @@ namespace WinImage
 
 	bool MyForm::pasteFromBuffer()
 	{
-		zoomScale = zoomDefaultScale;
+		zoomScale = 1;
 
 		if (Clipboard::ContainsImage()) {
 			loadedImage = Clipboard::GetImage();
+			
+			this->splitContainer2->IsSplitterFixed = false;
+			this->splitContainer2->Visible = true;
+			this->splitContainer1->SplitterDistance = splitContainer1->Size.Width * 0.6;
+
 			pictureBox1->Image = loadedImage;
 			pictureBox1->Update();
 			return true;
@@ -62,8 +73,14 @@ namespace WinImage
 			if (sCollection->Count == 1) {
 				try {
 					loadedImage = Image::FromFile(sCollection[0]->ToString());
+
+					this->splitContainer2->IsSplitterFixed = false;
+					this->splitContainer2->Visible = true;
+					this->splitContainer1->SplitterDistance = splitContainer1->Size.Width * 0.6;
+					
 					pictureBox1->Image = loadedImage;
 					pictureBox1->Update();
+					this->Text = "untitled" + " - Image Editor";
 					applyZoom();
 					return true;
 				}
@@ -79,9 +96,17 @@ namespace WinImage
 				if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 				{
 					loadedImage = Image::FromFile(openFileDialog1->FileName);
+					
+					this->splitContainer2->IsSplitterFixed = false;
+					this->splitContainer2->Visible = true;
+					this->splitContainer1->SplitterDistance = splitContainer1->Size.Width * 0.6;
+
 					pictureBox1->Image = loadedImage;
 					pictureBox1->Update();
+					
 					toolStripStatusLabel1->Text = openFileDialog1->FileName;
+					this->Text = openFileDialog1->FileName + " - Image Editor";;
+
 					applyZoom();
 					return true;
 				}
@@ -169,7 +194,8 @@ namespace WinImage
 			saveFileDialog1->Filter = "JPEG(*.jpg)|*.jpg|BMP(*.bmp)|*.bmp|All files (*.*)|*.*";
 			if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 			{
-				pictureBox1->Image->Save(saveFileDialog1->FileName);
+				loadedImage->Save(saveFileDialog1->FileName);
+				//pictureBox1->Image->Save(saveFileDialog1->FileName);
 			}
 		}
 	}
@@ -213,7 +239,6 @@ namespace WinImage
 	void MyForm::setDefaultSize()
 	{
 		zoomScale = zoomDefaultScale;
-		currentRotation = RotateFlipType::RotateNoneFlipNone;
 		applyZoom();
 	}
 

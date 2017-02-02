@@ -1,7 +1,4 @@
 #pragma once
-#include <iostream>//debug
-#include <msclr\marshal_cppstd.h>//debug
-#include "PixelBox.h"
 
 namespace WinImage {
 
@@ -25,7 +22,6 @@ namespace WinImage {
 		{
 			InitializeComponent();
 			this->DoubleBuffered = true;
-			pictureBoxGraphics = pictureBox1->CreateGraphics();
 		}
 
 	protected:
@@ -48,11 +44,9 @@ namespace WinImage {
 	private: float zoomStep = 2;
 	
 	private: Image^ loadedImage;
-	private: Graphics^ pictureBoxGraphics;
+	private: Image^ workImage;
 
 	private: float zoomScale = 1;
-	private: RotateFlipType currentRotation = RotateFlipType::RotateNoneFlipNone;
-
 	private: bool movingMode = false;
 	private: Point mouseDownLocation;
 
@@ -328,14 +322,14 @@ namespace WinImage {
 			// 
 			// splitContainer1
 			// 
-			resources->ApplyResources(this->splitContainer1, L"splitContainer1");
 			this->splitContainer1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			resources->ApplyResources(this->splitContainer1, L"splitContainer1");
 			this->splitContainer1->Name = L"splitContainer1";
+			
 			// 
 			// splitContainer1.Panel1
 			// 
 			resources->ApplyResources(this->splitContainer1->Panel1, L"splitContainer1.Panel1");
-			this->splitContainer1->Panel1->BackColor = System::Drawing::Color::DimGray;
 			this->splitContainer1->Panel1->Controls->Add(this->pictureBox1);
 			this->splitContainer1->Panel1->Scroll += gcnew System::Windows::Forms::ScrollEventHandler(this, &MyForm::splitContainer1_Panel1_Scroll);
 			// 
@@ -343,6 +337,15 @@ namespace WinImage {
 			// 
 			resources->ApplyResources(this->splitContainer1->Panel2, L"splitContainer1.Panel2");
 			this->splitContainer1->Panel2->Controls->Add(this->splitContainer2);
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->BackColor = System::Drawing::SystemColors::Control;
+			resources->ApplyResources(this->pictureBox1, L"pictureBox1");
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->TabStop = false;
+			this->pictureBox1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::pictureBox1_MouseDown);
+			this->pictureBox1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::pictureBox1_MouseMove);
 			// 
 			// splitContainer2
 			// 
@@ -1034,7 +1037,6 @@ namespace WinImage {
 			this->Controls->Add(this->splitContainer1);
 			this->Controls->Add(this->toolStrip1);
 			this->Controls->Add(this->menuStrip);
-			this->Cursor = System::Windows::Forms::Cursors::Default;
 			this->Name = L"MyForm";
 			this->splitContainer1->Panel1->ResumeLayout(false);
 			this->splitContainer1->Panel2->ResumeLayout(false);
@@ -1178,12 +1180,12 @@ namespace WinImage {
 		if (((ToolStripButton^)sender)->Checked)
 		{
 			movingMode = true;
-			//this->Cursor = gcnew System::Windows::Forms::Cursor(GetType(), "handClose.cur");
+			pictureBox1->Cursor = Cursors::SizeAll;
 		}
 		else
 		{
 			movingMode = false;
-			//Cursor = Cursors::Default;
+			pictureBox1->Cursor = Cursors::Default;
 		}
 	}
 
