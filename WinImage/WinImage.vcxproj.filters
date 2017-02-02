@@ -21,9 +21,6 @@
     <ClCompile Include="PixelBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MyComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -33,9 +30,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PixelBox.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MyComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -74,9 +68,6 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="handOpen.cur">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="cursor1.cur">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

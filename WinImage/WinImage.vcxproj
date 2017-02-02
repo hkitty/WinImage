@@ -140,14 +140,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MyComponent.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="PixelBox.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MyComponent.h">
-      <FileType>CppClass</FileType>
-    </ClInclude>
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -181,7 +177,6 @@
     <Image Include="icon1.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="cursor1.cur" />
     <None Include="handClose.cur" />
     <None Include="handOpen.cur" />
   </ItemGroup>

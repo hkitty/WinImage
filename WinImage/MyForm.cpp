@@ -19,7 +19,7 @@ namespace WinImage
 {
 	bool MyForm::openImage()
 	{
-		zoomScale = 1;
+		zoomScale = zoomDefaultScale;
 
 		openFileDialog1->InitialDirectory = "c:\\";
 		openFileDialog1->Filter = "JPEG(*.jpg)|*.jpg|BMP(*.bmp)|*.bmp|All files (*.*)|*.*";
@@ -52,7 +52,7 @@ namespace WinImage
 
 	bool MyForm::pasteFromBuffer()
 	{
-		zoomScale = 1;
+		zoomScale = zoomDefaultScale;
 
 		if (Clipboard::ContainsImage()) {
 			loadedImage = Clipboard::GetImage();
@@ -194,7 +194,6 @@ namespace WinImage
 			if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 			{
 				loadedImage->Save(saveFileDialog1->FileName);
-				//pictureBox1->Image->Save(saveFileDialog1->FileName);
 			}
 		}
 	}
