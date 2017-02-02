@@ -36,7 +36,6 @@ namespace WinImage
 			this->Text = openFileDialog1->FileName + " - Image Editor";
 			//toolStripStatusLabel1->Text = openFileDialog1->FileName;
 			applyZoom();
-			
 			return true;
 		}
 		else {
