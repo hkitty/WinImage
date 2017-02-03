@@ -188,7 +188,11 @@ namespace WinImage {
 	private: System::Windows::Forms::ToolStripStatusLabel^  toolStripStatusLabel1;
 	private: UserCtrl::PixelBox^ pictureBox1;
 	//private: System::Windows::Forms::PictureBox^  pictureBox1; //Change this to enable designer !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-															   //this->pictureBox1 = (gcnew UserCtrl::PixelBox());
+																 //this->pictureBox1 = (gcnew UserCtrl::PixelBox());
+	private: System::Windows::Forms::Label^  label1;
+
+
+		 
 
 	protected:
 
@@ -209,8 +213,8 @@ namespace WinImage {
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
-			//this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox1 = (gcnew UserCtrl::PixelBox());
+			//this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->splitContainer2 = (gcnew System::Windows::Forms::SplitContainer());
 			this->menuStrip = (gcnew System::Windows::Forms::MenuStrip());
 			this->fileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -319,6 +323,7 @@ namespace WinImage {
 			this->toolBarHelp = (gcnew System::Windows::Forms::ToolStripButton());
 			this->statusStrip1 = (gcnew System::Windows::Forms::StatusStrip());
 			this->toolStripStatusLabel1 = (gcnew System::Windows::Forms::ToolStripStatusLabel());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->BeginInit();
 			this->splitContainer1->Panel1->SuspendLayout();
 			this->splitContainer1->Panel2->SuspendLayout();
@@ -1029,10 +1034,16 @@ namespace WinImage {
 			this->toolStripStatusLabel1->Name = L"toolStripStatusLabel1";
 			resources->ApplyResources(this->toolStripStatusLabel1, L"toolStripStatusLabel1");
 			// 
+			// label1
+			// 
+			resources->ApplyResources(this->label1, L"label1");
+			this->label1->Name = L"label1";
+			// 
 			// MyForm
 			// 
 			resources->ApplyResources(this, L"$this");
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->Controls->Add(this->label1);
 			this->Controls->Add(this->statusStrip1);
 			this->Controls->Add(this->splitContainer1);
 			this->Controls->Add(this->toolStrip1);

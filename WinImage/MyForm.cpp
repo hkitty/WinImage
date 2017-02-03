@@ -33,8 +33,9 @@ namespace WinImage
 			this->splitContainer2->Visible = true;
 			this->splitContainer1->SplitterDistance = splitContainer1->Size.Width * 0.6;
 			this->pictureBox1->Image = loadedImage;
-			this->Text = openFileDialog1->FileName + " - Image Editor";
-			//toolStripStatusLabel1->Text = openFileDialog1->FileName;
+			
+			this->label1->Text = openFileDialog1->FileName;
+			
 			applyZoom();
 			return true;
 		}
@@ -61,6 +62,8 @@ namespace WinImage
 			this->splitContainer2->Visible = true;
 			this->splitContainer1->SplitterDistance = splitContainer1->Size.Width * 0.6;
 
+			this->label1->Text = "Untitled";
+
 			pictureBox1->Image = loadedImage;
 			pictureBox1->Update();
 			return true;
@@ -79,7 +82,9 @@ namespace WinImage
 					
 					pictureBox1->Image = loadedImage;
 					pictureBox1->Update();
-					this->Text = "untitled" + " - Image Editor";
+					this->label1->Text = "Untitled";
+					
+					//this->Text = "Untitled" + " - Image Editor";
 					applyZoom();
 					return true;
 				}
@@ -104,7 +109,10 @@ namespace WinImage
 					pictureBox1->Update();
 					
 					toolStripStatusLabel1->Text = openFileDialog1->FileName;
-					this->Text = openFileDialog1->FileName + " - Image Editor";;
+					this->splitContainer1->Panel1->Text = openFileDialog1->FileName;
+					this->label1->Text = openFileDialog1->FileName;
+
+					//this->Text = openFileDialog1->FileName + " - Image Editor";
 
 					applyZoom();
 					return true;
