@@ -186,8 +186,8 @@ namespace WinImage {
 	private: System::Windows::Forms::SplitContainer^  splitContainer2;
 	private: System::Windows::Forms::StatusStrip^  statusStrip1;
 	private: System::Windows::Forms::ToolStripStatusLabel^  toolStripStatusLabel1;
-	//private: UserCtrl::PixelBox^ pictureBox1;
-	private: System::Windows::Forms::PictureBox^  pictureBox1; //Change this to enable designer !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+	private: UserCtrl::PixelBox^ pictureBox1;
+	//private: System::Windows::Forms::PictureBox^  pictureBox1; //Change this to enable designer !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 															   //this->pictureBox1 = (gcnew UserCtrl::PixelBox());
 
 	protected:
@@ -209,7 +209,8 @@ namespace WinImage {
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			//this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox1 = (gcnew UserCtrl::PixelBox());
 			this->splitContainer2 = (gcnew System::Windows::Forms::SplitContainer());
 			this->menuStrip = (gcnew System::Windows::Forms::MenuStrip());
 			this->fileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
