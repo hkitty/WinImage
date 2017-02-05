@@ -35,8 +35,11 @@ namespace WinImage
 			this->pictureBox1->Image = loadedImage;
 			
 			this->label1->Text = openFileDialog1->FileName;
-			
+
+			splitContainer1->Panel1->AutoScroll = false;
 			applyZoom();
+			splitContainer1->Panel1->AutoScroll = true;
+
 			return true;
 		}
 		else {
@@ -64,6 +67,9 @@ namespace WinImage
 
 			this->label1->Text = "Untitled";
 
+			splitContainer1->Panel1->VerticalScroll->Value = 0;
+			splitContainer1->Panel1->HorizontalScroll->Value = 0;
+
 			pictureBox1->Image = loadedImage;
 			pictureBox1->Update();
 			return true;
@@ -83,9 +89,10 @@ namespace WinImage
 					pictureBox1->Image = loadedImage;
 					pictureBox1->Update();
 					this->label1->Text = "Untitled";
-					
-					//this->Text = "Untitled" + " - Image Editor";
+
+					splitContainer1->Panel1->AutoScroll = false;
 					applyZoom();
+					splitContainer1->Panel1->AutoScroll = true;
 					return true;
 				}
 				catch (Exception^ e) {
@@ -112,9 +119,9 @@ namespace WinImage
 					this->splitContainer1->Panel1->Text = openFileDialog1->FileName;
 					this->label1->Text = openFileDialog1->FileName;
 
-					//this->Text = openFileDialog1->FileName + " - Image Editor";
-
+					splitContainer1->Panel1->AutoScroll = false;
 					applyZoom();
+					splitContainer1->Panel1->AutoScroll = true;
 					return true;
 				}
 				return false;
