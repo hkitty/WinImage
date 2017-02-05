@@ -24,9 +24,9 @@ namespace WinImage {
 		{
 			InitializeComponent();
 			this->DoubleBuffered = true;
-			handClose = LoadCursorFromFile(TEXT("handClose.cur"));
-			handOpen = LoadCursorFromFile(TEXT("handOpen.cur"));
-			standartCursor = CopyCursor(LoadCursor(0, IDC_ARROW));
+			//handClose = LoadCursorFromFile(TEXT("handClose.cur"));
+			//handOpen = LoadCursorFromFile(TEXT("handOpen.cur"));
+			//standartCursor = CopyCursor(LoadCursor(0, IDC_ARROW));
 		}
 
 	protected:
@@ -1194,12 +1194,12 @@ namespace WinImage {
 			{
 				movingMode = true;
 				String^ str = System::IO::Directory::GetCurrentDirectory() + "\\handOpen.cur";
-				this->Cursor = gcnew System::Windows::Forms::Cursor(str);
+				pictureBox1->Cursor = gcnew System::Windows::Forms::Cursor(str);
 			}
 			else
 			{
 				movingMode = false;
-				this->Cursor = Cursors::Arrow;
+				pictureBox1->Cursor = Cursors::Arrow;
 			}
 		}
 	}
@@ -1208,7 +1208,7 @@ namespace WinImage {
 		if (e->Button == System::Windows::Forms::MouseButtons::Left && movingMode)
 		{
 			mouseDownLocation = e->Location;
-			this->Cursor = gcnew System::Windows::Forms::Cursor(System::IO::Directory::GetCurrentDirectory() + "\\handClose.cur");
+			pictureBox1->Cursor = gcnew System::Windows::Forms::Cursor(System::IO::Directory::GetCurrentDirectory() + "\\handClose.cur");
 		}
 	}
 
@@ -1226,7 +1226,7 @@ namespace WinImage {
 	private: System::Void pictureBox1_MouseUp(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
 		if (e->Button == System::Windows::Forms::MouseButtons::Left && movingMode)
 		{
-			this->Cursor = gcnew System::Windows::Forms::Cursor(System::IO::Directory::GetCurrentDirectory() + "\\handOpen.cur");
+			pictureBox1->Cursor = gcnew System::Windows::Forms::Cursor(System::IO::Directory::GetCurrentDirectory() + "\\handOpen.cur");
 		}
 	}
 };
