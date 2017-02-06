@@ -106,7 +106,7 @@ namespace WinImage
 
 					pictureBox1->Image = loadedImage;
 					pictureBox1->Update();
-					this->label1->Text = "Untitled";
+					this->label1->Text = "image from clipboard";
 					
 					toolStripStatusLabel1->Text = openFileDialog1->FileName;
 
