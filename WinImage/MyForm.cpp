@@ -27,11 +27,7 @@ namespace WinImage
 		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
 			loadedImage = Image::FromFile(openFileDialog1->FileName);
-			//this->splitContainer1->IsSplitterFixed = false;
-			//this->splitContainer2->IsSplitterFixed = false;
-			this->splitContainer2->IsSplitterFixed = false;
-			this->splitContainer2->Visible = true;
-			this->splitContainer1->SplitterDistance = splitContainer1->Size.Width * 0.6;
+			
 			this->pictureBox1->Image = loadedImage;
 			
 			this->label1->Text = openFileDialog1->FileName;
@@ -61,11 +57,7 @@ namespace WinImage
 		if (Clipboard::ContainsImage()) {
 			loadedImage = Clipboard::GetImage();
 			
-			this->splitContainer2->IsSplitterFixed = false;
-			this->splitContainer2->Visible = true;
-			this->splitContainer1->SplitterDistance = splitContainer1->Size.Width * 0.6;
-
-			this->label1->Text = "Untitled";
+			this->label1->Text = "image from clipboard";
 
 			splitContainer1->Panel1->VerticalScroll->Value = 0;
 			splitContainer1->Panel1->HorizontalScroll->Value = 0;
@@ -82,13 +74,9 @@ namespace WinImage
 				try {
 					loadedImage = Image::FromFile(sCollection[0]->ToString());
 
-					this->splitContainer2->IsSplitterFixed = false;
-					this->splitContainer2->Visible = true;
-					this->splitContainer1->SplitterDistance = splitContainer1->Size.Width * 0.6;
-					
 					pictureBox1->Image = loadedImage;
 					pictureBox1->Update();
-					this->label1->Text = "Untitled";
+					this->label1->Text = "image from clipboard";
 
 					splitContainer1->Panel1->AutoScroll = false;
 					applyZoom();
@@ -107,16 +95,12 @@ namespace WinImage
 				if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 				{
 					loadedImage = Image::FromFile(openFileDialog1->FileName);
-					
-					this->splitContainer2->IsSplitterFixed = false;
-					this->splitContainer2->Visible = true;
-					this->splitContainer1->SplitterDistance = splitContainer1->Size.Width * 0.6;
 
 					pictureBox1->Image = loadedImage;
 					pictureBox1->Update();
 					
 					toolStripStatusLabel1->Text = openFileDialog1->FileName;
-					this->splitContainer1->Panel1->Text = openFileDialog1->FileName;
+
 					this->label1->Text = openFileDialog1->FileName;
 
 					splitContainer1->Panel1->AutoScroll = false;
