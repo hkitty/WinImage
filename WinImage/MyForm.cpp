@@ -40,6 +40,9 @@ namespace WinImage
 			applyZoom();
 			splitContainer1->Panel1->AutoScroll = true;
 
+			splitContainer1->Panel2Collapsed = true;
+			splitContainer1->Panel2->Hide();
+
 			return true;
 		}
 		else {
@@ -72,6 +75,9 @@ namespace WinImage
 
 			pictureBox1->Image = loadedImage;
 			pictureBox1->Update();
+
+			splitContainer1->Panel2Collapsed = true;
+			splitContainer1->Panel2->Hide();
 			return true;
 
 		} if ( Clipboard::ContainsFileDropList() ) {
@@ -93,6 +99,9 @@ namespace WinImage
 					splitContainer1->Panel1->AutoScroll = false;
 					applyZoom();
 					splitContainer1->Panel1->AutoScroll = true;
+
+					splitContainer1->Panel2Collapsed = true;
+					splitContainer1->Panel2->Hide();
 					return true;
 				}
 				catch (Exception^ e) {
@@ -122,6 +131,9 @@ namespace WinImage
 					splitContainer1->Panel1->AutoScroll = false;
 					applyZoom();
 					splitContainer1->Panel1->AutoScroll = true;
+
+					splitContainer1->Panel2Collapsed = true;
+					splitContainer1->Panel2->Hide();
 					return true;
 				}
 				return false;
