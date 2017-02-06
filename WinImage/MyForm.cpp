@@ -123,6 +123,7 @@ namespace WinImage
 
 					pictureBox1->Image = loadedImage;
 					pictureBox1->Update();
+					this->label1->Text = "Untitled";
 					
 					toolStripStatusLabel1->Text = openFileDialog1->FileName;
 					this->splitContainer1->Panel1->Text = openFileDialog1->FileName;
