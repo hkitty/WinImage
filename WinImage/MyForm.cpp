@@ -68,13 +68,13 @@ namespace WinImage
 			this->splitContainer2->Visible = true;
 			this->splitContainer1->SplitterDistance = splitContainer1->Size.Width * 0.6;
 
-			this->label1->Text = "Untitled";
-
-			splitContainer1->Panel1->VerticalScroll->Value = 0;
-			splitContainer1->Panel1->HorizontalScroll->Value = 0;
-
 			pictureBox1->Image = loadedImage;
 			pictureBox1->Update();
+			this->label1->Text = "Untitled";
+
+			splitContainer1->Panel1->AutoScroll = false;
+			applyZoom();
+			splitContainer1->Panel1->AutoScroll = true;
 
 			splitContainer1->Panel2Collapsed = true;
 			splitContainer1->Panel2->Hide();

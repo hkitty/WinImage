@@ -24,6 +24,8 @@ namespace WinImage {
 		{
 			InitializeComponent();
 			this->DoubleBuffered = true;
+			splitContainer1->Panel2Collapsed = true;
+			splitContainer1->Panel2->Hide();
 			//handClose = LoadCursorFromFile(TEXT("handClose.cur"));
 			//handOpen = LoadCursorFromFile(TEXT("handOpen.cur"));
 			//standartCursor = CopyCursor(LoadCursor(0, IDC_ARROW));
