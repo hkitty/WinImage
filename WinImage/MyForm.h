@@ -27,6 +27,10 @@ namespace WinImage {
 			pictureBox1 = (gcnew UserCtrl::PixelBox());
 			splitContainer1->Panel1->Controls->Add(pictureBox1);
 
+			pictureBox1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::pictureBox1_MouseDown);
+			pictureBox1->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::pictureBox1_MouseUp);
+			pictureBox1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::pictureBox1_MouseMove);
+
 			this->DoubleBuffered = true;
 
 			splitContainer1->Panel2Collapsed = true;
