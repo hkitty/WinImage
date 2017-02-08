@@ -23,9 +23,15 @@ namespace WinImage {
 		MyForm(void)
 		{
 			InitializeComponent();
+
+			pictureBox1 = (gcnew UserCtrl::PixelBox());
+			splitContainer1->Panel1->Controls->Add(pictureBox1);
+
 			this->DoubleBuffered = true;
+
 			splitContainer1->Panel2Collapsed = true;
 			splitContainer1->Panel2->Hide();
+
 		}
 
 	protected:
@@ -186,8 +192,6 @@ namespace WinImage {
 	private: System::Windows::Forms::StatusStrip^  statusStrip1;
 	private: System::Windows::Forms::ToolStripStatusLabel^  toolStripStatusLabel1;
 	private: UserCtrl::PixelBox^ pictureBox1;
-	//private: System::Windows::Forms::PictureBox^  pictureBox1; //Change this to enable designer !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-																 //this->pictureBox1 = (gcnew UserCtrl::PixelBox());
 	private: System::Windows::Forms::Label^  label1;
 
 
@@ -212,8 +216,6 @@ namespace WinImage {
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
-			this->pictureBox1 = (gcnew UserCtrl::PixelBox());
-			//this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->splitContainer2 = (gcnew System::Windows::Forms::SplitContainer());
 			this->menuStrip = (gcnew System::Windows::Forms::MenuStrip());
 			this->fileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -324,10 +326,8 @@ namespace WinImage {
 			this->toolStripStatusLabel1 = (gcnew System::Windows::Forms::ToolStripStatusLabel());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->BeginInit();
-			this->splitContainer1->Panel1->SuspendLayout();
 			this->splitContainer1->Panel2->SuspendLayout();
 			this->splitContainer1->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer2))->BeginInit();
 			this->splitContainer2->SuspendLayout();
 			this->menuStrip->SuspendLayout();
@@ -341,32 +341,16 @@ namespace WinImage {
 			this->splitContainer1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->splitContainer1->Name = L"splitContainer1";
 			// 
-			// splitContainer1.Panel1
-			// 
-			resources->ApplyResources(this->splitContainer1->Panel1, L"splitContainer1.Panel1");
-			this->splitContainer1->Panel1->Controls->Add(this->pictureBox1);
-			// 
 			// splitContainer1.Panel2
 			// 
 			resources->ApplyResources(this->splitContainer1->Panel2, L"splitContainer1.Panel2");
 			this->splitContainer1->Panel2->Controls->Add(this->splitContainer2);
-			// 
-			// pictureBox1
-			// 
-			this->pictureBox1->BackColor = System::Drawing::SystemColors::Control;
-			resources->ApplyResources(this->pictureBox1, L"pictureBox1");
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->TabStop = false;
-			this->pictureBox1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::pictureBox1_MouseDown);
-			this->pictureBox1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::pictureBox1_MouseMove);
-			this->pictureBox1->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::pictureBox1_MouseUp);
 			// 
 			// splitContainer2
 			// 
 			this->splitContainer2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			resources->ApplyResources(this->splitContainer2, L"splitContainer2");
 			this->splitContainer2->Name = L"splitContainer2";
-			this->splitContainer2->IsSplitterFixed = false;
 			// 
 			// splitContainer2.Panel1
 			// 
@@ -1049,11 +1033,9 @@ namespace WinImage {
 			this->Controls->Add(this->toolStrip1);
 			this->Controls->Add(this->menuStrip);
 			this->Name = L"MyForm";
-			this->splitContainer1->Panel1->ResumeLayout(false);
 			this->splitContainer1->Panel2->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->EndInit();
 			this->splitContainer1->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer2))->EndInit();
 			this->splitContainer2->ResumeLayout(false);
 			this->menuStrip->ResumeLayout(false);

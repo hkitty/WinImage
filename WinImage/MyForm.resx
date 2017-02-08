@@ -125,34 +125,6 @@
   <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 65</value>
   </data>
-  <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-2, -2</value>
-  </data>
-  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 25</value>
-  </data>
-  <data name="pictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>Zoom</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
-    <value>pictureBox1</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel1</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
   </data>
@@ -165,14 +137,12 @@
   <data name="&gt;&gt;splitContainer1.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splitContainer1.Panel2.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="splitContainer2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
-  </data>
-  <data name="splitContainer2.IsSplitterFixed" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="splitContainer2.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -211,10 +181,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 385</value>
+    <value>509, 385</value>
   </data>
   <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
-    <value>25</value>
+    <value>235</value>
   </data>
   <data name="splitContainer2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -253,7 +223,7 @@
     <value>1055, 385</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>1021</value>
+    <value>542</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -276,19 +246,19 @@
   <data name="openToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk1CAwAAAAAAADYAAAAoAAAAEQAAAA8AAAABABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////////
-        ////////////////////////////////////////////////////////////cv//////////////////
-        /////////////////////////////////////////////////3L///8AAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAD///////////////////9y////AAAAAAAAAICAAICAAICAAICAAICAAICAAICA
-        AICAAICAAAAA////////////////cv///wAAAP///wAAAACAgACAgACAgACAgACAgACAgACAgACAgACA
-        gAAAAP///////////3L///8AAAAA//////8AAAAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAAAD/
-        //////9y////AAAA////AP//////AAAAAICAAICAAICAAICAAICAAICAAICAAICAAICAAAAA////cv//
-        /wAAAAD//////wD//////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///3L///8AAAD///8A
-        //////8A//////8A//////8A//////8AAAD///////////////////9y////AAAAAP//////AP//////
-        AP//////AP//////AP//AAAA////////////////////cv///wAAAP///wD//////wAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAP///////////////////3L///////8AAAAAAAAAAAD/////////////////////////
-        //////8AAAAAAAAAAAD///9y////////////////////////////////////////////////////////
-        AAAAAAAA////cv///////////////////////////////////wAAAP///////////wAAAP///wAAAP//
-        /3L///////////////////////////////////////8AAAAAAAAAAAD///////////////9y
+        ////////////////////////////////////////////////////////////Bv//////////////////
+        /////////////////////////////////////////////////wb///8AAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAD///////////////////8G////AAAAAAAAAICAAICAAICAAICAAICAAICAAICA
+        AICAAICAAAAA////////////////Bv///wAAAP///wAAAACAgACAgACAgACAgACAgACAgACAgACAgACA
+        gAAAAP///////////wb///8AAAAA//////8AAAAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAAAD/
+        //////8G////AAAA////AP//////AAAAAICAAICAAICAAICAAICAAICAAICAAICAAICAAAAA////Bv//
+        /wAAAAD//////wD//////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wb///8AAAD///8A
+        //////8A//////8A//////8A//////8AAAD///////////////////8G////AAAAAP//////AP//////
+        AP//////AP//////AP//AAAA////////////////////Bv///wAAAP///wD//////wAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAP///////////////////wb///////8AAAAAAAAAAAD/////////////////////////
+        //////8AAAAAAAAAAAD///8G////////////////////////////////////////////////////////
+        AAAAAAAA////Bv///////////////////////////////////wAAAP///////////wAAAP///wAAAP//
+        /wb///////////////////////////////////////8AAAAAAAAAAAD///////////////8G
 </value>
   </data>
   <data name="openToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">

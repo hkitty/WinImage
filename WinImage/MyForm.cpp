@@ -227,6 +227,8 @@ namespace WinImage
 			int zoomedHeight = zoomScale * loadedImage->Height;
 
 			pictureBox1->Size = System::Drawing::Size(zoomedWidth, zoomedHeight);
+
+			pictureBox1->Image = loadedImage;
 		}
 	}
 
