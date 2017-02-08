@@ -20,9 +20,8 @@ namespace WinImage
 	void MyForm::initOnOpen()
 	{
 		zoomScale = zoomDefaultScale;
-		splitContainer1->Panel1->AutoScroll = false;
-		applyZoom();
-		splitContainer1->Panel1->AutoScroll = true;
+		vScrollBar1->Maximum = 0;
+		hScrollBar1->Maximum = 0;
 
 		splitContainer1->Panel2Collapsed = true;
 		splitContainer1->Panel2->Hide();
@@ -45,7 +44,7 @@ namespace WinImage
 			initOnOpen();
 
 			loadedImage = Image::FromFile(openFileDialog1->FileName);
-			this->pictureBox1->Image = loadedImage;
+			this->leftImage->Image = loadedImage;
 			this->label1->Text = openFileDialog1->FileName;
 
 			return true;
@@ -63,9 +62,7 @@ namespace WinImage
 			loadedImage = Clipboard::GetImage();
 			
 			this->label1->Text = "image from clipboard";
-
-			pictureBox1->Image = loadedImage;
-			pictureBox1->Update();
+			this->leftImage->Image = loadedImage;
 
 			return true;
 
@@ -79,8 +76,7 @@ namespace WinImage
 
 					loadedImage = Image::FromFile(sCollection[0]->ToString());
 
-					pictureBox1->Image = loadedImage;
-					pictureBox1->Update();
+					this->leftImage->Image = loadedImage;
 					this->label1->Text = "image from clipboard";
 
 					return true;
@@ -99,8 +95,7 @@ namespace WinImage
 					initOnOpen();
 					loadedImage = Image::FromFile(openFileDialog1->FileName);
 
-					pictureBox1->Image = loadedImage;
-					pictureBox1->Update();
+					this->leftImage->Image = loadedImage;
 					this->label1->Text = openFileDialog1->FileName;
 
 					return true;
@@ -222,20 +217,63 @@ namespace WinImage
 	{
 		if (isImageLoaded())
 		{
+			if (loadedImage->Width * zoomScale <= leftImage->Width)
+			{
+				hScrollBar1->Visible = false;
+				hScrollBar1->Maximum = 0;
+			}
+			else
+			{
+				hScrollBar1->Visible = true;
+				int zoomedWidth = loadedImage->Width * zoomScale - leftImage->Width;
+				hScrollBar1->Maximum = zoomedWidth;
+			}
 
-			int zoomedWidth = zoomScale * loadedImage->Width;
-			int zoomedHeight = zoomScale * loadedImage->Height;
+			float hgt = loadedImage->Height * zoomScale;
 
-			pictureBox1->Size = System::Drawing::Size(zoomedWidth, zoomedHeight);
+			if (loadedImage->Height * zoomScale <= leftImage->Height)
+			{
+				vScrollBar1->Visible = false;
+				vScrollBar1->Maximum = 0;
+			}
+			else
+			{
+				vScrollBar1->Visible = true;
+				int zoomedHeight = loadedImage->Height * zoomScale - leftImage->Height;
+				vScrollBar1->Maximum = zoomedHeight;
+			}
 
-			pictureBox1->Image = loadedImage;
+			changeViewport();
+
 		}
 	}
 
 	void MyForm::setDefaultSize()
 	{
+		hScrollBar1->Value = 0;
+		vScrollBar1->Value = 0;
 		zoomScale = zoomDefaultScale;
 		applyZoom();
+	}
+
+	void MyForm::changeViewport()
+	{
+		Bitmap^ bmp = gcnew Bitmap(leftImage->Width, leftImage->Height);
+		Graphics^ g = Graphics::FromImage(bmp);
+		g->InterpolationMode = System::Drawing::Drawing2D::InterpolationMode::NearestNeighbor;
+
+		g->DrawImage(
+			loadedImage,
+
+			System::Drawing::Rectangle(0, 0, leftImage->Width, leftImage->Height),
+
+			System::Drawing::Rectangle(hScrollBar1->Value / zoomScale, vScrollBar1->Value / zoomScale, 
+				leftImage->Width / zoomScale, leftImage->Height / zoomScale),
+
+			GraphicsUnit::Pixel);
+
+		leftImage->Image = bmp;
+		leftImage->Update();
 	}
 
 	void MyForm::updateMenu()

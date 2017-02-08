@@ -24,12 +24,7 @@ namespace WinImage {
 		{
 			InitializeComponent();
 
-			pictureBox1 = (gcnew UserCtrl::PixelBox());
-			splitContainer1->Panel1->Controls->Add(pictureBox1);
-
-			pictureBox1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::pictureBox1_MouseDown);
-			pictureBox1->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::pictureBox1_MouseUp);
-			pictureBox1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::pictureBox1_MouseMove);
+			splitContainer1->Panel1->Update();
 
 			this->DoubleBuffered = true;
 
@@ -55,10 +50,9 @@ namespace WinImage {
 	private: float zoomMinimum = 0.05;
 	private: float zoomMaximum = 90000;
 	private: float zoomDefaultScale = 1;
-	private: float zoomStep = 2;
+	private: float zoomStep = 1.5;
 	
 	private: Image^ loadedImage;
-	private: Image^ workImage;
 
 	private: float zoomScale = 1;
 	private: RotateFlipType currentRotation = RotateFlipType::RotateNoneFlipNone;
@@ -197,6 +191,9 @@ namespace WinImage {
 	private: System::Windows::Forms::ToolStripStatusLabel^  toolStripStatusLabel1;
 	private: UserCtrl::PixelBox^ pictureBox1;
 	private: System::Windows::Forms::Label^  label1;
+private: System::Windows::Forms::PictureBox^  leftImage;
+private: System::Windows::Forms::VScrollBar^  vScrollBar1;
+private: System::Windows::Forms::HScrollBar^  hScrollBar1;
 
 
 		 
@@ -220,6 +217,9 @@ namespace WinImage {
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
+			this->vScrollBar1 = (gcnew System::Windows::Forms::VScrollBar());
+			this->hScrollBar1 = (gcnew System::Windows::Forms::HScrollBar());
+			this->leftImage = (gcnew System::Windows::Forms::PictureBox());
 			this->splitContainer2 = (gcnew System::Windows::Forms::SplitContainer());
 			this->menuStrip = (gcnew System::Windows::Forms::MenuStrip());
 			this->fileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -330,8 +330,10 @@ namespace WinImage {
 			this->toolStripStatusLabel1 = (gcnew System::Windows::Forms::ToolStripStatusLabel());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->BeginInit();
+			this->splitContainer1->Panel1->SuspendLayout();
 			this->splitContainer1->Panel2->SuspendLayout();
 			this->splitContainer1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->leftImage))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer2))->BeginInit();
 			this->splitContainer2->SuspendLayout();
 			this->menuStrip->SuspendLayout();
@@ -345,10 +347,39 @@ namespace WinImage {
 			this->splitContainer1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->splitContainer1->Name = L"splitContainer1";
 			// 
+			// splitContainer1.Panel1
+			// 
+			this->splitContainer1->Panel1->Controls->Add(this->vScrollBar1);
+			this->splitContainer1->Panel1->Controls->Add(this->hScrollBar1);
+			this->splitContainer1->Panel1->Controls->Add(this->leftImage);
+			this->splitContainer1->Panel1->Scroll += gcnew System::Windows::Forms::ScrollEventHandler(this, &MyForm::splitContainer1_Panel1_Scroll);
+			// 
 			// splitContainer1.Panel2
 			// 
 			resources->ApplyResources(this->splitContainer1->Panel2, L"splitContainer1.Panel2");
 			this->splitContainer1->Panel2->Controls->Add(this->splitContainer2);
+			// 
+			// vScrollBar1
+			// 
+			resources->ApplyResources(this->vScrollBar1, L"vScrollBar1");
+			this->vScrollBar1->Name = L"vScrollBar1";
+			this->vScrollBar1->ValueChanged += gcnew System::EventHandler(this, &MyForm::vScrollBar1_ValueChanged);
+			// 
+			// hScrollBar1
+			// 
+			resources->ApplyResources(this->hScrollBar1, L"hScrollBar1");
+			this->hScrollBar1->Name = L"hScrollBar1";
+			this->hScrollBar1->ValueChanged += gcnew System::EventHandler(this, &MyForm::hScrollBar1_ValueChanged);
+			// 
+			// leftImage
+			// 
+			resources->ApplyResources(this->leftImage, L"leftImage");
+			this->leftImage->BackColor = System::Drawing::SystemColors::Control;
+			this->leftImage->Name = L"leftImage";
+			this->leftImage->TabStop = false;
+			this->leftImage->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::leftImage_MouseDown);
+			this->leftImage->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::leftImage_MouseMove);
+			this->leftImage->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::leftImage_MouseUp);
 			// 
 			// splitContainer2
 			// 
@@ -1037,9 +1068,12 @@ namespace WinImage {
 			this->Controls->Add(this->toolStrip1);
 			this->Controls->Add(this->menuStrip);
 			this->Name = L"MyForm";
+			this->Resize += gcnew System::EventHandler(this, &MyForm::MyForm_Resize);
+			this->splitContainer1->Panel1->ResumeLayout(false);
 			this->splitContainer1->Panel2->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->EndInit();
 			this->splitContainer1->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->leftImage))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer2))->EndInit();
 			this->splitContainer2->ResumeLayout(false);
 			this->menuStrip->ResumeLayout(false);
@@ -1145,6 +1179,8 @@ namespace WinImage {
 		void applyZoom();
 		void setDefaultSize();
 
+		void changeViewport();
+
 		void updateMenu();
 
 		void setLocale(String ^ language);
@@ -1184,41 +1220,59 @@ namespace WinImage {
 			{
 				movingMode = true;
 				String^ str = System::IO::Directory::GetCurrentDirectory() + "\\handOpen.cur";
-				pictureBox1->Cursor = gcnew System::Windows::Forms::Cursor(str);
+				leftImage->Cursor = gcnew System::Windows::Forms::Cursor(str);
 			}
 			else
 			{
 				movingMode = false;
-				pictureBox1->Cursor = Cursors::Arrow;
+				leftImage->Cursor = Cursors::Arrow;
 			}
 		}
 	}
 
-	private: System::Void pictureBox1_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
+	private: System::Void splitContainer1_Panel1_Scroll(System::Object^  sender, System::Windows::Forms::ScrollEventArgs^  e) {
+		changeViewport();
+	}
+
+	private: System::Void vScrollBar1_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+		changeViewport();
+	}
+
+	private: System::Void hScrollBar1_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+		changeViewport();
+	}
+
+	private: System::Void MyForm_Resize(System::Object^  sender, System::EventArgs^  e) {
+		changeViewport();
+	}
+
+	private: System::Void leftImage_MouseUp(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
+		if (e->Button == System::Windows::Forms::MouseButtons::Left && movingMode)
+		{
+			leftImage->Cursor = gcnew System::Windows::Forms::Cursor(System::IO::Directory::GetCurrentDirectory() + "\\handOpen.cur");
+		}
+	}
+
+	private: System::Void leftImage_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
 		if (e->Button == System::Windows::Forms::MouseButtons::Left && movingMode)
 		{
 			mouseDownLocation = e->Location;
-			pictureBox1->Cursor = gcnew System::Windows::Forms::Cursor(System::IO::Directory::GetCurrentDirectory() + "\\handClose.cur");
+			leftImage->Cursor = gcnew System::Windows::Forms::Cursor(System::IO::Directory::GetCurrentDirectory() + "\\handClose.cur");
 		}
 	}
 
-	private: System::Void pictureBox1_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
+	private: System::Void leftImage_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
 		if (e->Button == System::Windows::Forms::MouseButtons::Left && movingMode)
-		{
-			splitContainer1->Panel1->AutoScrollPosition = Point(
-				-splitContainer1->Panel1->AutoScrollPosition.X - e->X + mouseDownLocation.X, 
-				-splitContainer1->Panel1->AutoScrollPosition.Y - e->Y + mouseDownLocation.Y);
-		}
+		{	
+			if(vScrollBar1->Value - (e->Y - mouseDownLocation.Y) > 0 && vScrollBar1->Value - (e->Y - mouseDownLocation.Y) < vScrollBar1->Maximum)
+				vScrollBar1->Value = vScrollBar1->Value - (e->Y - mouseDownLocation.Y);
+			if(hScrollBar1->Value - (e->X - mouseDownLocation.X) > 0 && hScrollBar1->Value - (e->X - mouseDownLocation.X) < hScrollBar1->Maximum)
+				hScrollBar1->Value = hScrollBar1->Value - (e->X  - mouseDownLocation.X);
 
-		pictureBox1->Update();
-	}
-
-	private: System::Void pictureBox1_MouseUp(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
-		if (e->Button == System::Windows::Forms::MouseButtons::Left && movingMode)
-		{
-			pictureBox1->Cursor = gcnew System::Windows::Forms::Cursor(System::IO::Directory::GetCurrentDirectory() + "\\handOpen.cur");
+			mouseDownLocation = e->Location;
 		}
 	}
+
 };
 };
 	
