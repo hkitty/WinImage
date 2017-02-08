@@ -17,27 +17,36 @@ void Main(array<String^>^ args)
 
 namespace WinImage
 {
-	bool MyForm::openImage()
+	void MyForm::initOnOpen()
 	{
 		zoomScale = zoomDefaultScale;
+		splitContainer1->Panel1->AutoScroll = false;
+		applyZoom();
+		splitContainer1->Panel1->AutoScroll = true;
 
+		splitContainer1->Panel2Collapsed = true;
+		splitContainer1->Panel2->Hide();
+	}
+
+	bool MyForm::isImageLoaded()
+	{
+		if (loadedImage == nullptr)
+			return false;
+		return true;
+	}
+
+	bool MyForm::openImage()
+	{
 		openFileDialog1->InitialDirectory = "c:\\";
 		openFileDialog1->Filter = "JPEG(*.jpg)|*.jpg|BMP(*.bmp)|*.bmp|All files (*.*)|*.*";
 
 		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
+			initOnOpen();
+
 			loadedImage = Image::FromFile(openFileDialog1->FileName);
-			
 			this->pictureBox1->Image = loadedImage;
-			
 			this->label1->Text = openFileDialog1->FileName;
-
-			splitContainer1->Panel1->AutoScroll = false;
-			applyZoom();
-			splitContainer1->Panel1->AutoScroll = true;
-
-			splitContainer1->Panel2Collapsed = true;
-			splitContainer1->Panel2->Hide();
 
 			return true;
 		}
@@ -46,31 +55,17 @@ namespace WinImage
 		}
 	}
 
-	bool MyForm::isImageLoaded()
-	{
-		if(loadedImage == nullptr)
-			return false;
-		return true;
-	}
-
 	bool MyForm::pasteFromBuffer()
 	{
-		zoomScale = zoomDefaultScale;
-
 		if (Clipboard::ContainsImage()) {
+			initOnOpen();
+
 			loadedImage = Clipboard::GetImage();
 			
 			this->label1->Text = "image from clipboard";
 
-			splitContainer1->Panel1->VerticalScroll->Value = 0;
-			splitContainer1->Panel1->HorizontalScroll->Value = 0;
-
 			pictureBox1->Image = loadedImage;
 			pictureBox1->Update();
-
-			splitContainer1->Panel1->AutoScroll = false;
-			applyZoom();
-			splitContainer1->Panel1->AutoScroll = true;
 
 			return true;
 
@@ -80,15 +75,14 @@ namespace WinImage
 
 			if (sCollection->Count == 1) {
 				try {
+					initOnOpen();
+
 					loadedImage = Image::FromFile(sCollection[0]->ToString());
 
 					pictureBox1->Image = loadedImage;
 					pictureBox1->Update();
 					this->label1->Text = "image from clipboard";
 
-					splitContainer1->Panel1->AutoScroll = false;
-					applyZoom();
-					splitContainer1->Panel1->AutoScroll = true;
 					return true;
 				}
 				catch (Exception^ e) {
@@ -102,19 +96,13 @@ namespace WinImage
 				
 				if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 				{
+					initOnOpen();
 					loadedImage = Image::FromFile(openFileDialog1->FileName);
 
 					pictureBox1->Image = loadedImage;
 					pictureBox1->Update();
-					this->label1->Text = "image from clipboard";
-					
-					toolStripStatusLabel1->Text = openFileDialog1->FileName;
-
 					this->label1->Text = openFileDialog1->FileName;
 
-					splitContainer1->Panel1->AutoScroll = false;
-					applyZoom();
-					splitContainer1->Panel1->AutoScroll = true;
 					return true;
 				}
 				return false;

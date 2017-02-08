@@ -26,9 +26,6 @@ namespace WinImage {
 			this->DoubleBuffered = true;
 			splitContainer1->Panel2Collapsed = true;
 			splitContainer1->Panel2->Hide();
-			//handClose = LoadCursorFromFile(TEXT("handClose.cur"));
-			//handOpen = LoadCursorFromFile(TEXT("handOpen.cur"));
-			//standartCursor = CopyCursor(LoadCursor(0, IDC_ARROW));
 		}
 
 	protected:
@@ -1146,6 +1143,8 @@ namespace WinImage {
 	}
 
 	private:
+		void initOnOpen();
+
 		bool pasteFromBuffer();
 		bool openImage();
 		
@@ -1164,7 +1163,9 @@ namespace WinImage {
 
 		void setLocale(String ^ language);
 		void setControlsLocale(ComponentResourceManager ^ resManager, Control::ControlCollection^ parentCtrl);
+
 		void applyResToToolStripCollection(ComponentResourceManager ^ resManager, ToolStripItemCollection ^ items);
+
 		void applyResource(ComponentResourceManager ^ resManager, Control ^ control);
 		void applyResource(ComponentResourceManager ^ resManager, ToolStripItem ^ item);
 
