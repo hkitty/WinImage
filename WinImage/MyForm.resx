@@ -318,19 +318,19 @@
   <data name="openToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk1CAwAAAAAAADYAAAAoAAAAEQAAAA8AAAABABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////////
-        ////////////////////////////////////////////////////////////Jf//////////////////
-        /////////////////////////////////////////////////yX///8AAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAD///////////////////8l////AAAAAAAAAICAAICAAICAAICAAICAAICAAICA
-        AICAAICAAAAA////////////////Jf///wAAAP///wAAAACAgACAgACAgACAgACAgACAgACAgACAgACA
-        gAAAAP///////////yX///8AAAAA//////8AAAAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAAAD/
-        //////8l////AAAA////AP//////AAAAAICAAICAAICAAICAAICAAICAAICAAICAAICAAAAA////Jf//
-        /wAAAAD//////wD//////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///yX///8AAAD///8A
-        //////8A//////8A//////8A//////8AAAD///////////////////8l////AAAAAP//////AP//////
-        AP//////AP//////AP//AAAA////////////////////Jf///wAAAP///wD//////wAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAP///////////////////yX///////8AAAAAAAAAAAD/////////////////////////
-        //////8AAAAAAAAAAAD///8l////////////////////////////////////////////////////////
-        AAAAAAAA////Jf///////////////////////////////////wAAAP///////////wAAAP///wAAAP//
-        /yX///////////////////////////////////////8AAAAAAAAAAAD///////////////8l
+        ////////////////////////////////////////////////////////////AP//////////////////
+        /////////////////////////////////////////////////wD///8AAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAD///////////////////8A////AAAAAAAAAICAAICAAICAAICAAICAAICAAICA
+        AICAAICAAAAA////////////////AP///wAAAP///wAAAACAgACAgACAgACAgACAgACAgACAgACAgACA
+        gAAAAP///////////wD///8AAAAA//////8AAAAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAgIAAAAD/
+        //////8A////AAAA////AP//////AAAAAICAAICAAICAAICAAICAAICAAICAAICAAICAAAAA////AP//
+        /wAAAAD//////wD//////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8AAAD///8A
+        //////8A//////8A//////8A//////8AAAD///////////////////8A////AAAAAP//////AP//////
+        AP//////AP//////AP//AAAA////////////////////AP///wAAAP///wD//////wAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAP///////////////////wD///////8AAAAAAAAAAAD/////////////////////////
+        //////8AAAAAAAAAAAD///8A////////////////////////////////////////////////////////
+        AAAAAAAA////AP///////////////////////////////////wAAAP///////////wAAAP///wAAAP//
+        /wD///////////////////////////////////////8AAAAAAAAAAAD///////////////8A
 </value>
   </data>
   <data name="openToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
@@ -1069,6 +1069,9 @@
   </data>
   <data name="toolBarZoom100.Text" xml:space="preserve">
     <value>Масштаб 100 %</value>
+  </data>
+  <data name="toolBarZoomEdit.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="toolBarZoomEdit.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 25</value>

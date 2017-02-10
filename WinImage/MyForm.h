@@ -28,6 +28,9 @@ namespace WinImage {
 
 			this->DoubleBuffered = true;
 
+			hScrollBar1->Hide();
+			vScrollBar1->Hide();
+
 			splitContainer1->Panel2Collapsed = true;
 			splitContainer1->Panel2->Hide();
 
@@ -47,10 +50,10 @@ namespace WinImage {
 
 	private: System::Windows::Forms::MenuStrip^  menuStrip;
 
-	private: float zoomMinimum = 0.05;
-	private: float zoomMaximum = 90000;
+	private: float zoomMinimum = 0.125;
+	private: float zoomMaximum = 16;
 	private: float zoomDefaultScale = 1;
-	private: float zoomStep = 1.5;
+	private: float zoomStep = 2;
 	
 	private: Image^ loadedImage;
 
@@ -491,8 +494,10 @@ private: System::Windows::Forms::HScrollBar^  hScrollBar1;
 			// 
 			// moveToolStripMenuItem
 			// 
+			this->moveToolStripMenuItem->CheckOnClick = true;
 			resources->ApplyResources(this->moveToolStripMenuItem, L"moveToolStripMenuItem");
 			this->moveToolStripMenuItem->Name = L"moveToolStripMenuItem";
+			this->moveToolStripMenuItem->CheckedChanged += gcnew System::EventHandler(this, &MyForm::moveToolStripMenuItem_CheckedChanged);
 			this->moveToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::moveToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator3
@@ -906,8 +911,11 @@ private: System::Windows::Forms::HScrollBar^  hScrollBar1;
 			// 
 			// toolBarZoomEdit
 			// 
-			this->toolBarZoomEdit->Name = L"toolBarZoomEdit";
 			resources->ApplyResources(this->toolBarZoomEdit, L"toolBarZoomEdit");
+			this->toolBarZoomEdit->Name = L"toolBarZoomEdit";
+			this->toolBarZoomEdit->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::toolBarZoomEdit_KeyDown);
+			this->toolBarZoomEdit->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MyForm::toolBarZoomEdit_KeyPress);
+			this->toolBarZoomEdit->TextChanged += gcnew System::EventHandler(this, &MyForm::toolBarZoomEdit_TextChanged);
 			// 
 			// toolBarMove
 			// 
@@ -1270,6 +1278,66 @@ private: System::Windows::Forms::HScrollBar^  hScrollBar1;
 				hScrollBar1->Value = hScrollBar1->Value - (e->X  - mouseDownLocation.X);
 
 			mouseDownLocation = e->Location;
+		}
+	}
+
+	private: System::Void toolBarZoomEdit_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+
+	}
+
+	private: System::Void toolBarZoomEdit_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+
+	}
+
+	private: System::Void toolBarZoomEdit_KeyDown(System::Object^  sender, System::Windows::Forms::KeyEventArgs^  e) {
+		if (e->KeyCode == Keys::Enter)
+		{
+			if (isImageLoaded())
+			{
+
+				String^ str = toolBarZoomEdit->Text;
+				str = str->Replace("%", "");
+
+
+				float number;
+
+				if (!float::TryParse(str, number))
+				{
+					return;
+				}
+				else
+				{
+					number /= 100;
+
+					if (number <= zoomMaximum && number >= zoomMinimum)
+					{
+						zoomScale = number;
+						applyZoom();
+					}
+					else if (number > zoomMaximum)
+						toolBarZoomEdit->Text = zoomMaximum * 100 + "%";
+					else if (number < zoomMinimum)
+						toolBarZoomEdit->Text = zoomMinimum * 100 + "%";
+						
+				}
+			}
+		}
+	}
+
+	private: System::Void moveToolStripMenuItem_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
+		if (isImageLoaded())
+		{
+			if (((ToolStripMenuItem^)sender)->Checked)
+			{
+				movingMode = true;
+				String^ str = System::IO::Directory::GetCurrentDirectory() + "\\handOpen.cur";
+				leftImage->Cursor = gcnew System::Windows::Forms::Cursor(str);
+			}
+			else
+			{
+				movingMode = false;
+				leftImage->Cursor = Cursors::Arrow;
+			}
 		}
 	}
 

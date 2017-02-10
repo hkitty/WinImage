@@ -20,11 +20,17 @@ namespace WinImage
 	void MyForm::initOnOpen()
 	{
 		zoomScale = zoomDefaultScale;
+
+		vScrollBar1->Show();
+		hScrollBar1->Show();
+
 		vScrollBar1->Maximum = 0;
 		hScrollBar1->Maximum = 0;
 
 		splitContainer1->Panel2Collapsed = true;
 		splitContainer1->Panel2->Hide();
+
+		toolBarZoomEdit->Enabled = true;
 	}
 
 	bool MyForm::isImageLoaded()
@@ -192,7 +198,32 @@ namespace WinImage
 	{
 		if (isImageLoaded())
 		{	
-			if (zoomScale * zoomStep < zoomMaximum)
+			if (zoomScale >= 1)
+			{
+				// round upper
+				if (Math::Floor(zoomScale) != zoomScale)
+				{
+					zoomScale = Math::Ceiling(zoomScale);
+					applyZoom();
+					return;
+				}
+			}
+			else
+			{
+				if (zoomScale != 0.25 && zoomScale != 0.5 && zoomScale != 0.125)
+				{
+					if (zoomScale < 0.25)
+						zoomScale = 0.25;
+					else if (zoomScale < 0.5)
+						zoomScale = 0.5;
+					else if (zoomScale > 0.5)
+						zoomScale = 1;
+					applyZoom();
+					return;
+				}
+			}
+
+			if (zoomScale * zoomStep <= zoomMaximum)
 			{
 				zoomScale *= zoomStep;
 				applyZoom();
@@ -205,7 +236,32 @@ namespace WinImage
 	{
 		if (isImageLoaded())
 		{
-			if (zoomScale / zoomStep > zoomMinimum)
+			if (zoomScale >= 1)
+			{
+				// round down
+				if (Math::Floor(zoomScale) != zoomScale)
+				{
+					zoomScale = Math::Floor(zoomScale);
+					applyZoom();
+					return;
+				}
+			}
+			else
+			{
+				if (zoomScale != 0.25 && zoomScale != 0.5 && zoomScale != 0.125)
+				{
+					if (zoomScale < 0.25)
+						zoomScale = 0.125;
+					else if (zoomScale < 0.5)
+						zoomScale = 0.25;
+					else if (zoomScale > 0.5)
+						zoomScale = 0.5;
+					applyZoom();
+					return;
+				}
+			}
+
+			if (zoomScale / zoomStep >= zoomMinimum)
 			{
 				zoomScale /= zoomStep;
 				applyZoom();
@@ -245,6 +301,7 @@ namespace WinImage
 
 			changeViewport();
 
+			toolBarZoomEdit->Text = zoomScale * 100 + "%";
 		}
 	}
 
