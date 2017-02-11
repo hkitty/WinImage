@@ -2,14 +2,13 @@
 #include <windows.h>
 
 using namespace System;
+using namespace System::Windows::Forms;
 using namespace System::ComponentModel;
 using namespace System::Collections;
 using namespace System::Data;
 using namespace System::Drawing;
 using namespace System::Threading;
 using namespace System::Globalization;
-
-#include "PixelBox.h"
 
 namespace WinImage {
 
@@ -192,14 +191,10 @@ namespace WinImage {
 	private: System::Windows::Forms::SplitContainer^  splitContainer2;
 	private: System::Windows::Forms::StatusStrip^  statusStrip1;
 	private: System::Windows::Forms::ToolStripStatusLabel^  toolStripStatusLabel1;
-	private: UserCtrl::PixelBox^ pictureBox1;
 	private: System::Windows::Forms::Label^  label1;
-private: System::Windows::Forms::PictureBox^  leftImage;
-private: System::Windows::Forms::VScrollBar^  vScrollBar1;
-private: System::Windows::Forms::HScrollBar^  hScrollBar1;
-
-
-		 
+	private: System::Windows::Forms::PictureBox^  leftImage;
+	private: System::Windows::Forms::VScrollBar^  vScrollBar1;
+	private: System::Windows::Forms::HScrollBar^  hScrollBar1;
 
 	protected:
 
